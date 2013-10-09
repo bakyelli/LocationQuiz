@@ -10,10 +10,9 @@
 
 @interface Question : NSObject
 
-@property (strong, nonatomic) NSString *question;
-@property (strong, nonatomic) NSString *answer;
-
-//
+@property (strong, nonatomic) UIImage *image;
+@property (strong, nonatomic)  NSString *content;
+@property (strong, nonatomic) NSData *audio;
 
 
 @end

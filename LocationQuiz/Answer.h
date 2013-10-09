@@ -11,8 +11,10 @@
 @interface Answer : NSObject
 
 
-@property (strong, nonatomic) NSString *answer;
-@property BOOL correct;
+@property (strong, nonatomic) UIImage *image;
+@property (strong, nonatomic) NSString *content;
+@property (strong, nonatomic) NSData *audio;
+@property BOOL isCorrect;
 
 //@property (strong, nonatomic) NSString *firstAnswerOption;
 //@property (strong, nonatomic) NSString *secondAnswerOption;

@@ -25,6 +25,9 @@
 		30A53A281805E9A600ADDE98 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A53A271805E9A600ADDE98 /* Question.m */; };
 		30A53A2B1805E9AD00ADDE98 /* Answer.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A53A2A1805E9AD00ADDE98 /* Answer.m */; };
 		30A53A301806061C00ADDE98 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A53A2F1806061C00ADDE98 /* User.m */; };
+		30A53A33180608C200ADDE98 /* Quiz.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A53A32180608C200ADDE98 /* Quiz.m */; };
+		30A53A351806090F00ADDE98 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30A53A341806090F00ADDE98 /* CoreLocation.framework */; };
+		30A53A3818060AB300ADDE98 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A53A3718060AB300ADDE98 /* Location.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +68,11 @@
 		30A53A2A1805E9AD00ADDE98 /* Answer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Answer.m; path = ../Answer.m; sourceTree = "<group>"; };
 		30A53A2E1806061C00ADDE98 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		30A53A2F1806061C00ADDE98 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		30A53A31180608C200ADDE98 /* Quiz.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quiz.h; sourceTree = "<group>"; };
+		30A53A32180608C200ADDE98 /* Quiz.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Quiz.m; sourceTree = "<group>"; };
+		30A53A341806090F00ADDE98 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		30A53A3618060AB300ADDE98 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		30A53A3718060AB300ADDE98 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30A53A351806090F00ADDE98 /* CoreLocation.framework in Frameworks */,
 				30A539F11805E8B300ADDE98 /* CoreGraphics.framework in Frameworks */,
 				30A539F31805E8B300ADDE98 /* UIKit.framework in Frameworks */,
 				30A539EF1805E8B300ADDE98 /* Foundation.framework in Frameworks */,
@@ -113,6 +122,7 @@
 		30A539ED1805E8B300ADDE98 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				30A53A341806090F00ADDE98 /* CoreLocation.framework */,
 				30A539EE1805E8B300ADDE98 /* Foundation.framework */,
 				30A539F01805E8B300ADDE98 /* CoreGraphics.framework */,
 				30A539F21805E8B300ADDE98 /* UIKit.framework */,
@@ -174,6 +184,10 @@
 				30A539FE1805E8B300ADDE98 /* AppDelegate.m */,
 				30A53A2E1806061C00ADDE98 /* User.h */,
 				30A53A2F1806061C00ADDE98 /* User.m */,
+				30A53A31180608C200ADDE98 /* Quiz.h */,
+				30A53A32180608C200ADDE98 /* Quiz.m */,
+				30A53A3618060AB300ADDE98 /* Location.h */,
+				30A53A3718060AB300ADDE98 /* Location.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -287,7 +301,9 @@
 			files = (
 				30A53A051805E8B300ADDE98 /* ViewController.m in Sources */,
 				30A53A301806061C00ADDE98 /* User.m in Sources */,
+				30A53A33180608C200ADDE98 /* Quiz.m in Sources */,
 				30A53A2B1805E9AD00ADDE98 /* Answer.m in Sources */,
+				30A53A3818060AB300ADDE98 /* Location.m in Sources */,
 				30A539FF1805E8B300ADDE98 /* AppDelegate.m in Sources */,
 				30A53A281805E9A600ADDE98 /* Question.m in Sources */,
 				30A539FB1805E8B300ADDE98 /* main.m in Sources */,

@@ -12,13 +12,14 @@
 
 @interface Card : NSObject
 
-@property (strong, nonatomic) Question *questionText;
-@property (strong, nonatomic) Answer *answer;
+@property (strong, nonatomic) Question *question;
+@property (strong, nonatomic) NSArray *answers;
+@property (strong, nonatomic) NSNumber *difficulty;
+@property (strong, nonatomic) NSNumber *order;
 
 
 
-
--(Question*)drawRandomQuestion;
+-(NSArray*)randomizedAnswers;
 
 
 
