@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Question.h"
+#import "Answer.h"
 
 @interface Card : NSObject
+
+@property (strong, nonatomic) Question *question;
+@property (strong, nonatomic) Answer *answer;
 
 @end

@@ -56,12 +56,12 @@
 		30A53A151805E8B300ADDE98 /* LocationQuizTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LocationQuizTests-Info.plist"; sourceTree = "<group>"; };
 		30A53A171805E8B300ADDE98 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		30A53A191805E8B300ADDE98 /* LocationQuizTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationQuizTests.m; sourceTree = "<group>"; };
-		30A53A231805E97F00ADDE98 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
-		30A53A241805E97F00ADDE98 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
-		30A53A261805E9A600ADDE98 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
-		30A53A271805E9A600ADDE98 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
-		30A53A291805E9AD00ADDE98 /* Answer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Answer.h; sourceTree = "<group>"; };
-		30A53A2A1805E9AD00ADDE98 /* Answer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Answer.m; sourceTree = "<group>"; };
+		30A53A231805E97F00ADDE98 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Card.h; path = ../Card.h; sourceTree = "<group>"; };
+		30A53A241805E97F00ADDE98 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Card.m; path = ../Card.m; sourceTree = "<group>"; };
+		30A53A261805E9A600ADDE98 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Question.h; path = ../Question.h; sourceTree = "<group>"; };
+		30A53A271805E9A600ADDE98 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Question.m; path = ../Question.m; sourceTree = "<group>"; };
+		30A53A291805E9AD00ADDE98 /* Answer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Answer.h; path = ../Answer.h; sourceTree = "<group>"; };
+		30A53A2A1805E9AD00ADDE98 /* Answer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Answer.m; path = ../Answer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,12 +91,6 @@
 		30A539E21805E8B300ADDE98 = {
 			isa = PBXGroup;
 			children = (
-				30A53A231805E97F00ADDE98 /* Card.h */,
-				30A53A241805E97F00ADDE98 /* Card.m */,
-				30A53A261805E9A600ADDE98 /* Question.h */,
-				30A53A271805E9A600ADDE98 /* Question.m */,
-				30A53A291805E9AD00ADDE98 /* Answer.h */,
-				30A53A2A1805E9AD00ADDE98 /* Answer.m */,
 				30A539F41805E8B300ADDE98 /* LocationQuiz */,
 				30A53A131805E8B300ADDE98 /* LocationQuizTests */,
 				30A539ED1805E8B300ADDE98 /* Frameworks */,
@@ -127,11 +121,16 @@
 		30A539F41805E8B300ADDE98 /* LocationQuiz */ = {
 			isa = PBXGroup;
 			children = (
+				30A53A2D1805F2EE00ADDE98 /* ViewAndViewController */,
+				30A53A2C1805F2E900ADDE98 /* Model */,
+				30A53A231805E97F00ADDE98 /* Card.h */,
+				30A53A241805E97F00ADDE98 /* Card.m */,
+				30A53A261805E9A600ADDE98 /* Question.h */,
+				30A53A271805E9A600ADDE98 /* Question.m */,
+				30A53A291805E9AD00ADDE98 /* Answer.h */,
+				30A53A2A1805E9AD00ADDE98 /* Answer.m */,
 				30A539FD1805E8B300ADDE98 /* AppDelegate.h */,
 				30A539FE1805E8B300ADDE98 /* AppDelegate.m */,
-				30A53A001805E8B300ADDE98 /* Main.storyboard */,
-				30A53A031805E8B300ADDE98 /* ViewController.h */,
-				30A53A041805E8B300ADDE98 /* ViewController.m */,
 				30A53A061805E8B300ADDE98 /* Images.xcassets */,
 				30A539F51805E8B300ADDE98 /* Supporting Files */,
 			);
@@ -165,6 +164,23 @@
 				30A53A161805E8B300ADDE98 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		30A53A2C1805F2E900ADDE98 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		30A53A2D1805F2EE00ADDE98 /* ViewAndViewController */ = {
+			isa = PBXGroup;
+			children = (
+				30A53A031805E8B300ADDE98 /* ViewController.h */,
+				30A53A041805E8B300ADDE98 /* ViewController.m */,
+				30A53A001805E8B300ADDE98 /* Main.storyboard */,
+			);
+			name = ViewAndViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

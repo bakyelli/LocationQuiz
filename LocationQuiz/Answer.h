@@ -10,4 +10,11 @@
 
 @interface Answer : NSObject
 
+
+@property (strong, nonatomic) NSString *firstAnswerOption;
+@property (strong, nonatomic) NSString *secondAnswerOption;
+@property (strong, nonatomic) NSString *thirdAnswerOption;
+@property BOOL correct;
+
+
 @end
