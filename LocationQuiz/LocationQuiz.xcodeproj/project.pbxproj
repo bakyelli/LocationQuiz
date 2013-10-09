@@ -21,6 +21,9 @@
 		30A53A101805E8B300ADDE98 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30A539F21805E8B300ADDE98 /* UIKit.framework */; };
 		30A53A181805E8B300ADDE98 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30A53A161805E8B300ADDE98 /* InfoPlist.strings */; };
 		30A53A1A1805E8B300ADDE98 /* LocationQuizTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A53A191805E8B300ADDE98 /* LocationQuizTests.m */; };
+		30A53A251805E97F00ADDE98 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A53A241805E97F00ADDE98 /* Card.m */; };
+		30A53A281805E9A600ADDE98 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A53A271805E9A600ADDE98 /* Question.m */; };
+		30A53A2B1805E9AD00ADDE98 /* Answer.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A53A2A1805E9AD00ADDE98 /* Answer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,12 @@
 		30A53A151805E8B300ADDE98 /* LocationQuizTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LocationQuizTests-Info.plist"; sourceTree = "<group>"; };
 		30A53A171805E8B300ADDE98 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		30A53A191805E8B300ADDE98 /* LocationQuizTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationQuizTests.m; sourceTree = "<group>"; };
+		30A53A231805E97F00ADDE98 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
+		30A53A241805E97F00ADDE98 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
+		30A53A261805E9A600ADDE98 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
+		30A53A271805E9A600ADDE98 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
+		30A53A291805E9AD00ADDE98 /* Answer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Answer.h; sourceTree = "<group>"; };
+		30A53A2A1805E9AD00ADDE98 /* Answer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Answer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +91,12 @@
 		30A539E21805E8B300ADDE98 = {
 			isa = PBXGroup;
 			children = (
+				30A53A231805E97F00ADDE98 /* Card.h */,
+				30A53A241805E97F00ADDE98 /* Card.m */,
+				30A53A261805E9A600ADDE98 /* Question.h */,
+				30A53A271805E9A600ADDE98 /* Question.m */,
+				30A53A291805E9AD00ADDE98 /* Answer.h */,
+				30A53A2A1805E9AD00ADDE98 /* Answer.m */,
 				30A539F41805E8B300ADDE98 /* LocationQuiz */,
 				30A53A131805E8B300ADDE98 /* LocationQuizTests */,
 				30A539ED1805E8B300ADDE98 /* Frameworks */,
@@ -250,8 +265,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				30A53A051805E8B300ADDE98 /* ViewController.m in Sources */,
+				30A53A2B1805E9AD00ADDE98 /* Answer.m in Sources */,
 				30A539FF1805E8B300ADDE98 /* AppDelegate.m in Sources */,
+				30A53A281805E9A600ADDE98 /* Question.m in Sources */,
 				30A539FB1805E8B300ADDE98 /* main.m in Sources */,
+				30A53A251805E97F00ADDE98 /* Card.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
