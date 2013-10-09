@@ -26,4 +26,23 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)answerOne:(id)sender {
+    
+    //
+    
+    
+    
+}
+
+- (IBAction)answerTwo:(id)sender {
+    
+    
+    
+}
+
+- (IBAction)answerThree:(id)sender {
+    
+    
+    
+}
 @end

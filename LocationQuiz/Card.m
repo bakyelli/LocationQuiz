@@ -13,4 +13,10 @@
 
 
 
+-(Question*)drawRandomQuestion {
+    Question *myQuestion = [[Question alloc] init];
+    return myQuestion;
+    
+}
+
 @end

@@ -24,6 +24,7 @@
 		30A53A251805E97F00ADDE98 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A53A241805E97F00ADDE98 /* Card.m */; };
 		30A53A281805E9A600ADDE98 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A53A271805E9A600ADDE98 /* Question.m */; };
 		30A53A2B1805E9AD00ADDE98 /* Answer.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A53A2A1805E9AD00ADDE98 /* Answer.m */; };
+		30A53A301806061C00ADDE98 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A53A2F1806061C00ADDE98 /* User.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,8 @@
 		30A53A271805E9A600ADDE98 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Question.m; path = ../Question.m; sourceTree = "<group>"; };
 		30A53A291805E9AD00ADDE98 /* Answer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Answer.h; path = ../Answer.h; sourceTree = "<group>"; };
 		30A53A2A1805E9AD00ADDE98 /* Answer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Answer.m; path = ../Answer.m; sourceTree = "<group>"; };
+		30A53A2E1806061C00ADDE98 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		30A53A2F1806061C00ADDE98 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,14 +126,6 @@
 			children = (
 				30A53A2D1805F2EE00ADDE98 /* ViewAndViewController */,
 				30A53A2C1805F2E900ADDE98 /* Model */,
-				30A53A231805E97F00ADDE98 /* Card.h */,
-				30A53A241805E97F00ADDE98 /* Card.m */,
-				30A53A261805E9A600ADDE98 /* Question.h */,
-				30A53A271805E9A600ADDE98 /* Question.m */,
-				30A53A291805E9AD00ADDE98 /* Answer.h */,
-				30A53A2A1805E9AD00ADDE98 /* Answer.m */,
-				30A539FD1805E8B300ADDE98 /* AppDelegate.h */,
-				30A539FE1805E8B300ADDE98 /* AppDelegate.m */,
 				30A53A061805E8B300ADDE98 /* Images.xcassets */,
 				30A539F51805E8B300ADDE98 /* Supporting Files */,
 			);
@@ -169,6 +164,16 @@
 		30A53A2C1805F2E900ADDE98 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				30A53A231805E97F00ADDE98 /* Card.h */,
+				30A53A241805E97F00ADDE98 /* Card.m */,
+				30A53A261805E9A600ADDE98 /* Question.h */,
+				30A53A271805E9A600ADDE98 /* Question.m */,
+				30A53A291805E9AD00ADDE98 /* Answer.h */,
+				30A53A2A1805E9AD00ADDE98 /* Answer.m */,
+				30A539FD1805E8B300ADDE98 /* AppDelegate.h */,
+				30A539FE1805E8B300ADDE98 /* AppDelegate.m */,
+				30A53A2E1806061C00ADDE98 /* User.h */,
+				30A53A2F1806061C00ADDE98 /* User.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -281,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30A53A051805E8B300ADDE98 /* ViewController.m in Sources */,
+				30A53A301806061C00ADDE98 /* User.m in Sources */,
 				30A53A2B1805E9AD00ADDE98 /* Answer.m in Sources */,
 				30A539FF1805E8B300ADDE98 /* AppDelegate.m in Sources */,
 				30A53A281805E9A600ADDE98 /* Question.m in Sources */,

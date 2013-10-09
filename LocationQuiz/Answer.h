@@ -11,10 +11,11 @@
 @interface Answer : NSObject
 
 
-@property (strong, nonatomic) NSString *firstAnswerOption;
-@property (strong, nonatomic) NSString *secondAnswerOption;
-@property (strong, nonatomic) NSString *thirdAnswerOption;
+@property (strong, nonatomic) NSString *answer;
 @property BOOL correct;
 
+//@property (strong, nonatomic) NSString *firstAnswerOption;
+//@property (strong, nonatomic) NSString *secondAnswerOption;
+//@property (strong, nonatomic) NSString *thirdAnswerOption;
 
 @end

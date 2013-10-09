@@ -10,4 +10,9 @@
 
 @interface ViewController : UIViewController
 
+- (IBAction)answerOne:(id)sender;
+- (IBAction)answerTwo:(id)sender;
+- (IBAction)answerThree:(id)sender;
+
+
 @end
