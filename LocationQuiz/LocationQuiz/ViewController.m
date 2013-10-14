@@ -17,6 +17,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.quizLabel.text = [NSString stringWithFormat:@"Welcome to the %@ quiz!",self.quizName];
+    
 	// Do any additional setup after loading the view, typically from a nib.
 }
 

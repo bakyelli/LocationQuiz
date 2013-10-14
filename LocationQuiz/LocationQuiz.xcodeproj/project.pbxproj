@@ -28,6 +28,9 @@
 		30A53A33180608C200ADDE98 /* Quiz.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A53A32180608C200ADDE98 /* Quiz.m */; };
 		30A53A351806090F00ADDE98 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30A53A341806090F00ADDE98 /* CoreLocation.framework */; };
 		30A53A3818060AB300ADDE98 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A53A3718060AB300ADDE98 /* Location.m */; };
+		F11B6020180C8233005A15E8 /* listTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11B601E180C8233005A15E8 /* listTableViewController.m */; };
+		F11B6021180C8233005A15E8 /* listTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11B601F180C8233005A15E8 /* listTableViewController.xib */; };
+		F11B6023180C97CE005A15E8 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11B6022180C97CE005A15E8 /* ViewController.xib */; };
 		F19610DF18073279005A9849 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F19610DE18073279005A9849 /* MapViewController.m */; };
 		F19610E1180732D4005A9849 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19610E0180732D4005A9849 /* MapKit.framework */; };
 		F19610E418073863005A9849 /* PointOfInterestMapPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = F19610E318073863005A9849 /* PointOfInterestMapPoint.m */; };
@@ -79,6 +82,10 @@
 		30A53A341806090F00ADDE98 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		30A53A3618060AB300ADDE98 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		30A53A3718060AB300ADDE98 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		F11B601D180C8233005A15E8 /* listTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = listTableViewController.h; sourceTree = "<group>"; };
+		F11B601E180C8233005A15E8 /* listTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = listTableViewController.m; sourceTree = "<group>"; };
+		F11B601F180C8233005A15E8 /* listTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = listTableViewController.xib; sourceTree = "<group>"; };
+		F11B6022180C97CE005A15E8 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 		F19610DD18073279005A9849 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		F19610DE18073279005A9849 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		F19610E0180732D4005A9849 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -215,9 +222,13 @@
 			children = (
 				30A53A031805E8B300ADDE98 /* ViewController.h */,
 				30A53A041805E8B300ADDE98 /* ViewController.m */,
+				F11B6022180C97CE005A15E8 /* ViewController.xib */,
 				30A53A001805E8B300ADDE98 /* Main.storyboard */,
 				F19610DD18073279005A9849 /* MapViewController.h */,
 				F19610DE18073279005A9849 /* MapViewController.m */,
+				F11B601D180C8233005A15E8 /* listTableViewController.h */,
+				F11B601E180C8233005A15E8 /* listTableViewController.m */,
+				F11B601F180C8233005A15E8 /* listTableViewController.xib */,
 				F19610EB1807519B005A9849 /* LandmarkInfoViewController.h */,
 				F19610EC1807519B005A9849 /* LandmarkInfoViewController.m */,
 				F19610ED1807519B005A9849 /* LandmarkInfoViewController.xib */,
@@ -283,6 +294,13 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Jay Abdallah";
 				TargetAttributes = {
+					30A539EA1805E8B300ADDE98 = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
 					30A53A0B1805E8B300ADDE98 = {
 						TestTargetID = 30A539EA1805E8B300ADDE98;
 					};
@@ -312,11 +330,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F11B6023180C97CE005A15E8 /* ViewController.xib in Resources */,
 				F19610EA18074FFD005A9849 /* loc.png in Resources */,
 				30A53A071805E8B300ADDE98 /* Images.xcassets in Resources */,
 				F19610EF1807519B005A9849 /* LandmarkInfoViewController.xib in Resources */,
 				30A539F91805E8B300ADDE98 /* InfoPlist.strings in Resources */,
 				30A53A021805E8B300ADDE98 /* Main.storyboard in Resources */,
+				F11B6021180C8233005A15E8 /* listTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +365,7 @@
 				30A539FF1805E8B300ADDE98 /* AppDelegate.m in Sources */,
 				30A53A281805E9A600ADDE98 /* Question.m in Sources */,
 				F19610DF18073279005A9849 /* MapViewController.m in Sources */,
+				F11B6020180C8233005A15E8 /* listTableViewController.m in Sources */,
 				30A539FB1805E8B300ADDE98 /* main.m in Sources */,
 				30A53A251805E97F00ADDE98 /* Card.m in Sources */,
 			);

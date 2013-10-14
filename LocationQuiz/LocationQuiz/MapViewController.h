@@ -14,6 +14,6 @@
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 -(void)findLocation;
--(void)foundLocation:(CLLocation *)loc; 
+-(void) startMonitoringLocationForPointsOfInterest;
 
 @end

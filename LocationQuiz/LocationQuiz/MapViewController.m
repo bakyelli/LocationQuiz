@@ -9,7 +9,7 @@
 #import "MapViewController.h"
 #import "PointOfInterestMapPoint.h"
 #import "LandmarkInfoViewController.h"
-
+#import "listTableViewController.h"
 @interface MapViewController ()
 
 @end
@@ -29,13 +29,41 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"viewdidload");
+    
+    UIBarButtonItem *listButton = [[UIBarButtonItem alloc]initWithTitle:@"List" style:UIBarButtonItemStylePlain target:self action:@selector(listBtnPressed:)];
+    
+    [self.navigationItem setRightBarButtonItem:listButton];
+    
     self.title = @"Points of Interest";
     self.locationManager = [[CLLocationManager alloc]init];
     self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [self findLocation];
     
     // Do any additional setup after loading the view.
+}
+-(void)listBtnPressed:(id)sender
+{
+    listTableViewController *ltvc = [[listTableViewController alloc]init];
+    ltvc.locations = [[self.mapView annotations] mutableCopy];
+    
+    
+    for(int i=0; i<[ltvc.locations count]; i++)
+    {
+        id<MKAnnotation> annotation = ltvc.locations[i];
+        
+        if([annotation isKindOfClass:[MKUserLocation class]])
+        {
+            NSLog(@"Listed my location!");
+            [ltvc.locations removeObjectAtIndex:i];
+        }
+        
+    }
+    
+    [self.navigationController pushViewController:ltvc animated:YES];
+    
+    
+    NSLog(@"List button pressed");
 }
 
 -(void)findLocation
@@ -53,23 +81,57 @@
 //    
    PointOfInterestMapPoint *pointTimesSquare = [[PointOfInterestMapPoint alloc]initWithCoordinate:coordinateTimesSquare title:@"Times Square"];
     PointOfInterestMapPoint *pointMoma = [[PointOfInterestMapPoint alloc]initWithCoordinate:coordinateMoma title:@"Museum of Modern Art"];
+    pointMoma.interestingFacts = @"Interesting facts about MOMA";
     PointOfInterestMapPoint *pointToussads = [[PointOfInterestMapPoint alloc]initWithCoordinate:coordinateToussads title:@"Madame Toussads Museum"];
+    
+    pointToussads.interestingFacts = @"Interesting facts about Toussads";
+
     pointTimesSquare.interestingFacts = @"In Times Square, there are approximately 1,500,000 daily passers-by including 344,000 riders in or out of the Times Square subway station.";
     //
-    [self.mapView addAnnotation:pointMoma];
+   // [self.mapView addAnnotation:pointMoma];
     [self.mapView addAnnotation:pointTimesSquare];
-    [self.mapView addAnnotation:pointToussads];
-//    
+   // [self.mapView addAnnotation:pointToussads];
     
+    [self startMonitoringLocationForPointsOfInterest];
     
-//    MKPointAnnotation *myAnnotation = [[MKPointAnnotation alloc] init];
-//    myAnnotation.coordinate = coordinateTimesSquare;
-//    myAnnotation.title = @"Times Square";
-//    myAnnotation.subtitle = @"Don't come here";
-//    [self.mapView addAnnotation:myAnnotation];
-//    
     
 }
+
+-(void) startMonitoringLocationForPointsOfInterest
+{
+    
+    for(int i=0; i<[self.mapView.annotations count]; i++)
+    {
+        id<MKAnnotation> annotation = [self.mapView.annotations objectAtIndex:i];
+        
+        if(![annotation isKindOfClass:[MKUserLocation class]])
+        {
+            PointOfInterestMapPoint *p = (PointOfInterestMapPoint *)annotation;
+            CLCircularRegion *regionForMonitoring = [[CLCircularRegion alloc]initWithCenter:p.coordinate radius:200 identifier:p.title];
+            
+            [self.locationManager startMonitoringForRegion:regionForMonitoring];
+        
+        }
+        
+    }
+    
+}
+
+-(void) locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region
+{
+    NSLog(@"I entered region: %@", region.identifier);
+    UILocalNotification *quizNotification = [[UILocalNotification alloc]init];
+
+    quizNotification.fireDate = [NSDate date];
+    quizNotification.alertBody = [NSString stringWithFormat:@"You are near %@. Want to take the quiz?",region.identifier];
+    quizNotification.alertAction = region.identifier;
+    quizNotification.userInfo = @{@"LocationName":region.identifier};
+    
+    [[UIApplication sharedApplication] scheduleLocalNotification:quizNotification];
+    
+    
+}
+
 #pragma mark Delegate Methods
 
 -(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {

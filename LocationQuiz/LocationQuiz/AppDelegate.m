@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "ViewController.h"
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -42,5 +42,47 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+-(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    UIApplicationState state = [application applicationState];
+    NSString *locationName = [notification.userInfo valueForKey:@"LocationName"];
+    
+    
+    if(state == UIApplicationStateActive)
+    {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:locationName message:notification.alertBody delegate:self cancelButtonTitle:@"Take the quiz!" otherButtonTitles:nil];
+        
+      //  alert set
+        
+        [alert show];
+        NSLog(@"This location is: %@",[notification.userInfo valueForKey:@"LocationName"]);
+        
+    }
+    else
+    {
+        ViewController *vc = [[ViewController alloc]init];
+        vc.quizName = locationName;
+        
+        self.window.rootViewController = vc;
+    }
+    
+}
 
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 0)
+    {
+    
+        NSString *alertViewTitle = alertView.title;
+        ViewController *vc = [[ViewController alloc]init];
+        vc.quizName = alertViewTitle; 
+     
+        self.window.rootViewController = vc;
+        
+   //     [(UINavigationController *)self.window.rootViewController pushViewController:vc animated:YES];
+    
+        
+        
+    }
+}
 @end

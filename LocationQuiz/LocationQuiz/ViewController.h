@@ -10,9 +10,11 @@
 
 @interface ViewController : UIViewController
 
-- (IBAction)answerOne:(id)sender;
-- (IBAction)answerTwo:(id)sender;
-- (IBAction)answerThree:(id)sender;
+//- (IBAction)answerOne:(id)sender;
+//- (IBAction)answerTwo:(id)sender;
+//- (IBAction)answerThree:(id)sender;
 
+@property (strong,nonatomic) NSString *quizName; 
+@property (weak, nonatomic) IBOutlet UILabel *quizLabel;
 
 @end

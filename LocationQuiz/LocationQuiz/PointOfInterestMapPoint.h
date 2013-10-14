@@ -18,5 +18,5 @@
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, strong) NSString *interestingFacts; 
-
+@property int pointID;
 @end
