@@ -31,12 +31,8 @@
     [super viewDidLoad];
     NSLog(@"viewdidload");
     self.title = @"Points of Interest";
-    
     self.locationManager = [[CLLocationManager alloc]init];
-    
     self.locationManager.delegate = self;
-
-    
     [self findLocation];
     
     // Do any additional setup after loading the view.
@@ -60,7 +56,7 @@
     PointOfInterestMapPoint *pointToussads = [[PointOfInterestMapPoint alloc]initWithCoordinate:coordinateToussads title:@"Madame Toussads Museum"];
     pointTimesSquare.interestingFacts = @"In Times Square, there are approximately 1,500,000 daily passers-by including 344,000 riders in or out of the Times Square subway station.";
     //
-   [self.mapView addAnnotation:pointMoma];
+    [self.mapView addAnnotation:pointMoma];
     [self.mapView addAnnotation:pointTimesSquare];
     [self.mapView addAnnotation:pointToussads];
 //    
