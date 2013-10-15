@@ -16,5 +16,6 @@
 
 @property (strong,nonatomic) NSString *quizName; 
 @property (weak, nonatomic) IBOutlet UILabel *quizLabel;
+- (IBAction)dismissPressed:(id)sender;
 
 @end

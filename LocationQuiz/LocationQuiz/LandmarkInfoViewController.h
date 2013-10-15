@@ -13,5 +13,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblLandmarkInterestingFacts;
 @property(strong,nonatomic) NSString *strLandmarkName;
 @property(strong,nonatomic) NSString *strLandmarkInterestingFacts;
+- (IBAction)goBackBtnPressed:(id)sender;
 
 @end

@@ -75,12 +75,9 @@
     
         NSString *alertViewTitle = alertView.title;
         ViewController *vc = [[ViewController alloc]init];
-        vc.quizName = alertViewTitle; 
-     
-        self.window.rootViewController = vc;
+        vc.quizName = alertViewTitle;
+        [self.window.rootViewController presentViewController:vc animated:YES completion:nil];
         
-   //     [(UINavigationController *)self.window.rootViewController pushViewController:vc animated:YES];
-    
         
         
     }

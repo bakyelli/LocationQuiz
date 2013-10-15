@@ -68,9 +68,11 @@
 
 -(void)findLocation
 {
-    [self.locationManager startUpdatingLocation];
     [self addPointsOfInterestOnTheMap];
 
+    [self.locationManager startUpdatingLocation];
+
+    
 }
 -(void)addPointsOfInterestOnTheMap
 {
@@ -78,11 +80,19 @@
     CLLocationCoordinate2D coordinateTimesSquare = CLLocationCoordinate2DMake(40.7577, -73.9857);
     CLLocationCoordinate2D coordinateMoma = CLLocationCoordinate2DMake(40.761424, -73.977625);
     CLLocationCoordinate2D coordinateToussads = CLLocationCoordinate2DMake(40.757173, -73.988414);
+    CLLocationCoordinate2D coordinateChipotle  = CLLocationCoordinate2DMake(40.704961, -74.012918);
+    
+    
+    
 //    
    PointOfInterestMapPoint *pointTimesSquare = [[PointOfInterestMapPoint alloc]initWithCoordinate:coordinateTimesSquare title:@"Times Square"];
     PointOfInterestMapPoint *pointMoma = [[PointOfInterestMapPoint alloc]initWithCoordinate:coordinateMoma title:@"Museum of Modern Art"];
     pointMoma.interestingFacts = @"Interesting facts about MOMA";
     PointOfInterestMapPoint *pointToussads = [[PointOfInterestMapPoint alloc]initWithCoordinate:coordinateToussads title:@"Madame Toussads Museum"];
+    
+    PointOfInterestMapPoint *pointChipotle = [[PointOfInterestMapPoint alloc]initWithCoordinate:coordinateChipotle title:@"Chipotle at Broadway"];
+    
+    pointChipotle.interestingFacts = @"Chipotle makes the best burritos!";
     
     pointToussads.interestingFacts = @"Interesting facts about Toussads";
 
@@ -91,8 +101,10 @@
    // [self.mapView addAnnotation:pointMoma];
     [self.mapView addAnnotation:pointTimesSquare];
    // [self.mapView addAnnotation:pointToussads];
-    
+    [self.mapView addAnnotation:pointChipotle];
     [self startMonitoringLocationForPointsOfInterest];
+
+    
     
     
 }
@@ -100,14 +112,18 @@
 -(void) startMonitoringLocationForPointsOfInterest
 {
     
+    NSLog(@"I have %i annotations on the map", [self.mapView.annotations count]);
+
+    
     for(int i=0; i<[self.mapView.annotations count]; i++)
     {
+        
         id<MKAnnotation> annotation = [self.mapView.annotations objectAtIndex:i];
         
         if(![annotation isKindOfClass:[MKUserLocation class]])
         {
             PointOfInterestMapPoint *p = (PointOfInterestMapPoint *)annotation;
-            CLCircularRegion *regionForMonitoring = [[CLCircularRegion alloc]initWithCenter:p.coordinate radius:200 identifier:p.title];
+            CLCircularRegion *regionForMonitoring = [[CLCircularRegion alloc]initWithCenter:p.coordinate radius:400 identifier:p.title];
             
             [self.locationManager startMonitoringForRegion:regionForMonitoring];
         
@@ -117,6 +133,28 @@
     
 }
 
+- (void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(CLRegion *)region
+{
+    
+    if([self insideRegion:(CLCircularRegion *)region theLocation:manager.location])
+    {
+        NSLog(@"I am manually firing didEnterRegion for: %@", [region identifier]);
+        [self locationManager:manager didEnterRegion:region];
+    }
+    
+}
+-(BOOL) insideRegion:(CLCircularRegion *)region theLocation:(CLLocation*)location
+{
+
+    if([region containsCoordinate:location.coordinate])
+    {
+        return YES;
+    }
+    else
+    {
+        return NO;
+    }
+}
 -(void) locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region
 {
     NSLog(@"I entered region: %@", region.identifier);
@@ -209,8 +247,14 @@
     
     [self.mapView setRegion:myLocationRegion];
     [self.locationManager stopUpdatingLocation];
+    
+
 }
 
+-(void)locationManagerDidPauseLocationUpdates:(CLLocationManager *)manager
+{
+    NSLog(@"I paused location updates");
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
