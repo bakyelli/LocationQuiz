@@ -31,6 +31,11 @@
 		F11B6020180C8233005A15E8 /* listTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11B601E180C8233005A15E8 /* listTableViewController.m */; };
 		F11B6021180C8233005A15E8 /* listTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11B601F180C8233005A15E8 /* listTableViewController.xib */; };
 		F11B6023180C97CE005A15E8 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11B6022180C97CE005A15E8 /* ViewController.xib */; };
+		F12AB5B4181724B900FF293B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12AB5B3181724B900FF293B /* CoreData.framework */; };
+		F12AB5BA181724ED00FF293B /* SharedStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F12AB5B9181724ED00FF293B /* SharedStore.m */; };
+		F12AB5BD181725A200FF293B /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F12AB5BB181725A200FF293B /* Model.xcdatamodeld */; };
+		F12AB5C0181726FB00FF293B /* LocationEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = F12AB5BF181726FB00FF293B /* LocationEntity.m */; };
+		F12AB5C3181726FB00FF293B /* CardEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = F12AB5C2181726FB00FF293B /* CardEntity.m */; };
 		F19610DF18073279005A9849 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F19610DE18073279005A9849 /* MapViewController.m */; };
 		F19610E1180732D4005A9849 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19610E0180732D4005A9849 /* MapKit.framework */; };
 		F19610E418073863005A9849 /* PointOfInterestMapPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = F19610E318073863005A9849 /* PointOfInterestMapPoint.m */; };
@@ -86,6 +91,14 @@
 		F11B601E180C8233005A15E8 /* listTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = listTableViewController.m; sourceTree = "<group>"; };
 		F11B601F180C8233005A15E8 /* listTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = listTableViewController.xib; sourceTree = "<group>"; };
 		F11B6022180C97CE005A15E8 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		F12AB5B3181724B900FF293B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		F12AB5B8181724ED00FF293B /* SharedStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharedStore.h; sourceTree = "<group>"; };
+		F12AB5B9181724ED00FF293B /* SharedStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharedStore.m; sourceTree = "<group>"; };
+		F12AB5BC181725A200FF293B /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		F12AB5BE181726FB00FF293B /* LocationEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationEntity.h; sourceTree = "<group>"; };
+		F12AB5BF181726FB00FF293B /* LocationEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationEntity.m; sourceTree = "<group>"; };
+		F12AB5C1181726FB00FF293B /* CardEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardEntity.h; sourceTree = "<group>"; };
+		F12AB5C2181726FB00FF293B /* CardEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardEntity.m; sourceTree = "<group>"; };
 		F19610DD18073279005A9849 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		F19610DE18073279005A9849 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		F19610E0180732D4005A9849 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -102,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F12AB5B4181724B900FF293B /* CoreData.framework in Frameworks */,
 				30A53A351806090F00ADDE98 /* CoreLocation.framework in Frameworks */,
 				F19610E1180732D4005A9849 /* MapKit.framework in Frameworks */,
 				30A539F11805E8B300ADDE98 /* CoreGraphics.framework in Frameworks */,
@@ -126,6 +140,8 @@
 		30A539E21805E8B300ADDE98 = {
 			isa = PBXGroup;
 			children = (
+				F12AB5B8181724ED00FF293B /* SharedStore.h */,
+				F12AB5B9181724ED00FF293B /* SharedStore.m */,
 				F19610E818074FFD005A9849 /* imagesadded */,
 				30A539F41805E8B300ADDE98 /* LocationQuiz */,
 				30A53A131805E8B300ADDE98 /* LocationQuizTests */,
@@ -146,6 +162,7 @@
 		30A539ED1805E8B300ADDE98 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F12AB5B3181724B900FF293B /* CoreData.framework */,
 				F19610E0180732D4005A9849 /* MapKit.framework */,
 				30A53A341806090F00ADDE98 /* CoreLocation.framework */,
 				30A539EE1805E8B300ADDE98 /* Foundation.framework */,
@@ -212,6 +229,11 @@
 				30A53A31180608C200ADDE98 /* Quiz.h */,
 				30A53A32180608C200ADDE98 /* Quiz.m */,
 				30A53A3618060AB300ADDE98 /* Location.h */,
+				F12AB5BB181725A200FF293B /* Model.xcdatamodeld */,
+				F12AB5C1181726FB00FF293B /* CardEntity.h */,
+				F12AB5C2181726FB00FF293B /* CardEntity.m */,
+				F12AB5BE181726FB00FF293B /* LocationEntity.h */,
+				F12AB5BF181726FB00FF293B /* LocationEntity.m */,
 				30A53A3718060AB300ADDE98 /* Location.m */,
 			);
 			name = Model;
@@ -356,13 +378,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				30A53A051805E8B300ADDE98 /* ViewController.m in Sources */,
+				F12AB5C0181726FB00FF293B /* LocationEntity.m in Sources */,
 				30A53A301806061C00ADDE98 /* User.m in Sources */,
+				F12AB5BD181725A200FF293B /* Model.xcdatamodeld in Sources */,
 				30A53A33180608C200ADDE98 /* Quiz.m in Sources */,
 				30A53A2B1805E9AD00ADDE98 /* Answer.m in Sources */,
+				F12AB5C3181726FB00FF293B /* CardEntity.m in Sources */,
 				F19610EE1807519B005A9849 /* LandmarkInfoViewController.m in Sources */,
 				30A53A3818060AB300ADDE98 /* Location.m in Sources */,
 				F19610E418073863005A9849 /* PointOfInterestMapPoint.m in Sources */,
 				30A539FF1805E8B300ADDE98 /* AppDelegate.m in Sources */,
+				F12AB5BA181724ED00FF293B /* SharedStore.m in Sources */,
 				30A53A281805E9A600ADDE98 /* Question.m in Sources */,
 				F19610DF18073279005A9849 /* MapViewController.m in Sources */,
 				F11B6020180C8233005A15E8 /* listTableViewController.m in Sources */,
@@ -588,6 +614,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F12AB5BB181725A200FF293B /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F12AB5BC181725A200FF293B /* Model.xcdatamodel */,
+			);
+			currentVersion = F12AB5BC181725A200FF293B /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 30A539E31805E8B300ADDE98 /* Project object */;
 }

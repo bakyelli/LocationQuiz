@@ -10,6 +10,9 @@
 #import "PointOfInterestMapPoint.h"
 #import "LandmarkInfoViewController.h"
 #import "listTableViewController.h"
+#import "SharedStore.h"
+#import "Location.h"
+#import "LocationEntity.h"
 @interface MapViewController ()
 
 @end
@@ -41,6 +44,23 @@
     [self findLocation];
     
     // Do any additional setup after loading the view.
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]initWithEntityName:@"LocationEntity"];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]initWithKey:@"name" ascending:YES];
+    
+    [fetchRequest setSortDescriptors:@[sortDescriptor]];
+    
+    NSArray *results = [[SharedStore returnSharedStore].managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    
+    for(LocationEntity *locEnt in results)
+    {
+        NSLog(@"%@",locEnt.name);
+    }
+
+    
+    NSLog(@"I have this many items in Core Data: %i", [results count]);
+    
+    
 }
 -(void)listBtnPressed:(id)sender
 {
@@ -104,6 +124,12 @@
     [self.mapView addAnnotation:pointChipotle];
     [self startMonitoringLocationForPointsOfInterest];
 
+//    
+//    Location *locTimesSquare = [[Location alloc]init];
+//    locTimesSquare.name = pointTimesSquare.title;
+//    locTimesSquare.coordinates = &coordinateTimesSquare;
+//    
+//    [[SharedStore returnSharedStore] addLocationEntity:locTimesSquare];
     
     
     
