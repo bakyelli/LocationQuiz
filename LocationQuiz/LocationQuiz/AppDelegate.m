@@ -63,7 +63,7 @@
     
     NSSet *cards = [NSSet setWithObjects:newCard,otherCard, nil];
     
-    [myQuiz addCards:cards];
+//    [myQuiz addCards:cards];
     
     NSLog(@"%@",myQuiz);
     
