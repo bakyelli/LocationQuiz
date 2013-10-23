@@ -2,17 +2,18 @@
 //  Question.h
 //  LocationQuiz
 //
-//  Created by Jay Abdallah on 10/9/13.
+//  Created by Joe Burgess on 10/23/13.
 //  Copyright (c) 2013 Jay Abdallah. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-@interface Question : NSObject
+@class Card;
 
-@property (strong, nonatomic) UIImage *image;
-@property (strong, nonatomic)  NSString *content;
-@property (strong, nonatomic) NSData *audio;
+@interface Question : NSManagedObject
 
+@property (nonatomic, retain) NSString * content;
+@property (nonatomic, retain) Card *card;
 
 @end

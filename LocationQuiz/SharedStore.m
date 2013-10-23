@@ -7,8 +7,7 @@
 //
 
 #import "SharedStore.h"
-#import "LocationEntity.h"
-#import "Location.h" 
+#import "Location.h"
 
 @implementation SharedStore
 
@@ -24,22 +23,22 @@
 
 #pragma mark - Core Data API Methods
 
--(void) addLocationEntity:(Location *)loc
-{
-    LocationEntity *locEnt = [NSEntityDescription insertNewObjectForEntityForName:@"LocationEntity" inManagedObjectContext:self.managedObjectContext];
-    
-    locEnt.name = loc.name;
-   // locEnt.latitude = [loc.coordinates]
-    
-    NSNumber *numLatitude = [NSNumber numberWithDouble:loc.coordinates->latitude];
-    locEnt.latitude =numLatitude;
-    NSNumber *numLongtitude = [NSNumber numberWithDouble:loc.coordinates->longitude];
-    locEnt.longtitude = numLongtitude;
-    
-    [self.managedObjectContext insertObject:locEnt];
-    [self.managedObjectContext save:nil];
-}
-
+//-(void) addLocationEntity:(Location *)loc
+//{
+////    LocationEntity *locEnt = [NSEntityDescription insertNewObjectForEntityForName:@"LocationEntity" inManagedObjectContext:self.managedObjectContext];
+//    
+//    locEnt.name = loc.name;
+//   // locEnt.latitude = [loc.coordinates]
+//    
+//    NSNumber *numLatitude = [NSNumber numberWithDouble:loc.coordinates->latitude];
+//    locEnt.latitude =numLatitude;
+//    NSNumber *numLongtitude = [NSNumber numberWithDouble:loc.coordinates->longitude];
+//    locEnt.longtitude = numLongtitude;
+//    
+//    [self.managedObjectContext insertObject:locEnt];
+//    [self.managedObjectContext save:nil];
+//}
+//
 
 #pragma mark - Core Data stack
 

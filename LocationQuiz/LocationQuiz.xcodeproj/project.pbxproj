@@ -21,21 +21,19 @@
 		30A53A101805E8B300ADDE98 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30A539F21805E8B300ADDE98 /* UIKit.framework */; };
 		30A53A181805E8B300ADDE98 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30A53A161805E8B300ADDE98 /* InfoPlist.strings */; };
 		30A53A1A1805E8B300ADDE98 /* LocationQuizTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A53A191805E8B300ADDE98 /* LocationQuizTests.m */; };
-		30A53A251805E97F00ADDE98 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A53A241805E97F00ADDE98 /* Card.m */; };
-		30A53A281805E9A600ADDE98 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A53A271805E9A600ADDE98 /* Question.m */; };
-		30A53A2B1805E9AD00ADDE98 /* Answer.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A53A2A1805E9AD00ADDE98 /* Answer.m */; };
 		30A53A301806061C00ADDE98 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A53A2F1806061C00ADDE98 /* User.m */; };
-		30A53A33180608C200ADDE98 /* Quiz.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A53A32180608C200ADDE98 /* Quiz.m */; };
 		30A53A351806090F00ADDE98 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30A53A341806090F00ADDE98 /* CoreLocation.framework */; };
-		30A53A3818060AB300ADDE98 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A53A3718060AB300ADDE98 /* Location.m */; };
+		D87F684718181A0A0045DCD3 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D87F684518181A0A0045DCD3 /* Model.xcdatamodeld */; };
+		D87F6859181820A80045DCD3 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = D87F6858181820A80045DCD3 /* Question.m */; };
+		D87F685C181820A90045DCD3 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = D87F685B181820A90045DCD3 /* Card.m */; };
+		D87F685F181820A90045DCD3 /* Quiz.m in Sources */ = {isa = PBXBuildFile; fileRef = D87F685E181820A90045DCD3 /* Quiz.m */; };
+		D87F6862181820A90045DCD3 /* Answer.m in Sources */ = {isa = PBXBuildFile; fileRef = D87F6861181820A90045DCD3 /* Answer.m */; };
+		D87F6865181820A90045DCD3 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = D87F6864181820A90045DCD3 /* Location.m */; };
 		F11B6020180C8233005A15E8 /* listTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11B601E180C8233005A15E8 /* listTableViewController.m */; };
 		F11B6021180C8233005A15E8 /* listTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11B601F180C8233005A15E8 /* listTableViewController.xib */; };
 		F11B6023180C97CE005A15E8 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11B6022180C97CE005A15E8 /* ViewController.xib */; };
 		F12AB5B4181724B900FF293B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12AB5B3181724B900FF293B /* CoreData.framework */; };
 		F12AB5BA181724ED00FF293B /* SharedStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F12AB5B9181724ED00FF293B /* SharedStore.m */; };
-		F12AB5BD181725A200FF293B /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F12AB5BB181725A200FF293B /* Model.xcdatamodeld */; };
-		F12AB5C0181726FB00FF293B /* LocationEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = F12AB5BF181726FB00FF293B /* LocationEntity.m */; };
-		F12AB5C3181726FB00FF293B /* CardEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = F12AB5C2181726FB00FF293B /* CardEntity.m */; };
 		F19610DF18073279005A9849 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F19610DE18073279005A9849 /* MapViewController.m */; };
 		F19610E1180732D4005A9849 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19610E0180732D4005A9849 /* MapKit.framework */; };
 		F19610E418073863005A9849 /* PointOfInterestMapPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = F19610E318073863005A9849 /* PointOfInterestMapPoint.m */; };
@@ -74,19 +72,20 @@
 		30A53A151805E8B300ADDE98 /* LocationQuizTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LocationQuizTests-Info.plist"; sourceTree = "<group>"; };
 		30A53A171805E8B300ADDE98 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		30A53A191805E8B300ADDE98 /* LocationQuizTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationQuizTests.m; sourceTree = "<group>"; };
-		30A53A231805E97F00ADDE98 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Card.h; path = ../Card.h; sourceTree = "<group>"; };
-		30A53A241805E97F00ADDE98 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Card.m; path = ../Card.m; sourceTree = "<group>"; };
-		30A53A261805E9A600ADDE98 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Question.h; path = ../Question.h; sourceTree = "<group>"; };
-		30A53A271805E9A600ADDE98 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Question.m; path = ../Question.m; sourceTree = "<group>"; };
-		30A53A291805E9AD00ADDE98 /* Answer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Answer.h; path = ../Answer.h; sourceTree = "<group>"; };
-		30A53A2A1805E9AD00ADDE98 /* Answer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Answer.m; path = ../Answer.m; sourceTree = "<group>"; };
 		30A53A2E1806061C00ADDE98 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		30A53A2F1806061C00ADDE98 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		30A53A31180608C200ADDE98 /* Quiz.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quiz.h; sourceTree = "<group>"; };
-		30A53A32180608C200ADDE98 /* Quiz.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Quiz.m; sourceTree = "<group>"; };
 		30A53A341806090F00ADDE98 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		30A53A3618060AB300ADDE98 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
-		30A53A3718060AB300ADDE98 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		D87F684618181A0A0045DCD3 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		D87F6857181820A80045DCD3 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = SOURCE_ROOT; };
+		D87F6858181820A80045DCD3 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = SOURCE_ROOT; };
+		D87F685A181820A90045DCD3 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = SOURCE_ROOT; };
+		D87F685B181820A90045DCD3 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = SOURCE_ROOT; };
+		D87F685D181820A90045DCD3 /* Quiz.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quiz.h; sourceTree = SOURCE_ROOT; };
+		D87F685E181820A90045DCD3 /* Quiz.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Quiz.m; sourceTree = SOURCE_ROOT; };
+		D87F6860181820A90045DCD3 /* Answer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Answer.h; sourceTree = SOURCE_ROOT; };
+		D87F6861181820A90045DCD3 /* Answer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Answer.m; sourceTree = SOURCE_ROOT; };
+		D87F6863181820A90045DCD3 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = SOURCE_ROOT; };
+		D87F6864181820A90045DCD3 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = SOURCE_ROOT; };
 		F11B601D180C8233005A15E8 /* listTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = listTableViewController.h; sourceTree = "<group>"; };
 		F11B601E180C8233005A15E8 /* listTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = listTableViewController.m; sourceTree = "<group>"; };
 		F11B601F180C8233005A15E8 /* listTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = listTableViewController.xib; sourceTree = "<group>"; };
@@ -94,11 +93,6 @@
 		F12AB5B3181724B900FF293B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		F12AB5B8181724ED00FF293B /* SharedStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharedStore.h; sourceTree = "<group>"; };
 		F12AB5B9181724ED00FF293B /* SharedStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharedStore.m; sourceTree = "<group>"; };
-		F12AB5BC181725A200FF293B /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		F12AB5BE181726FB00FF293B /* LocationEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationEntity.h; sourceTree = "<group>"; };
-		F12AB5BF181726FB00FF293B /* LocationEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationEntity.m; sourceTree = "<group>"; };
-		F12AB5C1181726FB00FF293B /* CardEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardEntity.h; sourceTree = "<group>"; };
-		F12AB5C2181726FB00FF293B /* CardEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardEntity.m; sourceTree = "<group>"; };
 		F19610DD18073279005A9849 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		F19610DE18073279005A9849 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		F19610E0180732D4005A9849 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -216,25 +210,21 @@
 		30A53A2C1805F2E900ADDE98 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				30A53A231805E97F00ADDE98 /* Card.h */,
-				30A53A241805E97F00ADDE98 /* Card.m */,
-				30A53A261805E9A600ADDE98 /* Question.h */,
-				30A53A271805E9A600ADDE98 /* Question.m */,
-				30A53A291805E9AD00ADDE98 /* Answer.h */,
-				30A53A2A1805E9AD00ADDE98 /* Answer.m */,
+				D87F684518181A0A0045DCD3 /* Model.xcdatamodeld */,
+				D87F6857181820A80045DCD3 /* Question.h */,
+				D87F6858181820A80045DCD3 /* Question.m */,
+				D87F685A181820A90045DCD3 /* Card.h */,
+				D87F685B181820A90045DCD3 /* Card.m */,
+				D87F685D181820A90045DCD3 /* Quiz.h */,
+				D87F685E181820A90045DCD3 /* Quiz.m */,
+				D87F6860181820A90045DCD3 /* Answer.h */,
+				D87F6861181820A90045DCD3 /* Answer.m */,
+				D87F6863181820A90045DCD3 /* Location.h */,
+				D87F6864181820A90045DCD3 /* Location.m */,
 				30A539FD1805E8B300ADDE98 /* AppDelegate.h */,
 				30A539FE1805E8B300ADDE98 /* AppDelegate.m */,
 				30A53A2E1806061C00ADDE98 /* User.h */,
 				30A53A2F1806061C00ADDE98 /* User.m */,
-				30A53A31180608C200ADDE98 /* Quiz.h */,
-				30A53A32180608C200ADDE98 /* Quiz.m */,
-				30A53A3618060AB300ADDE98 /* Location.h */,
-				F12AB5BB181725A200FF293B /* Model.xcdatamodeld */,
-				F12AB5C1181726FB00FF293B /* CardEntity.h */,
-				F12AB5C2181726FB00FF293B /* CardEntity.m */,
-				F12AB5BE181726FB00FF293B /* LocationEntity.h */,
-				F12AB5BF181726FB00FF293B /* LocationEntity.m */,
-				30A53A3718060AB300ADDE98 /* Location.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -378,22 +368,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				30A53A051805E8B300ADDE98 /* ViewController.m in Sources */,
-				F12AB5C0181726FB00FF293B /* LocationEntity.m in Sources */,
+				D87F6865181820A90045DCD3 /* Location.m in Sources */,
 				30A53A301806061C00ADDE98 /* User.m in Sources */,
-				F12AB5BD181725A200FF293B /* Model.xcdatamodeld in Sources */,
-				30A53A33180608C200ADDE98 /* Quiz.m in Sources */,
-				30A53A2B1805E9AD00ADDE98 /* Answer.m in Sources */,
-				F12AB5C3181726FB00FF293B /* CardEntity.m in Sources */,
+				D87F684718181A0A0045DCD3 /* Model.xcdatamodeld in Sources */,
 				F19610EE1807519B005A9849 /* LandmarkInfoViewController.m in Sources */,
-				30A53A3818060AB300ADDE98 /* Location.m in Sources */,
+				D87F6862181820A90045DCD3 /* Answer.m in Sources */,
+				D87F685C181820A90045DCD3 /* Card.m in Sources */,
 				F19610E418073863005A9849 /* PointOfInterestMapPoint.m in Sources */,
 				30A539FF1805E8B300ADDE98 /* AppDelegate.m in Sources */,
 				F12AB5BA181724ED00FF293B /* SharedStore.m in Sources */,
-				30A53A281805E9A600ADDE98 /* Question.m in Sources */,
+				D87F685F181820A90045DCD3 /* Quiz.m in Sources */,
 				F19610DF18073279005A9849 /* MapViewController.m in Sources */,
 				F11B6020180C8233005A15E8 /* listTableViewController.m in Sources */,
+				D87F6859181820A80045DCD3 /* Question.m in Sources */,
 				30A539FB1805E8B300ADDE98 /* main.m in Sources */,
-				30A53A251805E97F00ADDE98 /* Card.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,13 +604,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		F12AB5BB181725A200FF293B /* Model.xcdatamodeld */ = {
+		D87F684518181A0A0045DCD3 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				F12AB5BC181725A200FF293B /* Model.xcdatamodel */,
+				D87F684618181A0A0045DCD3 /* Model.xcdatamodel */,
 			);
-			currentVersion = F12AB5BC181725A200FF293B /* Model.xcdatamodel */;
-			path = Model.xcdatamodeld;
+			currentVersion = D87F684618181A0A0045DCD3 /* Model.xcdatamodel */;
+			name = Model.xcdatamodeld;
+			path = ../Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

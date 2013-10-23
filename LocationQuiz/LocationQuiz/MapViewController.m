@@ -12,7 +12,7 @@
 #import "listTableViewController.h"
 #import "SharedStore.h"
 #import "Location.h"
-#import "LocationEntity.h"
+//#import "LocationEntity.h"
 @interface MapViewController ()
 
 @end
@@ -45,20 +45,20 @@
     
     // Do any additional setup after loading the view.
     
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]initWithEntityName:@"LocationEntity"];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]initWithKey:@"name" ascending:YES];
+//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]initWithEntityName:@"LocationEntity"];
+//    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]initWithKey:@"name" ascending:YES];
+//    
+//    [fetchRequest setSortDescriptors:@[sortDescriptor]];
+//    
+//    NSArray *results = [[SharedStore returnSharedStore].managedObjectContext executeFetchRequest:fetchRequest error:nil];
     
-    [fetchRequest setSortDescriptors:@[sortDescriptor]];
-    
-    NSArray *results = [[SharedStore returnSharedStore].managedObjectContext executeFetchRequest:fetchRequest error:nil];
-    
-    for(LocationEntity *locEnt in results)
-    {
-        NSLog(@"%@",locEnt.name);
-    }
+//    for(LocationEntity *locEnt in results)
+//    {
+//        NSLog(@"%@",locEnt.name);
+//    }
 
     
-    NSLog(@"I have this many items in Core Data: %i", [results count]);
+//    NSLog(@"I have this many items in Core Data: %i", [results count]);
     
     
 }
@@ -88,7 +88,7 @@
 
 -(void)findLocation
 {
-    [self addPointsOfInterestOnTheMap];
+//    [self addPointsOfInterestOnTheMap];
 
     [self.locationManager startUpdatingLocation];
 

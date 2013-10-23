@@ -2,22 +2,19 @@
 //  Answer.h
 //  LocationQuiz
 //
-//  Created by Jay Abdallah on 10/9/13.
+//  Created by Joe Burgess on 10/23/13.
 //  Copyright (c) 2013 Jay Abdallah. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-@interface Answer : NSObject
+@class Card;
 
+@interface Answer : NSManagedObject
 
-@property (strong, nonatomic) UIImage *image;
-@property (strong, nonatomic) NSString *content;
-@property (strong, nonatomic) NSData *audio;
-@property BOOL isCorrect;
-
-//@property (strong, nonatomic) NSString *firstAnswerOption;
-//@property (strong, nonatomic) NSString *secondAnswerOption;
-//@property (strong, nonatomic) NSString *thirdAnswerOption;
+@property (nonatomic, retain) NSString * content;
+@property (nonatomic, retain) NSNumber * isCorrect;
+@property (nonatomic, retain) Card *card;
 
 @end

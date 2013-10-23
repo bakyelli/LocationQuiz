@@ -8,6 +8,11 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "SharedStore.h"
+#import "Location.h"
+#import "Quiz.h"
+#import "Card.h"
+#import <CoreData/CoreData.h>
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -36,6 +41,56 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+   
+    // Putting this here just to test the CoreData stuff. Normally all Core Data things should be wrapped in helpers in the DataStore
+       NSManagedObjectContext *context = [SharedStore returnSharedStore].managedObjectContext;
+    
+    
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Quiz"];
+
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name=%@",@"Joe's awesome quiz"];
+    fetchRequest.predicate=predicate;
+    
+    NSArray *quizzes = [context executeFetchRequest:fetchRequest error:nil];
+    
+    Quiz *myQuiz = [quizzes firstObject];
+    
+    Card *newCard = [NSEntityDescription insertNewObjectForEntityForName:@"Card" inManagedObjectContext:context];
+    newCard.difficulty = @5;
+    
+    Card *otherCard = [NSEntityDescription insertNewObjectForEntityForName:@"Card" inManagedObjectContext:context];
+    otherCard.difficulty = @3;
+    
+    NSSet *cards = [NSSet setWithObjects:newCard,otherCard, nil];
+    
+    [myQuiz addCards:cards];
+    
+    NSLog(@"%@",myQuiz);
+    
+//
+//    NSLog(@"%@",myQuiz.location.longitude);
+//    
+//    NSLog(@"%@",quizzes);
+//    Location *newLocation = [NSEntityDescription insertNewObjectForEntityForName:@"Location" inManagedObjectContext:context];
+//
+//    newLocation.latitude = [NSNumber numberWithDouble:40.7484];
+//    newLocation.longitude = [NSNumber numberWithDouble:-73.9657];
+//    
+//    Quiz *newQuiz = [NSEntityDescription insertNewObjectForEntityForName:@"Quiz" inManagedObjectContext:context];
+//    
+//    newQuiz.name = @"Joe's awesome quiz";
+//    
+//    newQuiz.location = newLocation;
+//    
+//    NSError *error;
+//    [context save:&error];
+//    
+//    if (error != nil){
+//        NSLog(@"Error on save %@, User Info: %@",error, error.userInfo);
+//    }
+//    
+//    NSLog(@"%@",newLocation);
+    
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

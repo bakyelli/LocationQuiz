@@ -1,18 +1,20 @@
 //
-//  Question.m
+//  Quiz.m
 //  LocationQuiz
 //
 //  Created by Joe Burgess on 10/23/13.
 //  Copyright (c) 2013 Jay Abdallah. All rights reserved.
 //
 
-#import "Question.h"
+#import "Quiz.h"
 #import "Card.h"
+#import "Location.h"
 
 
-@implementation Question
+@implementation Quiz
 
-@dynamic content;
-@dynamic card;
+@dynamic name;
+@dynamic location;
+@dynamic cards;
 
 @end
