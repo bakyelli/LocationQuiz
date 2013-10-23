@@ -1,37 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3396" systemVersion="12F45" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Answer" representedClassName="Answer" syncable="YES">
-        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="isCorrect" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <relationship name="card" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Card" inverseName="answers" inverseEntity="Card" syncable="YES"/>
-    </entity>
-    <entity name="Card" representedClassName="Card" syncable="YES">
-        <attribute name="difficulty" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="order" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <relationship name="answers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Answer" inverseName="card" inverseEntity="Answer" syncable="YES"/>
-        <relationship name="question" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Question" inverseName="card" inverseEntity="Question" syncable="YES"/>
-        <relationship name="quiz" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Quiz" inverseName="cards" inverseEntity="Quiz" syncable="YES"/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3400" systemVersion="13A603" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Fact" representedClassName="Fact" syncable="YES">
+        <attribute name="dateAdded" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="soundFilePath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="facts" inverseEntity="Location" syncable="YES"/>
     </entity>
     <entity name="Location" representedClassName="Location" syncable="YES">
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="quiz" maxCount="1" deletionRule="Nullify" destinationEntity="Quiz" inverseName="location" inverseEntity="Quiz" syncable="YES"/>
-    </entity>
-    <entity name="Question" representedClassName="Question" syncable="YES">
-        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="card" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Card" inverseName="question" inverseEntity="Card" syncable="YES"/>
-    </entity>
-    <entity name="Quiz" representedClassName="Quiz" syncable="YES">
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="cards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Card" inverseName="quiz" inverseEntity="Card" syncable="YES"/>
-        <relationship name="location" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="quiz" inverseEntity="Location" syncable="YES"/>
+        <relationship name="facts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Fact" inverseName="location" inverseEntity="Fact" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Answer" positionX="349" positionY="42" width="128" height="88"/>
-        <element name="Card" positionX="324" positionY="209" width="128" height="118"/>
-        <element name="Location" positionX="531" positionY="396" width="128" height="103"/>
-        <element name="Question" positionX="502" positionY="93" width="128" height="73"/>
-        <element name="Quiz" positionX="313" positionY="414" width="128" height="88"/>
+        <element name="Location" positionX="-200" positionY="68" width="128" height="103"/>
+        <element name="Fact" positionX="81" positionY="54" width="128" height="118"/>
     </elements>
 </model>

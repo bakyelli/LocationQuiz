@@ -45,51 +45,51 @@
     // Putting this here just to test the CoreData stuff. Normally all Core Data things should be wrapped in helpers in the DataStore
        NSManagedObjectContext *context = [SharedStore returnSharedStore].managedObjectContext;
     
-    
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Quiz"];
-
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name=%@",@"Joe's awesome quiz"];
-    fetchRequest.predicate=predicate;
-    
-    NSArray *quizzes = [context executeFetchRequest:fetchRequest error:nil];
-    
-    Quiz *myQuiz = [quizzes firstObject];
-    
-    Card *newCard = [NSEntityDescription insertNewObjectForEntityForName:@"Card" inManagedObjectContext:context];
-    newCard.difficulty = @5;
-    
-    Card *otherCard = [NSEntityDescription insertNewObjectForEntityForName:@"Card" inManagedObjectContext:context];
-    otherCard.difficulty = @3;
-    
-    NSSet *cards = [NSSet setWithObjects:newCard,otherCard, nil];
-    
-//    [myQuiz addCards:cards];
-    
-    NSLog(@"%@",myQuiz);
-    
+//    
+//    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Quiz"];
 //
-//    NSLog(@"%@",myQuiz.location.longitude);
+//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name=%@",@"Joe's awesome quiz"];
+//    fetchRequest.predicate=predicate;
 //    
-//    NSLog(@"%@",quizzes);
-//    Location *newLocation = [NSEntityDescription insertNewObjectForEntityForName:@"Location" inManagedObjectContext:context];
-//
-//    newLocation.latitude = [NSNumber numberWithDouble:40.7484];
-//    newLocation.longitude = [NSNumber numberWithDouble:-73.9657];
+//    NSArray *quizzes = [context executeFetchRequest:fetchRequest error:nil];
 //    
-//    Quiz *newQuiz = [NSEntityDescription insertNewObjectForEntityForName:@"Quiz" inManagedObjectContext:context];
+//    Quiz *myQuiz = [quizzes firstObject];
 //    
-//    newQuiz.name = @"Joe's awesome quiz";
+//    Card *newCard = [NSEntityDescription insertNewObjectForEntityForName:@"Card" inManagedObjectContext:context];
+//    newCard.difficulty = @5;
 //    
-//    newQuiz.location = newLocation;
+//    Card *otherCard = [NSEntityDescription insertNewObjectForEntityForName:@"Card" inManagedObjectContext:context];
+//    otherCard.difficulty = @3;
 //    
-//    NSError *error;
-//    [context save:&error];
+//    NSSet *cards = [NSSet setWithObjects:newCard,otherCard, nil];
 //    
-//    if (error != nil){
-//        NSLog(@"Error on save %@, User Info: %@",error, error.userInfo);
-//    }
+////    [myQuiz addCards:cards];
 //    
-//    NSLog(@"%@",newLocation);
+//    NSLog(@"%@",myQuiz);
+//    
+////
+////    NSLog(@"%@",myQuiz.location.longitude);
+////    
+////    NSLog(@"%@",quizzes);
+////    Location *newLocation = [NSEntityDescription insertNewObjectForEntityForName:@"Location" inManagedObjectContext:context];
+////
+////    newLocation.latitude = [NSNumber numberWithDouble:40.7484];
+////    newLocation.longitude = [NSNumber numberWithDouble:-73.9657];
+////    
+////    Quiz *newQuiz = [NSEntityDescription insertNewObjectForEntityForName:@"Quiz" inManagedObjectContext:context];
+////    
+////    newQuiz.name = @"Joe's awesome quiz";
+////    
+////    newQuiz.location = newLocation;
+////    
+////    NSError *error;
+////    [context save:&error];
+////    
+////    if (error != nil){
+////        NSLog(@"Error on save %@, User Info: %@",error, error.userInfo);
+////    }
+////    
+////    NSLog(@"%@",newLocation);
     
 }
 

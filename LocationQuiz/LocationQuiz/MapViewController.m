@@ -41,20 +41,30 @@
     self.locationManager = [[CLLocationManager alloc]init];
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [self findLocation];
     
     // Do any additional setup after loading the view.
     
-//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]initWithEntityName:@"LocationEntity"];
-//    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]initWithKey:@"name" ascending:YES];
-//    
-//    [fetchRequest setSortDescriptors:@[sortDescriptor]];
-//    
-//    NSArray *results = [[SharedStore returnSharedStore].managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]initWithEntityName:@"Location"];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]initWithKey:@"name" ascending:YES];
     
-//    for(LocationEntity *locEnt in results)
+    [fetchRequest setSortDescriptors:@[sortDescriptor]];
+
+    self.existinglocations = [[NSMutableArray alloc]init];
+    
+    self.existinglocations = [[[SharedStore returnSharedStore].managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+    
+    NSLog(@"I have %i items in my data store", [self.existinglocations count]);
+    
+    
+    [self findLocation];
+
+    
+ //   int counter =1;
+//    for(Location *loc in results)
 //    {
-//        NSLog(@"%@",locEnt.name);
+//        
+//        NSLog(@"%i: %@",counter, loc.name);
+//        counter++;
 //    }
 
     
@@ -88,7 +98,7 @@
 
 -(void)findLocation
 {
-//    [self addPointsOfInterestOnTheMap];
+    [self addPointsOfInterestOnTheMap];
 
     [self.locationManager startUpdatingLocation];
 
@@ -97,44 +107,70 @@
 -(void)addPointsOfInterestOnTheMap
 {
     
-    CLLocationCoordinate2D coordinateTimesSquare = CLLocationCoordinate2DMake(40.7577, -73.9857);
-    CLLocationCoordinate2D coordinateMoma = CLLocationCoordinate2DMake(40.761424, -73.977625);
-    CLLocationCoordinate2D coordinateToussads = CLLocationCoordinate2DMake(40.757173, -73.988414);
-    CLLocationCoordinate2D coordinateChipotle  = CLLocationCoordinate2DMake(40.704961, -74.012918);
-    
-    
-    
-//    
-   PointOfInterestMapPoint *pointTimesSquare = [[PointOfInterestMapPoint alloc]initWithCoordinate:coordinateTimesSquare title:@"Times Square"];
-    PointOfInterestMapPoint *pointMoma = [[PointOfInterestMapPoint alloc]initWithCoordinate:coordinateMoma title:@"Museum of Modern Art"];
-    pointMoma.interestingFacts = @"Interesting facts about MOMA";
-    PointOfInterestMapPoint *pointToussads = [[PointOfInterestMapPoint alloc]initWithCoordinate:coordinateToussads title:@"Madame Toussads Museum"];
-    
-    PointOfInterestMapPoint *pointChipotle = [[PointOfInterestMapPoint alloc]initWithCoordinate:coordinateChipotle title:@"Chipotle at Broadway"];
-    
-    pointChipotle.interestingFacts = @"Chipotle makes the best burritos!";
-    
-    pointToussads.interestingFacts = @"Interesting facts about Toussads";
+    if([self.existinglocations count] == 0)
+    {
+       [self addDummyData];
+    }
 
-    pointTimesSquare.interestingFacts = @"In Times Square, there are approximately 1,500,000 daily passers-by including 344,000 riders in or out of the Times Square subway station.";
-    //
-   // [self.mapView addAnnotation:pointMoma];
-    [self.mapView addAnnotation:pointTimesSquare];
-   // [self.mapView addAnnotation:pointToussads];
-    [self.mapView addAnnotation:pointChipotle];
-    [self startMonitoringLocationForPointsOfInterest];
 
-//    
-//    Location *locTimesSquare = [[Location alloc]init];
-//    locTimesSquare.name = pointTimesSquare.title;
-//    locTimesSquare.coordinates = &coordinateTimesSquare;
-//    
-//    [[SharedStore returnSharedStore] addLocationEntity:locTimesSquare];
-    
-    
-    
+    for(Location *loc in self.existinglocations)
+    {
+        CLLocationCoordinate2D coord = CLLocationCoordinate2DMake([loc.latitude doubleValue], [loc.longitude doubleValue]);
+        
+        PointOfInterestMapPoint *mapPoint = [[PointOfInterestMapPoint alloc]initWithCoordinate:coord title:loc.name];
+        
+        [self.mapView addAnnotation:mapPoint];
+    }
 }
 
+
+-(void)addDummyData
+{
+    CLLocationCoordinate2D coordinateTimesSquare = CLLocationCoordinate2DMake(40.7577, -73.9857);
+    CLLocationCoordinate2D coordinateMoma = CLLocationCoordinate2DMake(40.761424, -73.977625);
+    //    CLLocationCoordinate2D coordinateToussads = CLLocationCoordinate2DMake(40.757173, -73.988414);
+    //    CLLocationCoordinate2D coordinateChipotle  = CLLocationCoordinate2DMake(40.704961, -74.012918);
+    //
+    //
+    //
+    ////
+    PointOfInterestMapPoint *pointTimesSquare = [[PointOfInterestMapPoint alloc]initWithCoordinate:coordinateTimesSquare title:@"Times Square"];
+    PointOfInterestMapPoint *pointMoma = [[PointOfInterestMapPoint alloc]initWithCoordinate:coordinateMoma title:@"Museum of Modern Art"];
+    pointMoma.interestingFacts = @"Interesting facts about MOMA";
+    //    PointOfInterestMapPoint *pointToussads = [[PointOfInterestMapPoint alloc]initWithCoordinate:coordinateToussads title:@"Madame Toussads Museum"];
+    //
+    //    PointOfInterestMapPoint *pointChipotle = [[PointOfInterestMapPoint alloc]initWithCoordinate:coordinateChipotle title:@"Chipotle at Broadway"];
+    //
+    //    pointChipotle.interestingFacts = @"Chipotle makes the best burritos!";
+    //
+    //    pointToussads.interestingFacts = @"Interesting facts about Toussads";
+    //
+    //    pointTimesSquare.interestingFacts = @"In Times Square, there are approximately 1,500,000 daily passers-by including 344,000 riders in or out of the Times Square subway station.";
+    //    //
+    //   // [self.mapView addAnnotation:pointMoma];
+    //    [self.mapView addAnnotation:pointTimesSquare];
+    //   // [self.mapView addAnnotation:pointToussads];
+    //    [self.mapView addAnnotation:pointChipotle];
+    // //   [self startMonitoringLocationForPointsOfInterest];
+    //
+    ////
+    Location *locTimesSquare = [NSEntityDescription insertNewObjectForEntityForName:@"Location" inManagedObjectContext:[SharedStore returnSharedStore].managedObjectContext];
+    //
+    locTimesSquare.name = pointMoma.title;
+    locTimesSquare.latitude = [NSNumber numberWithDouble:pointMoma.coordinate.latitude];
+    locTimesSquare.longitude =  [NSNumber numberWithDouble:pointMoma.coordinate.longitude];
+    [[SharedStore returnSharedStore] addLocationEntity:locTimesSquare];
+    
+    
+    Location *locTimesSquare2 = [NSEntityDescription insertNewObjectForEntityForName:@"Location" inManagedObjectContext:[SharedStore returnSharedStore].managedObjectContext];
+    //
+    locTimesSquare2.name = pointTimesSquare.title;
+    locTimesSquare2.latitude = [NSNumber numberWithDouble:pointTimesSquare.coordinate.latitude];
+    locTimesSquare2.longitude =  [NSNumber numberWithDouble:pointTimesSquare.coordinate.longitude];
+    [[SharedStore returnSharedStore] addLocationEntity:locTimesSquare2];
+    
+
+}
 -(void) startMonitoringLocationForPointsOfInterest
 {
     

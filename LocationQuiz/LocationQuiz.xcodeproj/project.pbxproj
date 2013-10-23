@@ -28,7 +28,8 @@
 		D87F685C181820A90045DCD3 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = D87F685B181820A90045DCD3 /* Card.m */; };
 		D87F685F181820A90045DCD3 /* Quiz.m in Sources */ = {isa = PBXBuildFile; fileRef = D87F685E181820A90045DCD3 /* Quiz.m */; };
 		D87F6862181820A90045DCD3 /* Answer.m in Sources */ = {isa = PBXBuildFile; fileRef = D87F6861181820A90045DCD3 /* Answer.m */; };
-		D87F6865181820A90045DCD3 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = D87F6864181820A90045DCD3 /* Location.m */; };
+		F11B362D18187C0B005F2D8C /* Fact.m in Sources */ = {isa = PBXBuildFile; fileRef = F11B362C18187C0B005F2D8C /* Fact.m */; };
+		F11B363018187C0B005F2D8C /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = F11B362F18187C0B005F2D8C /* Location.m */; };
 		F11B6020180C8233005A15E8 /* listTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11B601E180C8233005A15E8 /* listTableViewController.m */; };
 		F11B6021180C8233005A15E8 /* listTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11B601F180C8233005A15E8 /* listTableViewController.xib */; };
 		F11B6023180C97CE005A15E8 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11B6022180C97CE005A15E8 /* ViewController.xib */; };
@@ -84,8 +85,10 @@
 		D87F685E181820A90045DCD3 /* Quiz.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Quiz.m; sourceTree = SOURCE_ROOT; };
 		D87F6860181820A90045DCD3 /* Answer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Answer.h; sourceTree = SOURCE_ROOT; };
 		D87F6861181820A90045DCD3 /* Answer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Answer.m; sourceTree = SOURCE_ROOT; };
-		D87F6863181820A90045DCD3 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = SOURCE_ROOT; };
-		D87F6864181820A90045DCD3 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = SOURCE_ROOT; };
+		F11B362B18187C0B005F2D8C /* Fact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fact.h; sourceTree = "<group>"; };
+		F11B362C18187C0B005F2D8C /* Fact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fact.m; sourceTree = "<group>"; };
+		F11B362E18187C0B005F2D8C /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		F11B362F18187C0B005F2D8C /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		F11B601D180C8233005A15E8 /* listTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = listTableViewController.h; sourceTree = "<group>"; };
 		F11B601E180C8233005A15E8 /* listTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = listTableViewController.m; sourceTree = "<group>"; };
 		F11B601F180C8233005A15E8 /* listTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = listTableViewController.xib; sourceTree = "<group>"; };
@@ -211,6 +214,10 @@
 			isa = PBXGroup;
 			children = (
 				D87F684518181A0A0045DCD3 /* Model.xcdatamodeld */,
+				F11B362E18187C0B005F2D8C /* Location.h */,
+				F11B362F18187C0B005F2D8C /* Location.m */,
+				F11B362B18187C0B005F2D8C /* Fact.h */,
+				F11B362C18187C0B005F2D8C /* Fact.m */,
 				D87F6857181820A80045DCD3 /* Question.h */,
 				D87F6858181820A80045DCD3 /* Question.m */,
 				D87F685A181820A90045DCD3 /* Card.h */,
@@ -219,8 +226,6 @@
 				D87F685E181820A90045DCD3 /* Quiz.m */,
 				D87F6860181820A90045DCD3 /* Answer.h */,
 				D87F6861181820A90045DCD3 /* Answer.m */,
-				D87F6863181820A90045DCD3 /* Location.h */,
-				D87F6864181820A90045DCD3 /* Location.m */,
 				30A539FD1805E8B300ADDE98 /* AppDelegate.h */,
 				30A539FE1805E8B300ADDE98 /* AppDelegate.m */,
 				30A53A2E1806061C00ADDE98 /* User.h */,
@@ -368,7 +373,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				30A53A051805E8B300ADDE98 /* ViewController.m in Sources */,
-				D87F6865181820A90045DCD3 /* Location.m in Sources */,
 				30A53A301806061C00ADDE98 /* User.m in Sources */,
 				D87F684718181A0A0045DCD3 /* Model.xcdatamodeld in Sources */,
 				F19610EE1807519B005A9849 /* LandmarkInfoViewController.m in Sources */,
@@ -382,6 +386,8 @@
 				F11B6020180C8233005A15E8 /* listTableViewController.m in Sources */,
 				D87F6859181820A80045DCD3 /* Question.m in Sources */,
 				30A539FB1805E8B300ADDE98 /* main.m in Sources */,
+				F11B363018187C0B005F2D8C /* Location.m in Sources */,
+				F11B362D18187C0B005F2D8C /* Fact.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

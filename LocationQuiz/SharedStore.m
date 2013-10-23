@@ -23,9 +23,9 @@
 
 #pragma mark - Core Data API Methods
 
-//-(void) addLocationEntity:(Location *)loc
-//{
-////    LocationEntity *locEnt = [NSEntityDescription insertNewObjectForEntityForName:@"LocationEntity" inManagedObjectContext:self.managedObjectContext];
+-(void) addLocationEntity:(Location *)loc
+{
+
 //    
 //    locEnt.name = loc.name;
 //   // locEnt.latitude = [loc.coordinates]
@@ -34,10 +34,10 @@
 //    locEnt.latitude =numLatitude;
 //    NSNumber *numLongtitude = [NSNumber numberWithDouble:loc.coordinates->longitude];
 //    locEnt.longtitude = numLongtitude;
-//    
-//    [self.managedObjectContext insertObject:locEnt];
-//    [self.managedObjectContext save:nil];
-//}
+    
+    [self.managedObjectContext insertObject:loc];
+    [self.managedObjectContext save:nil];
+}
 //
 
 #pragma mark - Core Data stack
