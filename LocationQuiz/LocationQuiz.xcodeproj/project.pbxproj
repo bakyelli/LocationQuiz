@@ -23,6 +23,7 @@
 		30A53A1A1805E8B300ADDE98 /* LocationQuizTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A53A191805E8B300ADDE98 /* LocationQuizTests.m */; };
 		30A53A301806061C00ADDE98 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A53A2F1806061C00ADDE98 /* User.m */; };
 		30A53A351806090F00ADDE98 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30A53A341806090F00ADDE98 /* CoreLocation.framework */; };
+		6ED59B6B1819590B003B4BAC /* AddLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED59B6A1819590B003B4BAC /* AddLocationViewController.m */; };
 		D87F684718181A0A0045DCD3 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D87F684518181A0A0045DCD3 /* Model.xcdatamodeld */; };
 		D87F6859181820A80045DCD3 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = D87F6858181820A80045DCD3 /* Question.m */; };
 		D87F685C181820A90045DCD3 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = D87F685B181820A90045DCD3 /* Card.m */; };
@@ -83,6 +84,8 @@
 		30A53A2E1806061C00ADDE98 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		30A53A2F1806061C00ADDE98 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		30A53A341806090F00ADDE98 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		6ED59B691819590B003B4BAC /* AddLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddLocationViewController.h; sourceTree = "<group>"; };
+		6ED59B6A1819590B003B4BAC /* AddLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddLocationViewController.m; sourceTree = "<group>"; };
 		D87F684618181A0A0045DCD3 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		D87F6857181820A80045DCD3 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = SOURCE_ROOT; };
 		D87F6858181820A80045DCD3 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = SOURCE_ROOT; };
@@ -275,6 +278,8 @@
 				F19610ED1807519B005A9849 /* LandmarkInfoViewController.xib */,
 				F19610E218073863005A9849 /* PointOfInterestMapPoint.h */,
 				F19610E318073863005A9849 /* PointOfInterestMapPoint.m */,
+				6ED59B691819590B003B4BAC /* AddLocationViewController.h */,
+				6ED59B6A1819590B003B4BAC /* AddLocationViewController.m */,
 			);
 			name = ViewAndViewController;
 			sourceTree = "<group>";
@@ -415,6 +420,7 @@
 				F12AB5BA181724ED00FF293B /* SharedStore.m in Sources */,
 				D87F685F181820A90045DCD3 /* Quiz.m in Sources */,
 				F19610DF18073279005A9849 /* MapViewController.m in Sources */,
+				6ED59B6B1819590B003B4BAC /* AddLocationViewController.m in Sources */,
 				F11B6020180C8233005A15E8 /* listTableViewController.m in Sources */,
 				D87F6859181820A80045DCD3 /* Question.m in Sources */,
 				30A539FB1805E8B300ADDE98 /* main.m in Sources */,

@@ -46,17 +46,6 @@
     
     // Do any additional setup after loading the view.
     
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]initWithEntityName:@"Location"];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]initWithKey:@"name" ascending:YES];
-    
-    [fetchRequest setSortDescriptors:@[sortDescriptor]];
-
-    self.existinglocations = [[NSMutableArray alloc]init];
-    
-    self.existinglocations = [[[SharedStore returnSharedStore].managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
-    
-    NSLog(@"I have %i items in my data store", [self.existinglocations count]);
-    
     
     [self findLocation];
 
@@ -74,6 +63,26 @@
     
     
 }
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]initWithEntityName:@"Location"];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]initWithKey:@"name" ascending:YES];
+    
+    [fetchRequest setSortDescriptors:@[sortDescriptor]];
+    
+    self.existinglocations = [[NSMutableArray alloc]init];
+    
+    self.existinglocations = [[[SharedStore returnSharedStore].managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+
+    NSLog(@"I have %i items in my data store", [self.existinglocations count]);
+    
+    [self addPointsOfInterestOnTheMap];
+
+    
+}
+
 -(void)listBtnPressed:(id)sender
 {
     listTableViewController *ltvc = [[listTableViewController alloc]init];
@@ -102,7 +111,6 @@
 
 -(void)findLocation
 {
-    [self addPointsOfInterestOnTheMap];
 
     [self.locationManager startUpdatingLocation];
 
@@ -120,6 +128,7 @@
     for(Location *loc in self.existinglocations)
     {
         CLLocationCoordinate2D coord = CLLocationCoordinate2DMake([loc.latitude doubleValue], [loc.longitude doubleValue]);
+        NSLog(@"location: %@, coordiate: %.4f, %.4f", loc.name, coord.latitude, coord.longitude);
         
         PointOfInterestMapPoint *mapPoint = [[PointOfInterestMapPoint alloc]initWithCoordinate:coord title:loc.name];
         
@@ -251,6 +260,7 @@
     
     
     NSLog(@"Title: %@",mapPoint.title);
+    //NSLog(@"Coordinate: %@", mapPoint.coordinate);
     
 }
 
