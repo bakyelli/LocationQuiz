@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Location.h"
 @interface AddLocationViewController : UIViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *latitude;
@@ -19,6 +19,7 @@
 - (IBAction)longitude:(id)sender;
 - (IBAction)latitude:(id)sender;
 - (IBAction)name:(id)sender;
+@property (strong,nonatomic) Location *location;
 
 
 

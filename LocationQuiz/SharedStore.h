@@ -20,5 +20,6 @@
 + (SharedStore *)returnSharedStore;
 - (Location *)newLocation;
 - (void) addLocationEntity:(Location *)loc;
-
+- (Fact *)newFact;
+-(void)saveContext; 
 @end

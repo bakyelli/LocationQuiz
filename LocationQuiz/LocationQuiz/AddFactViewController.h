@@ -9,12 +9,14 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import "Location.h"
-@interface AddFactViewController : UIViewController <AVAudioRecorderDelegate, AVAudioPlayerDelegate>
+@interface AddFactViewController : UIViewController <AVAudioRecorderDelegate, AVAudioPlayerDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *recBtn;
 - (IBAction)recButtonAction:(id)sender;
 - (IBAction)playBtnPressed:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *lblMessage;
 @property (weak, nonatomic) IBOutlet UIButton *playBtn;
 @property (strong, nonatomic) Location *location;
+@property (weak, nonatomic) IBOutlet UITextField *titleTextBox;
+@property (strong,nonatomic) NSURL *outputFileURL;
 
 @end

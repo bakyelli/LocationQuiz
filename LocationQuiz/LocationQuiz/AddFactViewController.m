@@ -7,7 +7,8 @@
 //
 
 #import "AddFactViewController.h"
-
+#import "SharedStore.h"
+#import "Fact.h"
 @interface AddFactViewController ()
 {
     AVAudioRecorder *recorder;
@@ -30,10 +31,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+ 
+    self.titleTextBox.delegate = self;
+    self.title = [NSString stringWithFormat:@"%@ - Add Fact", self.location.name];
     
-    NSString *fileName = @"MyAudioMemo.m4a";
+    
+    NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
+    
+    NSString *fileName = [NSString stringWithFormat:@"%f%@",timeStamp,@".m4a"];
+    
     NSArray *pathComponents = [NSArray arrayWithObjects:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject], fileName,nil];
-    NSURL *outputFileURL = [NSURL fileURLWithPathComponents:pathComponents];
+    self.outputFileURL = [NSURL fileURLWithPathComponents:pathComponents];
     
     AVAudioSession *session = [AVAudioSession sharedInstance];
     [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
@@ -50,15 +58,44 @@
     [recordSetting setValue:[NSNumber numberWithFloat:44100.0] forKey:AVSampleRateKey];
     [recordSetting setValue:[NSNumber numberWithInt:2] forKey:AVNumberOfChannelsKey];
     
-    recorder = [[AVAudioRecorder alloc]initWithURL:outputFileURL settings:recordSetting error:nil];
+    recorder = [[AVAudioRecorder alloc]initWithURL:self.outputFileURL settings:recordSetting error:nil];
     recorder.delegate = self;
     recorder.meteringEnabled = YES;
     [recorder prepareToRecord];
     
     [self.lblMessage setText:@"Ready to record..."];
+    
+    
+    
+    
+    
+    
 
 }
 
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    Fact *f = [SharedStore returnSharedStore].newFact;
+
+    f.title = self.titleTextBox.text;
+    f.soundFilePath = [self.outputFileURL absoluteString];
+    f.dateAdded = [NSDate date];
+    
+
+    
+    [self.location addFactsObject:f];
+    [[SharedStore returnSharedStore] saveContext];
+    
+
+
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

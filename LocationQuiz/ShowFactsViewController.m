@@ -8,8 +8,13 @@
 
 #import "ShowFactsViewController.h"
 #import "Fact.h"
+#import "AddFactViewController.h"
 
 @interface ShowFactsViewController ()
+{
+    AVAudioPlayer *player;
+
+}
 
 @end
 
@@ -30,11 +35,42 @@
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonPressed:)];
     
-    [self.navigationItem setLeftBarButtonItem:addButton];
+    [self.navigationItem setRightBarButtonItem:addButton];
     
+    
+    NSLog(@"We're seeing facts for %@", self.location.name);
+    
+    self.title = [NSString stringWithFormat:@"%@ - Facts", self.location.name];
+    
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+    
+    UInt32 audioRouteOverride = kAudioSessionOverrideAudioRoute_Speaker;
+    
+    AudioSessionSetProperty (kAudioSessionProperty_OverrideAudioRoute,sizeof (audioRouteOverride),&audioRouteOverride);
+    
+    
+
+    
+    
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     self.factsArray = [[self.location.facts allObjects] mutableCopy];
+
+    NSLog(@"I have %i facts for this location.", [self.location.facts count]);
+    [self.tableView reloadData];
+}
+
+-(void)addButtonPressed:(id)sender
+{
+    AddFactViewController *addFactVC = [[AddFactViewController alloc]init];
+    addFactVC.location = self.location;
     
-    
+    [self.navigationController pushViewController:addFactVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -112,22 +148,22 @@
 }
 */
 
-/*
+
 #pragma mark - Table view delegate
 
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here, for example:
-    // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-
-    // Pass the selected object to the new view controller.
+    Fact *fSelected = [self.factsArray objectAtIndex:indexPath.row];
     
-    // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    NSURL *fileURL = [NSURL URLWithString:fSelected.soundFilePath];
+    player = [[AVAudioPlayer alloc]initWithContentsOfURL:fileURL error:nil];
+    
+    //[player setDelegate:self];
+    [player play];
+
 }
- 
- */
+
+
 
 @end

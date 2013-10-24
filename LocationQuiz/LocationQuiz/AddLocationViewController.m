@@ -9,17 +9,13 @@
 #import "AddLocationViewController.h"
 #import "Location.h"
 #import "SharedStore.h"
+#import "AddFactViewController.h"
 
 @interface AddLocationViewController ()
-@property (strong, nonatomic) Location *newLocation;
+
 @end
 
 @implementation AddLocationViewController
-
-- (Location *)newLocation{
-    if (!_newLocation) _newLocation = [[SharedStore returnSharedStore] newLocation];
-    return _newLocation;
-}
 
 - (void)viewDidLoad
 {
@@ -30,7 +26,7 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
-    [[SharedStore returnSharedStore] addLocationEntity:self.newLocation];
+    [[SharedStore returnSharedStore] addLocationEntity:self.location];
 }
 - (void)didReceiveMemoryWarning
 {
@@ -39,19 +35,26 @@
 }
 
 - (IBAction)startRecording:(id)sender {
-    NSLog(@"started recording");
+    
+    AddFactViewController *adfc = [[AddFactViewController alloc]init];
+    
+    adfc.location = self.location;
+    
+    [self.navigationController pushViewController:adfc animated:YES];
+    
+
 }
 
 - (IBAction)longitude:(id)sender {
-    self.newLocation.longitude = @([self.longitude.text doubleValue]);
+    self.location.longitude = @([self.longitude.text doubleValue]);
 }
 
 - (IBAction)latitude:(id)sender {
-    self.newLocation.latitude = @([self.latitude.text doubleValue]);
+    self.location.latitude = @([self.latitude.text doubleValue]);
 }
 
 - (IBAction)name:(id)sender {
-    self.newLocation.name = self.name.text;
+    self.location.name = self.name.text;
 }
 
 #pragma textfield delegates

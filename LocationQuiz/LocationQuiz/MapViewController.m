@@ -13,7 +13,8 @@
 #import "SharedStore.h"
 #import "Location.h"
 #import "AddFactViewController.h"
-
+#import "ShowFactsViewController.h"
+#import "AddLocationViewController.h"
 //#import "LocationEntity.h"
 @interface MapViewController ()
 
@@ -85,26 +86,26 @@
 
 -(void)listBtnPressed:(id)sender
 {
-    listTableViewController *ltvc = [[listTableViewController alloc]init];
-    ltvc.locations = [[self.mapView annotations] mutableCopy];
-    
-    
-    for(int i=0; i<[ltvc.locations count]; i++)
-    {
-        id<MKAnnotation> annotation = ltvc.locations[i];
-        
-        if([annotation isKindOfClass:[MKUserLocation class]])
-        {
-            NSLog(@"Listed my location!");
-            [ltvc.locations removeObjectAtIndex:i];
-        }
-        
-    }
-    
-    [self.navigationController pushViewController:ltvc animated:YES];
-    
-//    AddFactViewController *afvc = [[AddFactViewController alloc]init];
-//    [self.navigationController pushViewController:afvc animated:YES];
+//    listTableViewController *ltvc = [[listTableViewController alloc]init];
+//    ltvc.locations = [[self.mapView annotations] mutableCopy];
+//    
+//    
+//    for(int i=0; i<[ltvc.locations count]; i++)
+//    {
+//        id<MKAnnotation> annotation = ltvc.locations[i];
+//        
+//        if([annotation isKindOfClass:[MKUserLocation class]])
+//        {
+//            NSLog(@"Listed my location!");
+//            [ltvc.locations removeObjectAtIndex:i];
+//        }
+//        
+//    }
+//    
+//    [self.navigationController pushViewController:ltvc animated:YES];
+
+    AddFactViewController *afvc = [[AddFactViewController alloc]init];
+    [self.navigationController pushViewController:afvc animated:YES];
     
     NSLog(@"List button pressed");
 }
@@ -132,11 +133,24 @@
         
         PointOfInterestMapPoint *mapPoint = [[PointOfInterestMapPoint alloc]initWithCoordinate:coord title:loc.name];
         
+        mapPoint.location = loc;
+        
         [self.mapView addAnnotation:mapPoint];
     }
 }
 
-
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier  isEqual: @"AddLocation"])
+    {
+        
+        Location *newLocation = [[SharedStore returnSharedStore] newLocation];
+        
+        AddLocationViewController *alvc = segue.destinationViewController;
+        alvc.location = newLocation;
+        
+    }
+}
 -(void)addDummyData
 {
     CLLocationCoordinate2D coordinateTimesSquare = CLLocationCoordinate2DMake(40.7577, -73.9857);
@@ -252,11 +266,20 @@
     
     PointOfInterestMapPoint *mapPoint = [view annotation];
     
-    LandmarkInfoViewController *l = [[LandmarkInfoViewController alloc]init];
-    l.strLandmarkInterestingFacts = mapPoint.interestingFacts;
-    l.strLandmarkName = mapPoint.title;
+//    LandmarkInfoViewController *l = [[LandmarkInfoViewController alloc]init];
+//    l.strLandmarkInterestingFacts = mapPoint.interestingFacts;
+//    l.strLandmarkName = mapPoint.title;
+//    
+//    [self presentViewController:l animated:YES completion:nil];
     
-    [self presentViewController:l animated:YES completion:nil];
+    
+    ShowFactsViewController *sfvc = [[ShowFactsViewController alloc]init];
+    
+    sfvc.location = mapPoint.location;
+    
+    [self.navigationController pushViewController:sfvc animated:YES];
+    
+    
     
     
     NSLog(@"Title: %@",mapPoint.title);

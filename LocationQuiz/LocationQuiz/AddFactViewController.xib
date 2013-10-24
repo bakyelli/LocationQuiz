@@ -9,6 +9,7 @@
                 <outlet property="lblMessage" destination="w4m-8R-3q5" id="vvz-Nk-iYt"/>
                 <outlet property="playBtn" destination="2N7-rh-Xpw" id="OeZ-vY-Cez"/>
                 <outlet property="recBtn" destination="9dC-wb-1QL" id="7jf-mZ-x1k"/>
+                <outlet property="titleTextBox" destination="FbO-YA-sbi" id="kjA-dW-wgs"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -50,6 +51,12 @@
                         <action selector="playBtnPressed:" destination="-1" eventType="touchUpInside" id="3Fx-vU-g4m"/>
                     </connections>
                 </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title for your fact" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FbO-YA-sbi">
+                    <rect key="frame" x="20" y="153" width="280" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

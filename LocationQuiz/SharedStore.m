@@ -31,19 +31,20 @@
     return locationToReturn;
 }
 
+- (Fact *)newFact {
+    Fact *factToReturn = [NSEntityDescription insertNewObjectForEntityForName:@"Fact" inManagedObjectContext:[self managedObjectContext]];
+    
+    return factToReturn;
+}
+
 -(void) addLocationEntity:(Location *)loc
 {
-
-//    
-//    locEnt.name = loc.name;
-//   // locEnt.latitude = [loc.coordinates]
-//    
-//    NSNumber *numLatitude = [NSNumber numberWithDouble:loc.coordinates->latitude];
-//    locEnt.latitude =numLatitude;
-//    NSNumber *numLongtitude = [NSNumber numberWithDouble:loc.coordinates->longitude];
-//    locEnt.longtitude = numLongtitude;
     
     [self.managedObjectContext insertObject:loc];
+    [self saveContext];
+}
+-(void)saveContext
+{
     [self.managedObjectContext save:nil];
 }
 
