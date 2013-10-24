@@ -35,6 +35,11 @@
 		F11B6023180C97CE005A15E8 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11B6022180C97CE005A15E8 /* ViewController.xib */; };
 		F12AB5B4181724B900FF293B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12AB5B3181724B900FF293B /* CoreData.framework */; };
 		F12AB5BA181724ED00FF293B /* SharedStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F12AB5B9181724ED00FF293B /* SharedStore.m */; };
+		F1916863181954B0006C3682 /* recbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = F1916862181954B0006C3682 /* recbutton.png */; };
+		F1916867181954FC006C3682 /* AddFactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1916865181954FC006C3682 /* AddFactViewController.m */; };
+		F1916868181954FC006C3682 /* AddFactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1916866181954FC006C3682 /* AddFactViewController.xib */; };
+		F191686A181955D7006C3682 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1916869181955D7006C3682 /* AVFoundation.framework */; };
+		F191686C18195B1C006C3682 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = F191686B18195B1C006C3682 /* play.png */; };
 		F19610DF18073279005A9849 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F19610DE18073279005A9849 /* MapViewController.m */; };
 		F19610E1180732D4005A9849 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19610E0180732D4005A9849 /* MapKit.framework */; };
 		F19610E418073863005A9849 /* PointOfInterestMapPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = F19610E318073863005A9849 /* PointOfInterestMapPoint.m */; };
@@ -96,6 +101,12 @@
 		F12AB5B3181724B900FF293B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		F12AB5B8181724ED00FF293B /* SharedStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharedStore.h; sourceTree = "<group>"; };
 		F12AB5B9181724ED00FF293B /* SharedStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharedStore.m; sourceTree = "<group>"; };
+		F1916862181954B0006C3682 /* recbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recbutton.png; sourceTree = "<group>"; };
+		F1916864181954FC006C3682 /* AddFactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFactViewController.h; sourceTree = "<group>"; };
+		F1916865181954FC006C3682 /* AddFactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFactViewController.m; sourceTree = "<group>"; };
+		F1916866181954FC006C3682 /* AddFactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddFactViewController.xib; sourceTree = "<group>"; };
+		F1916869181955D7006C3682 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		F191686B18195B1C006C3682 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		F19610DD18073279005A9849 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		F19610DE18073279005A9849 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		F19610E0180732D4005A9849 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -112,6 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F191686A181955D7006C3682 /* AVFoundation.framework in Frameworks */,
 				F12AB5B4181724B900FF293B /* CoreData.framework in Frameworks */,
 				30A53A351806090F00ADDE98 /* CoreLocation.framework in Frameworks */,
 				F19610E1180732D4005A9849 /* MapKit.framework in Frameworks */,
@@ -159,6 +171,7 @@
 		30A539ED1805E8B300ADDE98 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F1916869181955D7006C3682 /* AVFoundation.framework */,
 				F12AB5B3181724B900FF293B /* CoreData.framework */,
 				F19610E0180732D4005A9849 /* MapKit.framework */,
 				30A53A341806090F00ADDE98 /* CoreLocation.framework */,
@@ -241,6 +254,9 @@
 				30A53A041805E8B300ADDE98 /* ViewController.m */,
 				F11B6022180C97CE005A15E8 /* ViewController.xib */,
 				30A53A001805E8B300ADDE98 /* Main.storyboard */,
+				F1916864181954FC006C3682 /* AddFactViewController.h */,
+				F1916865181954FC006C3682 /* AddFactViewController.m */,
+				F1916866181954FC006C3682 /* AddFactViewController.xib */,
 				F19610DD18073279005A9849 /* MapViewController.h */,
 				F19610DE18073279005A9849 /* MapViewController.m */,
 				F11B601D180C8233005A15E8 /* listTableViewController.h */,
@@ -258,6 +274,8 @@
 		F19610E818074FFD005A9849 /* imagesadded */ = {
 			isa = PBXGroup;
 			children = (
+				F191686B18195B1C006C3682 /* play.png */,
+				F1916862181954B0006C3682 /* recbutton.png */,
 				F19610E918074FFD005A9849 /* loc.png */,
 			);
 			name = imagesadded;
@@ -348,11 +366,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11B6023180C97CE005A15E8 /* ViewController.xib in Resources */,
+				F191686C18195B1C006C3682 /* play.png in Resources */,
 				F19610EA18074FFD005A9849 /* loc.png in Resources */,
+				F1916868181954FC006C3682 /* AddFactViewController.xib in Resources */,
 				30A53A071805E8B300ADDE98 /* Images.xcassets in Resources */,
 				F19610EF1807519B005A9849 /* LandmarkInfoViewController.xib in Resources */,
 				30A539F91805E8B300ADDE98 /* InfoPlist.strings in Resources */,
 				30A53A021805E8B300ADDE98 /* Main.storyboard in Resources */,
+				F1916863181954B0006C3682 /* recbutton.png in Resources */,
 				F11B6021180C8233005A15E8 /* listTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -374,6 +395,7 @@
 			files = (
 				30A53A051805E8B300ADDE98 /* ViewController.m in Sources */,
 				30A53A301806061C00ADDE98 /* User.m in Sources */,
+				F1916867181954FC006C3682 /* AddFactViewController.m in Sources */,
 				D87F684718181A0A0045DCD3 /* Model.xcdatamodeld in Sources */,
 				F19610EE1807519B005A9849 /* LandmarkInfoViewController.m in Sources */,
 				D87F6862181820A90045DCD3 /* Answer.m in Sources */,

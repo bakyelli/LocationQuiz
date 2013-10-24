@@ -12,6 +12,8 @@
 #import "listTableViewController.h"
 #import "SharedStore.h"
 #import "Location.h"
+#import "AddFactViewController.h"
+
 //#import "LocationEntity.h"
 @interface MapViewController ()
 
@@ -74,24 +76,26 @@
 }
 -(void)listBtnPressed:(id)sender
 {
-    listTableViewController *ltvc = [[listTableViewController alloc]init];
-    ltvc.locations = [[self.mapView annotations] mutableCopy];
+//    listTableViewController *ltvc = [[listTableViewController alloc]init];
+//    ltvc.locations = [[self.mapView annotations] mutableCopy];
+//    
+//    
+//    for(int i=0; i<[ltvc.locations count]; i++)
+//    {
+//        id<MKAnnotation> annotation = ltvc.locations[i];
+//        
+//        if([annotation isKindOfClass:[MKUserLocation class]])
+//        {
+//            NSLog(@"Listed my location!");
+//            [ltvc.locations removeObjectAtIndex:i];
+//        }
+//        
+//    }
+//    
+//    [self.navigationController pushViewController:ltvc animated:YES];
     
-    
-    for(int i=0; i<[ltvc.locations count]; i++)
-    {
-        id<MKAnnotation> annotation = ltvc.locations[i];
-        
-        if([annotation isKindOfClass:[MKUserLocation class]])
-        {
-            NSLog(@"Listed my location!");
-            [ltvc.locations removeObjectAtIndex:i];
-        }
-        
-    }
-    
-    [self.navigationController pushViewController:ltvc animated:YES];
-    
+    AddFactViewController *afvc = [[AddFactViewController alloc]init];
+    [self.navigationController pushViewController:afvc animated:YES];
     
     NSLog(@"List button pressed");
 }
