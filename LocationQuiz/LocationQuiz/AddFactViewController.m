@@ -57,8 +57,6 @@
     
     [self.lblMessage setText:@"Ready to record..."];
 
-
-
 }
 
 - (void)didReceiveMemoryWarning

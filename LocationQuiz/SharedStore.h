@@ -20,4 +20,5 @@
 + (SharedStore *)returnSharedStore;
 
 -(void) addLocationEntity:(Location *)loc;
+
 @end

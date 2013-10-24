@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
+#import "Location.h"
 
 
 @interface PointOfInterestMapPoint : NSObject <MKAnnotation>
@@ -17,6 +18,7 @@
 
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 @property (nonatomic, copy) NSString *title;
-@property (nonatomic, strong) NSString *interestingFacts; 
+@property (nonatomic, strong) NSString *interestingFacts;
+@property (nonatomic, strong) NSSet *facts; 
 @property int pointID;
 @end
