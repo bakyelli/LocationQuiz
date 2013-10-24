@@ -23,6 +23,13 @@
 
 #pragma mark - Core Data API Methods
 
+
+- (Location *)newLocation {
+    Location *locationToReturn = [NSEntityDescription insertNewObjectForEntityForName:@"Location" inManagedObjectContext:[self managedObjectContext]];
+    
+    return locationToReturn;
+}
+
 -(void) addLocationEntity:(Location *)loc
 {
 
@@ -38,7 +45,7 @@
     [self.managedObjectContext insertObject:loc];
     [self.managedObjectContext save:nil];
 }
-//
+
 
 #pragma mark - Core Data stack
 
