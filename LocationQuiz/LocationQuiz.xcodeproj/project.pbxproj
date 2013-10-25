@@ -25,6 +25,7 @@
 		30A53A351806090F00ADDE98 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30A53A341806090F00ADDE98 /* CoreLocation.framework */; };
 		58B82988CFA44CDBBF8BB300 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D678747B17394053BADA2260 /* libPods.a */; };
 		6E12B044181AFC8D001F6BFC /* DrawerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E12B043181AFC8D001F6BFC /* DrawerTableViewController.m */; };
+		6E12B04D181B11A1001F6BFC /* FSVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E12B04C181B11A1001F6BFC /* FSVenue.m */; };
 		6ED59B6B1819590B003B4BAC /* AddLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED59B6A1819590B003B4BAC /* AddLocationViewController.m */; };
 		D87F684718181A0A0045DCD3 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D87F684518181A0A0045DCD3 /* Model.xcdatamodeld */; };
 		D87F6859181820A80045DCD3 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = D87F6858181820A80045DCD3 /* Question.m */; };
@@ -88,6 +89,8 @@
 		30A53A341806090F00ADDE98 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		6E12B042181AFC8D001F6BFC /* DrawerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawerTableViewController.h; sourceTree = "<group>"; };
 		6E12B043181AFC8D001F6BFC /* DrawerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawerTableViewController.m; sourceTree = "<group>"; };
+		6E12B04B181B11A1001F6BFC /* FSVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSVenue.h; sourceTree = "<group>"; };
+		6E12B04C181B11A1001F6BFC /* FSVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSVenue.m; sourceTree = "<group>"; };
 		6ED59B691819590B003B4BAC /* AddLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddLocationViewController.h; sourceTree = "<group>"; };
 		6ED59B6A1819590B003B4BAC /* AddLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddLocationViewController.m; sourceTree = "<group>"; };
 		9ED7027564474637B3692AF4 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -291,6 +294,8 @@
 				F19610E318073863005A9849 /* PointOfInterestMapPoint.m */,
 				6ED59B691819590B003B4BAC /* AddLocationViewController.h */,
 				6ED59B6A1819590B003B4BAC /* AddLocationViewController.m */,
+				6E12B04B181B11A1001F6BFC /* FSVenue.h */,
+				6E12B04C181B11A1001F6BFC /* FSVenue.m */,
 			);
 			name = ViewAndViewController;
 			sourceTree = "<group>";
@@ -454,6 +459,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30A53A051805E8B300ADDE98 /* ViewController.m in Sources */,
+				6E12B04D181B11A1001F6BFC /* FSVenue.m in Sources */,
 				30A53A301806061C00ADDE98 /* User.m in Sources */,
 				F1916867181954FC006C3682 /* AddFactViewController.m in Sources */,
 				D87F684718181A0A0045DCD3 /* Model.xcdatamodeld in Sources */,

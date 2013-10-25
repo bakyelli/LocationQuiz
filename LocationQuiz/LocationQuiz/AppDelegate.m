@@ -13,12 +13,19 @@
 #import "Quiz.h"
 #import "Card.h"
 #import <CoreData/CoreData.h>
+#import <Foursquare2.h>
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [Foursquare2 setupFoursquareWithClientId:@"SQ0HPZGHDILLENOL2VE1ETDAAMPSXWZEVJU5ZI1GWWXUX45Z" secret:@"BWC32JRIGHIIMSEBPBQ41FJA2KY01GZ2XD5SZ3TPPAVLTMAT" callbackURL:@"testapp123://foursquare"];
+    
+    
     // Override point for customization after application launch.
     return YES;
+    
+    
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application

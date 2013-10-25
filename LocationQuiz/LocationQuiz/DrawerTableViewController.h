@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DrawerTableViewController : UITableViewController
+@interface DrawerTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (strong, nonatomic) NSArray *venues;
 
 @end
