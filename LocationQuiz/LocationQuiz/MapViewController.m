@@ -75,7 +75,7 @@
     AddLocationViewController *alvc = [storyboard instantiateViewControllerWithIdentifier:@"addLocation"];
     DrawerTableViewController *dtvc = [storyboard instantiateViewControllerWithIdentifier:@"drawerTableView"];
     alvc.drawerController = self.drawerController;
-
+    alvc.currentLocation = self.locationManager.location;
     self.drawerController = [[MMDrawerController alloc] initWithCenterViewController:alvc leftDrawerViewController:dtvc];
     
     [self.drawerController setRestorationIdentifier:@"MMDrawer"];

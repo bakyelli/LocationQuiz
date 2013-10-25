@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Location.h"
 #import <MMDrawerController.h>
+#import <CoreLocation/CoreLocation.h>
 @interface AddLocationViewController : UIViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *latitude;
@@ -22,8 +23,8 @@
 - (IBAction)longitude:(id)sender;
 - (IBAction)latitude:(id)sender;
 - (IBAction)name:(id)sender;
-@property (strong,nonatomic) Location *location;
+@property (strong, nonatomic) Location *location;
 
-
+@property (strong, nonatomic) CLLocation *currentLocation;
 
 @end
