@@ -8,6 +8,8 @@
 
 #import "DrawerTableViewController.h"
 #import "FSVenue.h"
+#import <Foursquare2.h>
+#import <SVProgressHUD.h>
 
 @interface DrawerTableViewController ()
 
@@ -24,10 +26,39 @@
     return self;
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self populateFoursquareVenues];
+    
+    
 	// Do any additional setup after loading the view.
+}
+
+- (void)populateFoursquareVenues {
+    NSLog(@"Calling Foursquare!");
+    [Foursquare2 venueSearchNearByLatitude:@(self.currentLocation.coordinate.latitude)
+                                 longitude:@(self.currentLocation.coordinate.longitude)
+                                     query:nil
+                                     limit:nil
+                                    intent:intentCheckin
+                                    radius:@500
+                                categoryId:nil
+                                  callback:^(BOOL success, id result){
+                                      if (success) {
+                                          NSDictionary *resultDict = result;
+                                          NSArray *venues = [FSVenue convertToVenues:resultDict[@"response"][@"venues"]];                                          
+                                          self.venues = venues;
+                                          [self.tableView reloadData];
+                                          
+                                      }
+                                      [SVProgressHUD dismiss];
+                                      
+                                  }];
+    
+    [SVProgressHUD show];
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -35,6 +66,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSLog(@"TableView delegate methods run!");
     if (self.venues) {
         return [self.venues count];
     }

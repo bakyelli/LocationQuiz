@@ -25,6 +25,6 @@
 - (IBAction)name:(id)sender;
 @property (strong, nonatomic) Location *location;
 
-@property (strong, nonatomic) CLLocation *currentLocation;
+
 
 @end

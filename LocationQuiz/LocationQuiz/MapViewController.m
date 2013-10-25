@@ -75,11 +75,11 @@
     AddLocationViewController *alvc = [storyboard instantiateViewControllerWithIdentifier:@"addLocation"];
     DrawerTableViewController *dtvc = [storyboard instantiateViewControllerWithIdentifier:@"drawerTableView"];
     alvc.drawerController = self.drawerController;
-    alvc.currentLocation = self.locationManager.location;
+    dtvc.currentLocation = self.locationManager.location;
     self.drawerController = [[MMDrawerController alloc] initWithCenterViewController:alvc leftDrawerViewController:dtvc];
     
     [self.drawerController setRestorationIdentifier:@"MMDrawer"];
-    [self.drawerController setMaximumLeftDrawerWidth:240.0];
+    [self.drawerController setMaximumLeftDrawerWidth:260.0];
     [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
     

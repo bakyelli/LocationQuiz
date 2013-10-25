@@ -26,7 +26,6 @@
     self.longitude.delegate = self;
     self.latitude.delegate = self;
     self.name.delegate = self;
-    [self populateFoursquareVenues];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -61,29 +60,7 @@
     self.location.name = self.name.text;
 }
 
-- (void)populateFoursquareVenues {
-    [Foursquare2 venueSearchNearByLatitude:@(self.currentLocation.coordinate.latitude)
-                                 longitude:@(self.currentLocation.coordinate.longitude)
-                                     query:nil
-                                     limit:nil
-                                    intent:intentCheckin
-                                    radius:@500
-                                categoryId:nil
-                                  callback:^(BOOL success, id result){
-                                      if (success) {
-                                          NSDictionary *resultDict = result;
-                                          NSArray *venues = [FSVenue convertToVenues:resultDict[@"response"][@"venues"]];
-                                          NSLog(@"%@", venues);
-                                          DrawerTableViewController *dtvc = (DrawerTableViewController *)self.drawerController.leftDrawerViewController;
-                                          dtvc.venues = venues;
-                                      }
-                                      [SVProgressHUD dismiss];
-        
-                                  }];
-    
-    [SVProgressHUD show];
 
-}
 
 #pragma textfield delegates
 
