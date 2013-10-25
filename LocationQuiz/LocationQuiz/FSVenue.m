@@ -11,10 +11,10 @@
 @implementation FSVenue
 
     -(id)init{
-        return [self initWithName:@"" venueID:@"" latitude:@0 longtitude:@0];
+        return [self initWithName:@"" venueID:@"" latitude:@0 longtitude:@0 distance:@0];
         
     }
-    -(id)initWithName:(NSString *)name venueID:(NSString *)venueID latitude:(NSNumber *)lat longtitude:(NSNumber *)lgt{
+-(id)initWithName:(NSString *)name venueID:(NSString *)venueID latitude:(NSNumber *)lat longtitude:(NSNumber *)lgt distance:(NSNumber *)distance{
         self = [super init];
         
         if(self)
@@ -23,6 +23,7 @@
             _venueID = venueID;
             _latitude = lat;
             _longtitude = lgt;
+            _distance = distance;
         }
         return self;
     }
@@ -32,7 +33,8 @@
         return [self initWithName:venue[@"name"]
                           venueID:venue[@"id"]
                          latitude:[NSNumber numberWithDouble:[venue[@"location"][@"lat"] doubleValue]]
-                                                  longtitude:[NSNumber numberWithDouble:[venue[@"location"][@"lng"] doubleValue]]];
+                                                  longtitude:[NSNumber numberWithDouble:[venue[@"location"][@"lng"] doubleValue]]
+                         distance:[NSNumber numberWithDouble:[venue[@"location"][@"distance"] doubleValue]]];
     }
     +(NSArray *)convertToVenues:(NSArray *)venues
     {

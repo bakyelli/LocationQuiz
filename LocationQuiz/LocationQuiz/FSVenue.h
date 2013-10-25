@@ -14,12 +14,17 @@
     @property (nonatomic, strong) NSString *venueID;
     @property (nonatomic, strong) NSNumber *latitude;
     @property (nonatomic, strong) NSNumber *longtitude;
+@property (nonatomic, strong) NSNumber *distance;
+
     
     +(NSArray *) convertToVenues:(NSArray *)venues; 
     -(id)initWithName:(NSString *)name
               venueID:(NSString *)venueID
              latitude:(NSNumber *)lat
-           longtitude:(NSNumber *)lgt;
+           longtitude:(NSNumber *)lgt
+             distance:(NSNumber *)distance;
+
+
     
     
 @end

@@ -48,7 +48,7 @@
                                   callback:^(BOOL success, id result){
                                       if (success) {
                                           NSDictionary *resultDict = result;
-                                          NSArray *venues = [FSVenue convertToVenues:resultDict[@"response"][@"venues"]];                                          
+                                          NSArray *venues = [FSVenue convertToVenues:resultDict[@"response"][@"venues"]];
                                           self.venues = venues;
                                           [self.tableView reloadData];
                                           
@@ -81,6 +81,8 @@
         }
         FSVenue *venue = [self.venues objectAtIndex:indexPath.row];
         cell.textLabel.text = venue.name;
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d meters",[venue.distance intValue]];
+        
         return cell;
     }
     else {
