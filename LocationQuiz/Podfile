@@ -1,0 +1,5 @@
+platform :ios, '6.0'
+
+pod 'Foursquare-API-v2', :git => 'https://github.com/jmburges/Foursquare-API-v2.git'
+pod 'SVProgressHUD'
+pod 'MMDrawerController'
