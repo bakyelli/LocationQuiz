@@ -12,7 +12,6 @@
 #import "AddFactViewController.h"
 
 @interface AddLocationViewController ()
-
 @end
 
 @implementation AddLocationViewController
