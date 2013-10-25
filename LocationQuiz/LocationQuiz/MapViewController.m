@@ -15,9 +15,11 @@
 #import "AddFactViewController.h"
 #import "ShowFactsViewController.h"
 #import "AddLocationViewController.h"
+#import <MMDrawerController.h>
+#import "DrawerTableViewController.h"
 //#import "LocationEntity.h"
 @interface MapViewController ()
-
+@property (nonatomic, strong) MMDrawerController *drawerController;
 @end
 
 @implementation MapViewController
@@ -50,8 +52,10 @@
     
     [self findLocation];
 
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(addButtonPressed:)];
     
- //   int counter =1;
+    [self.navigationItem setLeftBarButtonItem:addButton];
+//   int counter =1;
 //    for(Location *loc in results)
 //    {
 //        
@@ -64,6 +68,23 @@
     
     
 }
+
+- (void)addButtonPressed:(id)sender {
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    AddLocationViewController *alvc = [storyboard instantiateViewControllerWithIdentifier:@"addLocation"];
+    DrawerTableViewController *dtvc = [storyboard instantiateViewControllerWithIdentifier:@"drawerTableView"];
+
+    self.drawerController = [[MMDrawerController alloc] initWithCenterViewController:alvc leftDrawerViewController:dtvc];
+    
+    [self.drawerController setRestorationIdentifier:@"MMDrawer"];
+    [self.drawerController setMaximumLeftDrawerWidth:200.0];
+    [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+    [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+    
+    [self.navigationController pushViewController:self.drawerController animated:YES];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];

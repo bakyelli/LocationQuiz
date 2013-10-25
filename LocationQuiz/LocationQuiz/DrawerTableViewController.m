@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 Jay Abdallah. All rights reserved.
 //
 
-#import "DrawTableViewController.h"
+#import "DrawerTableViewController.h"
 
-@interface DrawTableViewController ()
+@interface DrawerTableViewController ()
 
 @end
 
-@implementation DrawTableViewController
+@implementation DrawerTableViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,10 +29,5 @@
 	// Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 @end

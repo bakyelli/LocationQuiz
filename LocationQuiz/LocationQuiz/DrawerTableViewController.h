@@ -1,5 +1,5 @@
 //
-//  DrawTableViewController.h
+//  DrawerTableViewController.h
 //  LocationQuiz
 //
 //  Created by Chemin Lin on 10/25/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DrawTableViewController : UIViewController
+@interface DrawerTableViewController : UITableViewController
 
 @end

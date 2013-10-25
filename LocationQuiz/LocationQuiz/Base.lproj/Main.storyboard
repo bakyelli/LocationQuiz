@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Moe-2u-qqz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Moe-2u-qqz">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -41,13 +41,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="tTz-IX-8TA">
-                        <barButtonItem key="leftBarButtonItem" title="Add" id="Gdv-s0-XQb">
-                            <connections>
-                                <segue destination="LX6-Bz-iyX" kind="push" identifier="AddLocation" id="1hH-EQ-c6p"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="tTz-IX-8TA"/>
                     <connections>
                         <outlet property="mapView" destination="Ucq-EJ-acc" id="8bL-Nx-jcA"/>
                         <segue destination="EIv-mO-0ef" kind="push" identifier="ShowFacts" id="Pig-Tg-7KF"/>
@@ -60,7 +54,7 @@
         <!--Add Location View Controller - Add Location-->
         <scene sceneID="iLG-wy-w5k">
             <objects>
-                <viewController id="LX6-Bz-iyX" customClass="AddLocationViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addLocation" id="LX6-Bz-iyX" customClass="AddLocationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dFf-Jg-DDU"/>
                         <viewControllerLayoutGuide type="bottom" id="39k-wz-ygX"/>
@@ -139,7 +133,35 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mTj-YM-rhd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="261" y="-257"/>
+            <point key="canvasLocation" x="585" y="-236"/>
+        </scene>
+        <!--Drawer Table View Controller-->
+        <scene sceneID="YWd-vL-UQo">
+            <objects>
+                <tableViewController storyboardIdentifier="drawerTableView" id="Hfi-92-tNt" customClass="DrawerTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="b4O-Wd-lu8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="boF-Il-bkG">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="boF-Il-bkG" id="g6H-ch-Rey">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Hfi-92-tNt" id="ETm-lv-4u1"/>
+                            <outlet property="delegate" destination="Hfi-92-tNt" id="Bu9-2a-kHU"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9wo-AK-cQp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="185" y="-236"/>
         </scene>
         <!--View Controller - Show Facts-->
         <scene sceneID="Mnq-r3-zC9">
