@@ -14,6 +14,7 @@
 #import <SVProgressHUD.h>
 #import "FSVenue.h"
 #import "DrawerTableViewController.h"
+#import <UIViewController+MMDrawerController.h>
 
 @interface AddLocationViewController ()
 @end
@@ -26,6 +27,26 @@
     self.longitude.delegate = self;
     self.latitude.delegate = self;
     self.name.delegate = self;
+    
+    
+    
+    
+    
+    
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    
+    //This works! ViewDidLoad was too early!
+    MMDrawerController *drawerController= self.mm_drawerController;
+    DrawerTableViewController *dtvc = (DrawerTableViewController *)[drawerController leftDrawerViewController];
+    [dtvc saySomething:@"I'm calling this from the center viewcontroller"];
+    //[dtvc.tableView reloadData];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated{

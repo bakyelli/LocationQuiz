@@ -72,6 +72,10 @@
     }
     else return 0;
 }
+-(void) saySomething:(NSString *)thing
+{
+    NSLog(@"%@",thing);
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.venues) {

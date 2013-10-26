@@ -17,7 +17,6 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *name;
 
-@property (strong, nonatomic) MMDrawerController *drawerController;
 
 - (IBAction)startRecording:(id)sender;
 - (IBAction)longitude:(id)sender;

@@ -55,17 +55,7 @@
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(addButtonPressed:)];
     
     [self.navigationItem setLeftBarButtonItem:addButton];
-//   int counter =1;
-//    for(Location *loc in results)
-//    {
-//        
-//        NSLog(@"%i: %@",counter, loc.name);
-//        counter++;
-//    }
 
-    
-//    NSLog(@"I have this many items in Core Data: %i", [results count]);
-    
     
 }
 
@@ -74,7 +64,7 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
     AddLocationViewController *alvc = [storyboard instantiateViewControllerWithIdentifier:@"addLocation"];
     DrawerTableViewController *dtvc = [storyboard instantiateViewControllerWithIdentifier:@"drawerTableView"];
-    alvc.drawerController = self.drawerController;
+//    alvc.drawerController = self.drawerController;
     dtvc.currentLocation = self.locationManager.location;
     self.drawerController = [[MMDrawerController alloc] initWithCenterViewController:alvc leftDrawerViewController:dtvc];
     

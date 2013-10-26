@@ -13,4 +13,6 @@
 
 @property (strong, nonatomic) NSArray *venues;
 @property (strong, nonatomic) CLLocation *currentLocation;
+-(void) saySomething:(NSString *)thing;
+
 @end
