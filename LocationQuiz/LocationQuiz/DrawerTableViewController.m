@@ -70,7 +70,6 @@
     AddLocationViewController *alvc = (AddLocationViewController *)drawerController.centerViewController;
     [alvc selectVenue:venue];
     [drawerController closeDrawerAnimated:YES completion:nil];
-
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
