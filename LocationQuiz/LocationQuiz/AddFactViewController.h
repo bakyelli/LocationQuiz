@@ -18,5 +18,8 @@
 @property (strong, nonatomic) Location *location;
 @property (weak, nonatomic) IBOutlet UITextField *titleTextBox;
 @property (strong,nonatomic) NSURL *outputFileURL;
+@property (weak, nonatomic) IBOutlet UILabel *locationName;
+- (IBAction)done:(id)sender;
+- (IBAction)cancel:(id)sender;
 
 @end

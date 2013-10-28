@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A2093" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Moe-2u-qqz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Moe-2u-qqz">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
     </dependencies>
@@ -112,13 +112,13 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hlB-jY-5av">
-                                <rect key="frame" x="106" y="258" width="108" height="30"/>
+                                <rect key="frame" x="106" y="298" width="108" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Start Recording">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="startRecording:" destination="LX6-Bz-iyX" eventType="touchUpInside" id="VNM-Es-arU"/>
+                                    <action selector="startRecording:" destination="LX6-Bz-iyX" eventType="touchUpInside" id="DFb-3w-BXs"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -183,7 +183,7 @@
         <!--View Controller - Show Facts-->
         <scene sceneID="Mnq-r3-zC9">
             <objects>
-                <viewController id="EIv-mO-0ef" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="showFactsViewController" id="EIv-mO-0ef" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ifQ-N5-F2A"/>
                         <viewControllerLayoutGuide type="bottom" id="6SP-fM-EH6"/>
@@ -208,7 +208,7 @@
         <!--View Controller - Add Fact-->
         <scene sceneID="UgN-YI-7d4">
             <objects>
-                <viewController id="PEm-kc-oUS" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addFactViewController" id="PEm-kc-oUS" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="o9h-oW-Jla"/>
                         <viewControllerLayoutGuide type="bottom" id="8fY-Jf-UW1"/>

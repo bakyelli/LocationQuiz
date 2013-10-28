@@ -9,6 +9,7 @@
 #import "AddFactViewController.h"
 #import "SharedStore.h"
 #import "Fact.h"
+#import "ShowFactsViewController.h"
 @interface AddFactViewController ()
 {
     AVAudioRecorder *recorder;
@@ -33,7 +34,7 @@
     [super viewDidLoad];
  
     self.titleTextBox.delegate = self;
-    self.title = [NSString stringWithFormat:@"%@ - Add Fact", self.location.name];
+    self.locationName.text = self.location.name;
     
     
     NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
@@ -150,5 +151,21 @@
 {
     [self.recBtn setTitle:@"REC" forState:UIControlStateNormal];
     [self.lblMessage setText:@"Ready to play!"];
+}
+- (IBAction)done:(id)sender {
+    [self returnToShowFacts
+     ];
+}
+
+- (IBAction)cancel:(id)sender {
+}
+
+- (void)returnToShowFacts {
+
+    ShowFactsViewController *sfvc = [[ShowFactsViewController alloc]init];
+    
+    sfvc.location = self.location;
+    [self presentViewController:sfvc animated:YES completion:nil];
+    
 }
 @end

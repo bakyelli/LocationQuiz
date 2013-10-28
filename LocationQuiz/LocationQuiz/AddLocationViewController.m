@@ -21,19 +21,21 @@
 
 @implementation AddLocationViewController
 
+- (Location *)location {
+    if (!_location) {
+        _location = [NSEntityDescription insertNewObjectForEntityForName:@"Location" inManagedObjectContext:[SharedStore returnSharedStore].managedObjectContext];
+    }
+    return _location;
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.longitude.delegate = self;
     self.latitude.delegate = self;
     self.name.delegate = self;
-    
-    
-    
-    
-    
-    
-    
+
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -60,12 +62,30 @@
 
 - (IBAction)startRecording:(id)sender {
     
+    //AddFactViewController *adfc = [[AddFactViewController alloc]init];
+    
+    
+    //UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    //AddFactViewController *adfc = [storyboard instantiateViewControllerWithIdentifier:@"addFactViewController"];
+
     AddFactViewController *adfc = [[AddFactViewController alloc]init];
     
-    adfc.location = self.location;
     
-    [self.navigationController pushViewController:adfc animated:YES];
+    if (self.saveLocation) {
+        adfc.location = self.location;
+        [self presentViewController:adfc animated:YES completion:nil];
+    }
     
+    //[self.navigationController pushViewController:adfc animated:YES];
+    
+    
+//    - (IBAction)startRecording:(id)sender {
+//        AddFactViewController *afcv = [self.storyboard instantiateViewControllerWithIdentifier:@"addFactViewController"];
+//        tbc.selectedIndex=1;
+//        [self presentViewController:tbc animated:YES completion:nil];
+//        
+//    }
+//    
 
 }
 - (void) selectVenue:(FSVenue *)selectedVenue;
@@ -91,7 +111,23 @@
     self.location.name = self.name.text;
 }
 
+- (BOOL)saveLocation {
+    self.location.name = self.name.text;
+    self.location.longitude = @([self.longitude.text doubleValue]);
+    self.location.latitude = @([self.latitude.text doubleValue]);
 
+    if ((self.location.longitude) &&
+        (self.location.latitude) &&
+        (![self.location.name isEqualToString:@""])) {
+        [[SharedStore returnSharedStore] addLocationEntity:self.location];
+        NSLog(@"Saved location! %@", self.location);
+        return true;
+        
+    }
+    NSLog(@"did not save!");
+    return false;
+
+}
 
 #pragma textfield delegates
 
