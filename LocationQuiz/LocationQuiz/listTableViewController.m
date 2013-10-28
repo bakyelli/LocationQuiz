@@ -8,6 +8,7 @@
 
 #import "listTableViewController.h"
 #import "PointOfInterestMapPoint.h"
+#import "ShowFactsViewController.h"
 
 
 @interface listTableViewController ()
@@ -112,7 +113,7 @@
 }
 */
 
-/*
+
 #pragma mark - Table view delegate
 
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
@@ -120,14 +121,16 @@
 {
     // Navigation logic may go here, for example:
     // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+    
+    PointOfInterestMapPoint *point = (PointOfInterestMapPoint *)[self.locations objectAtIndex:indexPath.row];
+    ShowFactsViewController *sfvc = [[ShowFactsViewController alloc] init];
 
     // Pass the selected object to the new view controller.
-    
+    sfvc.location = point.location;
+
     // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    [self.navigationController pushViewController:sfvc animated:YES];
 }
  
- */
 
 @end

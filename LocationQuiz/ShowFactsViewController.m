@@ -42,6 +42,7 @@
     [self.navigationItem setRightBarButtonItem:addButton];
     [self.navigationItem setLeftBarButtonItem:backToMapButton];
     
+    NSLog(@"out location: %@",self.location);
     NSLog(@"We're seeing facts for %@", self.location.name);
     
     self.title = [NSString stringWithFormat:@"%@ - Facts", self.location.name];

@@ -247,6 +247,8 @@
 			isa = PBXGroup;
 			children = (
 				D87F684518181A0A0045DCD3 /* Model.xcdatamodeld */,
+				F19610E218073863005A9849 /* PointOfInterestMapPoint.h */,
+				F19610E318073863005A9849 /* PointOfInterestMapPoint.m */,
 				F11B362E18187C0B005F2D8C /* Location.h */,
 				F11B362F18187C0B005F2D8C /* Location.m */,
 				F11B362B18187C0B005F2D8C /* Fact.h */,
@@ -290,8 +292,6 @@
 				F19610EB1807519B005A9849 /* LandmarkInfoViewController.h */,
 				F19610EC1807519B005A9849 /* LandmarkInfoViewController.m */,
 				F19610ED1807519B005A9849 /* LandmarkInfoViewController.xib */,
-				F19610E218073863005A9849 /* PointOfInterestMapPoint.h */,
-				F19610E318073863005A9849 /* PointOfInterestMapPoint.m */,
 				6ED59B691819590B003B4BAC /* AddLocationViewController.h */,
 				6ED59B6A1819590B003B4BAC /* AddLocationViewController.m */,
 				6E12B04B181B11A1001F6BFC /* FSVenue.h */,
