@@ -15,7 +15,7 @@
     AVAudioRecorder *recorder;
     AVAudioPlayer *player;
 }
-
+@property (nonatomic) BOOL didRecord;
 @end
 
 @implementation AddFactViewController
@@ -36,6 +36,7 @@
     self.titleTextBox.delegate = self;
     self.locationName.text = self.location.name;
     
+    self.didRecord = NO;
     
     NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
     
@@ -82,19 +83,6 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    
-    Fact *f = [SharedStore returnSharedStore].newFact;
-
-    f.title = self.titleTextBox.text;
-    f.soundFilePath = [self.outputFileURL absoluteString];
-    f.dateAdded = [NSDate date];
-    
-
-    
-    [self.location addFactsObject:f];
-    [[SharedStore returnSharedStore] saveContext];
-    
-
 
 }
 - (void)didReceiveMemoryWarning
@@ -120,7 +108,7 @@
         [recorder record];
         [self.recBtn setTitle:@"STOP" forState:UIControlStateNormal];
         [self.lblMessage setText:@"Recording..."];
-
+        self.didRecord = YES;
         
     } else{
         [recorder stop];
@@ -153,13 +141,23 @@
     [self.lblMessage setText:@"Ready to play!"];
 }
 - (IBAction)done:(id)sender {
-    if (![self.titleTextBox.text isEqualToString:@""]) {
+    if (![self.titleTextBox.text isEqualToString:@""] && self.didRecord) {
+        
+        Fact *f = [SharedStore returnSharedStore].newFact;
+        
+        f.title = self.titleTextBox.text;
+        f.soundFilePath = [self.outputFileURL absoluteString];
+        f.dateAdded = [NSDate date];
+        
+        [self.location addFactsObject:f];
+        [[SharedStore returnSharedStore] saveContext];
+        
         [self returnToShowFacts];
     }
 }
 
 - (IBAction)cancel:(id)sender {
-
+    [self returnToShowFacts];
 }
 
 - (void)returnToShowFacts {
