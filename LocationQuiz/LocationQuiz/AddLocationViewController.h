@@ -25,6 +25,7 @@
 - (IBAction)name:(id)sender;
 @property (strong, nonatomic) Location *location;
 - (void) selectVenue:(FSVenue *)selectedVenue;
+- (IBAction)cancel:(id)sender;
 
 
 

@@ -98,6 +98,12 @@
     
 }
 
+- (IBAction)cancel:(id)sender {
+
+  [self dismissViewControllerAnimated:YES completion:nil];
+
+}
+
 
 - (IBAction)longitude:(id)sender {
     self.location.longitude = @([self.longitude.text doubleValue]);
