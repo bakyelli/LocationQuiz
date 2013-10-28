@@ -10,6 +10,7 @@
 #import "Location.h"
 #import <MMDrawerController.h>
 #import <CoreLocation/CoreLocation.h>
+#import "FSVenue.h"
 @interface AddLocationViewController : UIViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *latitude;
@@ -23,6 +24,8 @@
 - (IBAction)latitude:(id)sender;
 - (IBAction)name:(id)sender;
 @property (strong, nonatomic) Location *location;
+- (void) selectVenue:(FSVenue *)selectedVenue;
+
 
 
 

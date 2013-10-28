@@ -10,6 +10,8 @@
 #import "FSVenue.h"
 #import <Foursquare2.h>
 #import <SVProgressHUD.h>
+#import <UIViewController+MMDrawerController.h>
+#import "AddLocationViewController.h"
 
 @interface DrawerTableViewController ()
 
@@ -62,6 +64,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    FSVenue *venue = [self.venues objectAtIndex:indexPath.row];
+    MMDrawerController *drawerController = self.mm_drawerController;
+    
+    AddLocationViewController *alvc = (AddLocationViewController *)drawerController.centerViewController;
+    [alvc selectVenue:venue];
+    [drawerController closeDrawerAnimated:YES completion:nil];
 
 }
 
@@ -93,4 +101,5 @@
         return nil;
     }
 }
+
 @end

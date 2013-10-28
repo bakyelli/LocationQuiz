@@ -68,6 +68,16 @@
     
 
 }
+- (void) selectVenue:(FSVenue *)selectedVenue;
+{
+    [self.latitude setText:[NSString stringWithFormat:@"%@",selectedVenue.latitude]];
+    [self.longitude setText:[NSString stringWithFormat:@"%@",selectedVenue.longtitude]];
+    [self.name setText:selectedVenue.name];
+
+
+    
+}
+
 
 - (IBAction)longitude:(id)sender {
     self.location.longitude = @([self.longitude.text doubleValue]);
