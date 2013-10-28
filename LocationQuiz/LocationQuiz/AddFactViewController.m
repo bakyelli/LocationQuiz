@@ -153,19 +153,22 @@
     [self.lblMessage setText:@"Ready to play!"];
 }
 - (IBAction)done:(id)sender {
-    [self returnToShowFacts
-     ];
+    if (![self.titleTextBox.text isEqualToString:@""]) {
+        [self returnToShowFacts];
+    }
 }
 
 - (IBAction)cancel:(id)sender {
+
 }
 
 - (void)returnToShowFacts {
 
     ShowFactsViewController *sfvc = [[ShowFactsViewController alloc]init];
-    
     sfvc.location = self.location;
-    [self presentViewController:sfvc animated:YES completion:nil];
+    UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:sfvc];
+    
+    [self presentViewController:navController animated:YES completion:nil];
     
 }
 @end

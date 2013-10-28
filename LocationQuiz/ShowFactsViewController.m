@@ -34,9 +34,13 @@
     [super viewDidLoad];
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonPressed:)];
+
+    UIBarButtonItem *backToMapButton = [[UIBarButtonItem alloc] initWithTitle:@"Map" style:UIBarButtonItemStylePlain target:self action:@selector(backToMapButtonPressed:)];
+
+
     
     [self.navigationItem setRightBarButtonItem:addButton];
-    
+    [self.navigationItem setLeftBarButtonItem:backToMapButton];
     
     NSLog(@"We're seeing facts for %@", self.location.name);
     
@@ -54,6 +58,13 @@
     
     
     
+}
+
+- (void) backToMapButtonPressed:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"rootNavController"];
+    [self presentViewController:navController animated:YES completion:nil];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
