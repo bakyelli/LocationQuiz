@@ -26,14 +26,16 @@
 		58B82988CFA44CDBBF8BB300 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D678747B17394053BADA2260 /* libPods.a */; };
 		6E12B044181AFC8D001F6BFC /* DrawerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E12B043181AFC8D001F6BFC /* DrawerTableViewController.m */; };
 		6E12B04D181B11A1001F6BFC /* FSVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E12B04C181B11A1001F6BFC /* FSVenue.m */; };
+		6EC8024118219F720012D79F /* Location+Methods.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EC8024018219F720012D79F /* Location+Methods.m */; };
+		6EC8025C1821A3D60012D79F /* Fact.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EC8025B1821A3D60012D79F /* Fact.m */; };
+		6EC8025F1821A3D60012D79F /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EC8025E1821A3D60012D79F /* Location.m */; };
+		6EC802621821A5310012D79F /* APISharedStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EC802611821A5310012D79F /* APISharedStore.m */; };
 		6ED59B6B1819590B003B4BAC /* AddLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED59B6A1819590B003B4BAC /* AddLocationViewController.m */; };
 		D87F684718181A0A0045DCD3 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D87F684518181A0A0045DCD3 /* Model.xcdatamodeld */; };
 		D87F6859181820A80045DCD3 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = D87F6858181820A80045DCD3 /* Question.m */; };
 		D87F685C181820A90045DCD3 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = D87F685B181820A90045DCD3 /* Card.m */; };
 		D87F685F181820A90045DCD3 /* Quiz.m in Sources */ = {isa = PBXBuildFile; fileRef = D87F685E181820A90045DCD3 /* Quiz.m */; };
 		D87F6862181820A90045DCD3 /* Answer.m in Sources */ = {isa = PBXBuildFile; fileRef = D87F6861181820A90045DCD3 /* Answer.m */; };
-		F11B362D18187C0B005F2D8C /* Fact.m in Sources */ = {isa = PBXBuildFile; fileRef = F11B362C18187C0B005F2D8C /* Fact.m */; };
-		F11B363018187C0B005F2D8C /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = F11B362F18187C0B005F2D8C /* Location.m */; };
 		F11B6020180C8233005A15E8 /* listTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F11B601E180C8233005A15E8 /* listTableViewController.m */; };
 		F11B6021180C8233005A15E8 /* listTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11B601F180C8233005A15E8 /* listTableViewController.xib */; };
 		F11B6023180C97CE005A15E8 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11B6022180C97CE005A15E8 /* ViewController.xib */; };
@@ -91,6 +93,14 @@
 		6E12B043181AFC8D001F6BFC /* DrawerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawerTableViewController.m; sourceTree = "<group>"; };
 		6E12B04B181B11A1001F6BFC /* FSVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSVenue.h; sourceTree = "<group>"; };
 		6E12B04C181B11A1001F6BFC /* FSVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSVenue.m; sourceTree = "<group>"; };
+		6EC8023F18219F720012D79F /* Location+Methods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Location+Methods.h"; sourceTree = "<group>"; };
+		6EC8024018219F720012D79F /* Location+Methods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Location+Methods.m"; sourceTree = "<group>"; };
+		6EC8025A1821A3D60012D79F /* Fact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fact.h; sourceTree = "<group>"; };
+		6EC8025B1821A3D60012D79F /* Fact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fact.m; sourceTree = "<group>"; };
+		6EC8025D1821A3D60012D79F /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		6EC8025E1821A3D60012D79F /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		6EC802601821A5310012D79F /* APISharedStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APISharedStore.h; sourceTree = "<group>"; };
+		6EC802611821A5310012D79F /* APISharedStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APISharedStore.m; sourceTree = "<group>"; };
 		6ED59B691819590B003B4BAC /* AddLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddLocationViewController.h; sourceTree = "<group>"; };
 		6ED59B6A1819590B003B4BAC /* AddLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddLocationViewController.m; sourceTree = "<group>"; };
 		9ED7027564474637B3692AF4 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -104,10 +114,6 @@
 		D87F685E181820A90045DCD3 /* Quiz.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Quiz.m; sourceTree = SOURCE_ROOT; };
 		D87F6860181820A90045DCD3 /* Answer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Answer.h; sourceTree = SOURCE_ROOT; };
 		D87F6861181820A90045DCD3 /* Answer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Answer.m; sourceTree = SOURCE_ROOT; };
-		F11B362B18187C0B005F2D8C /* Fact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fact.h; sourceTree = "<group>"; };
-		F11B362C18187C0B005F2D8C /* Fact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fact.m; sourceTree = "<group>"; };
-		F11B362E18187C0B005F2D8C /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
-		F11B362F18187C0B005F2D8C /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		F11B601D180C8233005A15E8 /* listTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = listTableViewController.h; sourceTree = "<group>"; };
 		F11B601E180C8233005A15E8 /* listTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = listTableViewController.m; sourceTree = "<group>"; };
 		F11B601F180C8233005A15E8 /* listTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = listTableViewController.xib; sourceTree = "<group>"; };
@@ -169,6 +175,8 @@
 			children = (
 				F12AB5B8181724ED00FF293B /* SharedStore.h */,
 				F12AB5B9181724ED00FF293B /* SharedStore.m */,
+				6EC802601821A5310012D79F /* APISharedStore.h */,
+				6EC802611821A5310012D79F /* APISharedStore.m */,
 				F19610E818074FFD005A9849 /* imagesadded */,
 				30A539F41805E8B300ADDE98 /* LocationQuiz */,
 				30A53A131805E8B300ADDE98 /* LocationQuizTests */,
@@ -247,12 +255,12 @@
 			isa = PBXGroup;
 			children = (
 				D87F684518181A0A0045DCD3 /* Model.xcdatamodeld */,
+				6EC8025D1821A3D60012D79F /* Location.h */,
+				6EC8025E1821A3D60012D79F /* Location.m */,
+				6EC8025A1821A3D60012D79F /* Fact.h */,
+				6EC8025B1821A3D60012D79F /* Fact.m */,
 				F19610E218073863005A9849 /* PointOfInterestMapPoint.h */,
 				F19610E318073863005A9849 /* PointOfInterestMapPoint.m */,
-				F11B362E18187C0B005F2D8C /* Location.h */,
-				F11B362F18187C0B005F2D8C /* Location.m */,
-				F11B362B18187C0B005F2D8C /* Fact.h */,
-				F11B362C18187C0B005F2D8C /* Fact.m */,
 				D87F6857181820A80045DCD3 /* Question.h */,
 				D87F6858181820A80045DCD3 /* Question.m */,
 				D87F685A181820A90045DCD3 /* Card.h */,
@@ -286,6 +294,8 @@
 				F19610DE18073279005A9849 /* MapViewController.m */,
 				6E12B042181AFC8D001F6BFC /* DrawerTableViewController.h */,
 				6E12B043181AFC8D001F6BFC /* DrawerTableViewController.m */,
+				6EC8023F18219F720012D79F /* Location+Methods.h */,
+				6EC8024018219F720012D79F /* Location+Methods.m */,
 				F11B601D180C8233005A15E8 /* listTableViewController.h */,
 				F11B601E180C8233005A15E8 /* listTableViewController.m */,
 				F11B601F180C8233005A15E8 /* listTableViewController.xib */,
@@ -477,8 +487,10 @@
 				F11B6020180C8233005A15E8 /* listTableViewController.m in Sources */,
 				D87F6859181820A80045DCD3 /* Question.m in Sources */,
 				30A539FB1805E8B300ADDE98 /* main.m in Sources */,
-				F11B363018187C0B005F2D8C /* Location.m in Sources */,
-				F11B362D18187C0B005F2D8C /* Fact.m in Sources */,
+				6EC8025C1821A3D60012D79F /* Fact.m in Sources */,
+				6EC8025F1821A3D60012D79F /* Location.m in Sources */,
+				6EC8024118219F720012D79F /* Location+Methods.m in Sources */,
+				6EC802621821A5310012D79F /* APISharedStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

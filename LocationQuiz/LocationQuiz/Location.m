@@ -2,7 +2,7 @@
 //  Location.m
 //  LocationQuiz
 //
-//  Created by Basar Akyelli on 10/23/13.
+//  Created by Chemin Lin on 10/30/13.
 //  Copyright (c) 2013 Jay Abdallah. All rights reserved.
 //
 
@@ -15,6 +15,7 @@
 @dynamic latitude;
 @dynamic longitude;
 @dynamic name;
+@dynamic locationID;
 @dynamic facts;
 
 @end

@@ -2,7 +2,7 @@
 //  Fact.h
 //  LocationQuiz
 //
-//  Created by Basar Akyelli on 10/23/13.
+//  Created by Chemin Lin on 10/30/13.
 //  Copyright (c) 2013 Jay Abdallah. All rights reserved.
 //
 
@@ -13,10 +13,10 @@
 
 @interface Fact : NSManagedObject
 
+@property (nonatomic, retain) NSDate * dateAdded;
+@property (nonatomic, retain) NSNumber * rating;
 @property (nonatomic, retain) NSString * soundFilePath;
 @property (nonatomic, retain) NSString * title;
-@property (nonatomic, retain) NSNumber * rating;
-@property (nonatomic, retain) NSDate * dateAdded;
 @property (nonatomic, retain) Location *location;
 
 @end

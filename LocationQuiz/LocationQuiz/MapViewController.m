@@ -11,12 +11,13 @@
 #import "LandmarkInfoViewController.h"
 #import "listTableViewController.h"
 #import "SharedStore.h"
-#import "Location.h"
+#import "Location+Methods.h"
 #import "AddFactViewController.h"
 #import "ShowFactsViewController.h"
 #import "AddLocationViewController.h"
 #import <MMDrawerController.h>
 #import "DrawerTableViewController.h"
+#import "APISharedStore.h"
 //#import "LocationEntity.h"
 @interface MapViewController ()
 @property (nonatomic, strong) MMDrawerController *drawerController;
@@ -56,6 +57,35 @@
     
     [self.navigationItem setLeftBarButtonItem:addButton];
 
+    [[APISharedStore sharedStore] getLocationsWithCompletion:^(NSArray *location) {
+        NSLog(@"done yo");
+    }];
+    
+    
+    Location *location = [[Location alloc] initWithLatitude:@0 longitude:@0 name:@"Bryant Park"];
+    
+    [[APISharedStore sharedStore] createLocation:location withCompletion:^(Location *newLocation) {
+        NSLog(@"done creating %@", newLocation);
+
+    }];
+
+    
+//    Location *location = [[Location alloc] initWithLatitude:@(40.7538) longitude:@(-73.9836) name:@"Bryant Park"];
+//
+//    
+//    [[APISharedStore sharedStore] getLocationWithID:@1 Completion:^(Location *location) {
+//        NSLog(@"deleting location", location);
+//        [[APISharedStore sharedStore] removeLocation:location];
+//    }];
+    
+//    [[APISharedStore sharedStore] createLocation:location withCompletion:^(Location *newLocation) {
+//        NSLog(@"location created %@", newLocation);
+//    }];
+
+//    [[APISharedStore sharedStore] createLocation:location withCompletion:^(Location *newLocation) {
+//    }:@3 Completion:^(Location *location) {
+//        [[APISharedStore sharedStore] removeLocation:location];
+//    }];
     
 }
 

@@ -2,7 +2,7 @@
 //  Location.h
 //  LocationQuiz
 //
-//  Created by Basar Akyelli on 10/23/13.
+//  Created by Chemin Lin on 10/30/13.
 //  Copyright (c) 2013 Jay Abdallah. All rights reserved.
 //
 
@@ -16,6 +16,7 @@
 @property (nonatomic, retain) NSNumber * latitude;
 @property (nonatomic, retain) NSNumber * longitude;
 @property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSNumber * locationID;
 @property (nonatomic, retain) NSSet *facts;
 @end
 

@@ -1,4 +1,5 @@
 PODS:
+  - AFNetworking (1.3.3)
   - Foursquare-API-v2 (1.3.1)
   - MMDrawerController (0.5.1):
     - MMDrawerController/Core
@@ -15,6 +16,7 @@ PODS:
   - SVProgressHUD (0.9)
 
 DEPENDENCIES:
+  - AFNetworking (~> 1.3.3)
   - Foursquare-API-v2 (from `https://github.com/jmburges/Foursquare-API-v2.git`)
   - MMDrawerController
   - SVProgressHUD
@@ -24,6 +26,7 @@ EXTERNAL SOURCES:
     :git: https://github.com/jmburges/Foursquare-API-v2.git
 
 SPEC CHECKSUMS:
+  AFNetworking: 0700ec7a58c36ad217173e167f6e4df7270df66b
   Foursquare-API-v2: e93ee5fadff94b9a07f560c0f5ed9b5aa3e78074
   MMDrawerController: 3e22aec684dbee5307ff9d1e76523003a3303a2d
   SVProgressHUD: 03d4845ec8e64591726428a08236c6a5489d45f8
