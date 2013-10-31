@@ -15,6 +15,8 @@
 #import "FSVenue.h"
 #import "DrawerTableViewController.h"
 #import <UIViewController+MMDrawerController.h>
+#import "APISharedStore.h"
+
 
 @interface AddLocationViewController ()
 @end
@@ -61,31 +63,13 @@
 }
 
 - (IBAction)startRecording:(id)sender {
-    
-    //AddFactViewController *adfc = [[AddFactViewController alloc]init];
-    
-    
-    //UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
-    //AddFactViewController *adfc = [storyboard instantiateViewControllerWithIdentifier:@"addFactViewController"];
 
     AddFactViewController *adfc = [[AddFactViewController alloc]init];
-    
     
     if (self.saveLocation) {
         adfc.location = self.location;
         [self presentViewController:adfc animated:YES completion:nil];
     }
-    
-    //[self.navigationController pushViewController:adfc animated:YES];
-    
-    
-//    - (IBAction)startRecording:(id)sender {
-//        AddFactViewController *afcv = [self.storyboard instantiateViewControllerWithIdentifier:@"addFactViewController"];
-//        tbc.selectedIndex=1;
-//        [self presentViewController:tbc animated:YES completion:nil];
-//        
-//    }
-//    
 
 }
 - (void) selectVenue:(FSVenue *)selectedVenue;
@@ -125,8 +109,14 @@
     if ((self.location.longitude) &&
         (self.location.latitude) &&
         (![self.location.name isEqualToString:@""])) {
-        [[SharedStore returnSharedStore] addLocationEntity:self.location];
+      
+        [[APISharedStore sharedStore] createLocation:self.location withCompletion:^(Location *newLocation) {
+            NSLog(@"Added location to API");
+        }];
+        
+        
         NSLog(@"Saved location! %@", self.location);
+        
         return true;
         
     }

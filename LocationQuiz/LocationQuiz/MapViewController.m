@@ -48,44 +48,11 @@
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     
-    // Do any additional setup after loading the view.
-    
     
     [self findLocation];
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(addButtonPressed:)];
-    
     [self.navigationItem setLeftBarButtonItem:addButton];
-
-    [[APISharedStore sharedStore] getLocationsWithCompletion:^(NSArray *location) {
-        NSLog(@"done yo");
-    }];
-    
-    
-    Location *location = [[Location alloc] initWithLatitude:@0 longitude:@0 name:@"Bryant Park"];
-    
-    [[APISharedStore sharedStore] createLocation:location withCompletion:^(Location *newLocation) {
-        NSLog(@"done creating %@", newLocation);
-
-    }];
-
-    
-//    Location *location = [[Location alloc] initWithLatitude:@(40.7538) longitude:@(-73.9836) name:@"Bryant Park"];
-//
-//    
-//    [[APISharedStore sharedStore] getLocationWithID:@1 Completion:^(Location *location) {
-//        NSLog(@"deleting location", location);
-//        [[APISharedStore sharedStore] removeLocation:location];
-//    }];
-    
-//    [[APISharedStore sharedStore] createLocation:location withCompletion:^(Location *newLocation) {
-//        NSLog(@"location created %@", newLocation);
-//    }];
-
-//    [[APISharedStore sharedStore] createLocation:location withCompletion:^(Location *newLocation) {
-//    }:@3 Completion:^(Location *location) {
-//        [[APISharedStore sharedStore] removeLocation:location];
-//    }];
     
 }
 
@@ -94,7 +61,6 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
     AddLocationViewController *alvc = [storyboard instantiateViewControllerWithIdentifier:@"addLocation"];
     DrawerTableViewController *dtvc = [storyboard instantiateViewControllerWithIdentifier:@"drawerTableView"];
-//    alvc.drawerController = self.drawerController;
     dtvc.currentLocation = self.locationManager.location;
     self.drawerController = [[MMDrawerController alloc] initWithCenterViewController:alvc leftDrawerViewController:dtvc];
     
@@ -103,7 +69,6 @@
     [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
     
-    //[self.navigationController pushViewController:self.drawerController animated:YES];
     [self presentViewController:self.drawerController animated:YES completion:nil];
 }
 
@@ -113,25 +78,25 @@
 
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]initWithEntityName:@"Location"];
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]initWithKey:@"name" ascending:YES];
-    
     [fetchRequest setSortDescriptors:@[sortDescriptor]];
-    
     self.existinglocations = [[NSMutableArray alloc]init];
-    
     self.existinglocations = [[[SharedStore returnSharedStore].managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
 
     NSLog(@"I have %i items in my data store", [self.existinglocations count]);
     
     [self addPointsOfInterestOnTheMap];
 
-    
 }
 
 -(void)listBtnPressed:(id)sender
 {
-    listTableViewController *ltvc = [[listTableViewController alloc]init];
+     listTableViewController *ltvc = [[listTableViewController alloc]init];
     ltvc.locations = [[self.mapView annotations] mutableCopy];
+    [ltvc.locations  sortUsingSelector:@selector(caseInsensitiveCompare:)];
+
     
+    
+    NSLog(@"I have %lu annotations on the map.", (unsigned long)[[self.mapView annotations] count]);
     
     for(int i=0; i<[ltvc.locations count]; i++)
     {
@@ -155,32 +120,45 @@
 
 -(void)findLocation
 {
-
     [self.locationManager startUpdatingLocation];
-
     
 }
 -(void)addPointsOfInterestOnTheMap
 {
     
+    [[SharedStore returnSharedStore].managedObjectContext reset];
+    [self.mapView removeAnnotations:self.mapView.annotations];
+    
+    
+    __block NSArray *apiLocations = [[NSArray alloc] init];
+    
+    [[APISharedStore sharedStore] getLocationsWithCompletion:^(NSArray *locations) {
+        apiLocations = locations;
+        NSLog(@"I got %lu locations from API.", (unsigned long)[apiLocations count]);
+        
+        for(Location *loc in apiLocations)
+        {
+            
+            CLLocationCoordinate2D coord = CLLocationCoordinate2DMake([loc.latitude doubleValue], [loc.longitude doubleValue]);
+            NSLog(@"location: %@, coordiate: %.4f, %.4f", loc.name, coord.latitude, coord.longitude);
+            
+            PointOfInterestMapPoint *mapPoint = [[PointOfInterestMapPoint alloc]initWithCoordinate:coord title:loc.name];
+            
+            mapPoint.location = loc;
+            
+            [self.mapView addAnnotation:mapPoint];
+
+        }
+
+    }];
+    
+    
     if([self.existinglocations count] == 0)
     {
-       [self addDummyData];
-    }
-
-
-    for(Location *loc in self.existinglocations)
-    {
-        CLLocationCoordinate2D coord = CLLocationCoordinate2DMake([loc.latitude doubleValue], [loc.longitude doubleValue]);
-        NSLog(@"location: %@, coordiate: %.4f, %.4f", loc.name, coord.latitude, coord.longitude);
-        
-        PointOfInterestMapPoint *mapPoint = [[PointOfInterestMapPoint alloc]initWithCoordinate:coord title:loc.name];
-        
-        mapPoint.location = loc;
-        
-        [self.mapView addAnnotation:mapPoint];
+     //  [self addDummyData];
     }
 }
+
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
