@@ -126,7 +126,7 @@ NSString * const BASEURL = @"http://locationquiz-ios000-gryffindor.herokuapp.com
 //        NSLog(@"%@",newItemDict);
         newLocation.locationID = [NSNumber numberWithInteger:[newItemDict[@"id"] integerValue]];
         NSLog(@"Location ID of the new location is: %@",newLocation.locationID);
-   //     [[SharedStore returnSharedStore] addLocationEntity:newLocation];
+        [[SharedStore returnSharedStore] addLocationEntity:newLocation];
 
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         NSLog(@"Failed!");

@@ -83,6 +83,7 @@
     self.existinglocations = [[[SharedStore returnSharedStore].managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
 
     NSLog(@"I have %i items in my data store", [self.existinglocations count]);
+    NSLog(@"Items in my data store: %@", self.existinglocations);
     
     [self addPointsOfInterestOnTheMap];
 
@@ -92,9 +93,7 @@
 {
      listTableViewController *ltvc = [[listTableViewController alloc]init];
     ltvc.locations = [[self.mapView annotations] mutableCopy];
-    [ltvc.locations  sortUsingSelector:@selector(caseInsensitiveCompare:)];
-
-    
+  //  [ltvc.locations  sortUsingSelector:@selector(caseInsensitiveCompare:)];
     
     NSLog(@"I have %lu annotations on the map.", (unsigned long)[[self.mapView annotations] count]);
     
@@ -126,7 +125,7 @@
 -(void)addPointsOfInterestOnTheMap
 {
     
-    [[SharedStore returnSharedStore].managedObjectContext reset];
+   // [[SharedStore returnSharedStore].managedObjectContext reset];
     [self.mapView removeAnnotations:self.mapView.annotations];
     
     

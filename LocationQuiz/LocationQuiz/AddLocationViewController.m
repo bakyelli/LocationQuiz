@@ -7,7 +7,6 @@
 //
 
 #import "AddLocationViewController.h"
-#import "Location.h"
 #import "SharedStore.h"
 #import "AddFactViewController.h"
 #import <Foursquare2.h>
@@ -16,7 +15,7 @@
 #import "DrawerTableViewController.h"
 #import <UIViewController+MMDrawerController.h>
 #import "APISharedStore.h"
-
+#import "Location+Methods.h"
 
 @interface AddLocationViewController ()
 @end
@@ -25,7 +24,7 @@
 
 - (Location *)location {
     if (!_location) {
-        _location = [NSEntityDescription insertNewObjectForEntityForName:@"Location" inManagedObjectContext:[SharedStore returnSharedStore].managedObjectContext];
+        _location = [[Location alloc]initWithLatitude:@0 longitude:@0 name:@""];
     }
     return _location;
     
@@ -54,7 +53,7 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
-    [[SharedStore returnSharedStore] addLocationEntity:self.location];
+   // [[SharedStore returnSharedStore] addLocationEntity:self.location];
 }
 - (void)didReceiveMemoryWarning
 {

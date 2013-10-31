@@ -13,7 +13,10 @@
 
 - (id) initWithLatitude:(NSNumber *)latitude longitude:(NSNumber *)longitude name:(NSString *)name {
     //    self = [super init];
-      self = [NSEntityDescription insertNewObjectForEntityForName:@"Location" inManagedObjectContext:[SharedStore returnSharedStore].managedObjectContext];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Location" inManagedObjectContext:[SharedStore returnSharedStore].managedObjectContext];
+    self = (Location *)[[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+     // self = [NSEntityDescription insertNewObjectForEntityForName:@"Location" inManagedObjectContext:nil];
     
     if (self){
         self.latitude = latitude;

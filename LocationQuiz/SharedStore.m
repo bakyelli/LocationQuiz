@@ -29,6 +29,7 @@
     Location *locationToReturn = [NSEntityDescription insertNewObjectForEntityForName:@"Location" inManagedObjectContext:[self managedObjectContext]];
     
     return locationToReturn;
+    return nil;
 }
 
 - (Fact *)newFact {
