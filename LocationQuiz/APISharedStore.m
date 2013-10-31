@@ -122,8 +122,7 @@ NSString * const BASEURL = @"http://locationquiz-ios000-gryffindor.herokuapp.com
     
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         NSDictionary *newItemDict = (NSDictionary *)JSON;
-//        NSLog(@"JSON: %@", JSON);
-//        NSLog(@"%@",newItemDict);
+
         newLocation.locationID = [NSNumber numberWithInteger:[newItemDict[@"id"] integerValue]];
         NSLog(@"Location ID of the new location is: %@",newLocation.locationID);
         [[SharedStore returnSharedStore] addLocationEntity:newLocation];

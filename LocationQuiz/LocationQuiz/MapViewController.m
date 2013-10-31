@@ -83,7 +83,6 @@
     self.existinglocations = [[[SharedStore returnSharedStore].managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
 
     NSLog(@"I have %i items in my data store", [self.existinglocations count]);
-    NSLog(@"Items in my data store: %@", self.existinglocations);
     
     [self addPointsOfInterestOnTheMap];
 
@@ -95,26 +94,18 @@
     ltvc.locations = [[self.mapView annotations] mutableCopy];
   //  [ltvc.locations  sortUsingSelector:@selector(caseInsensitiveCompare:)];
     
-    NSLog(@"I have %lu annotations on the map.", (unsigned long)[[self.mapView annotations] count]);
-    
     for(int i=0; i<[ltvc.locations count]; i++)
     {
         id<MKAnnotation> annotation = ltvc.locations[i];
         
         if([annotation isKindOfClass:[MKUserLocation class]])
         {
-            NSLog(@"Listed my location!");
             [ltvc.locations removeObjectAtIndex:i];
         }
         
     }
     
     [self.navigationController pushViewController:ltvc animated:YES];
-
-//    AddFactViewController *afvc = [[AddFactViewController alloc]init];
-//    [self.navigationController pushViewController:afvc animated:YES];
-    
-    NSLog(@"List button pressed");
 }
 
 -(void)findLocation
@@ -122,6 +113,17 @@
     [self.locationManager startUpdatingLocation];
     
 }
+- (void)addLocationToMap:(Location *)loc
+{
+    CLLocationCoordinate2D coord = CLLocationCoordinate2DMake([loc.latitude doubleValue], [loc.longitude doubleValue]);
+    
+    PointOfInterestMapPoint *mapPoint = [[PointOfInterestMapPoint alloc]initWithCoordinate:coord title:loc.name];
+    
+    mapPoint.location = loc;
+    
+    [self.mapView addAnnotation:mapPoint];
+}
+
 -(void)addPointsOfInterestOnTheMap
 {
     
@@ -138,15 +140,18 @@
         for(Location *loc in apiLocations)
         {
             
-            CLLocationCoordinate2D coord = CLLocationCoordinate2DMake([loc.latitude doubleValue], [loc.longitude doubleValue]);
-            NSLog(@"location: %@, coordiate: %.4f, %.4f", loc.name, coord.latitude, coord.longitude);
+            if(![self apiLocationExistsInCoreData:self.existinglocations apiLocation:loc])
+            {
+                NSLog(@"!!!!Yay! New Location from API: %@", loc.name);
+                [[SharedStore returnSharedStore] addLocationEntity:loc];
+                //This API location is new, so we should add it to CoreData
+            }
+            else
+            {
+                //This aPI location already exists in Core Data, so we should not be inserting it.
+            }
             
-            PointOfInterestMapPoint *mapPoint = [[PointOfInterestMapPoint alloc]initWithCoordinate:coord title:loc.name];
-            
-            mapPoint.location = loc;
-            
-            [self.mapView addAnnotation:mapPoint];
-
+            [self addLocationToMap:loc];
         }
 
     }];
@@ -158,6 +163,18 @@
     }
 }
 
+-(BOOL)apiLocationExistsInCoreData:(NSArray *)coreDataLocations apiLocation:(Location *)apiLocation
+{
+
+    for(Location *loc in coreDataLocations)
+    {
+        if([loc.locationID intValue] == [apiLocation.locationID intValue])
+        {
+            return YES;
+        }
+    }
+    return NO; //not found
+}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -221,8 +238,6 @@
 -(void) startMonitoringLocationForPointsOfInterest
 {
     
-    NSLog(@"I have %i annotations on the map", [self.mapView.annotations count]);
-
     
     for(int i=0; i<[self.mapView.annotations count]; i++)
     {
@@ -247,7 +262,6 @@
     
     if([self insideRegion:(CLCircularRegion *)region theLocation:manager.location])
     {
-        NSLog(@"I am manually firing didEnterRegion for: %@", [region identifier]);
         [self locationManager:manager didEnterRegion:region];
     }
     
@@ -266,7 +280,6 @@
 }
 -(void) locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region
 {
-    NSLog(@"I entered region: %@", region.identifier);
     UILocalNotification *quizNotification = [[UILocalNotification alloc]init];
 
     quizNotification.fireDate = [NSDate date];
@@ -301,8 +314,6 @@
     
     
     
-    
-    NSLog(@"Title: %@",mapPoint.title);
     //NSLog(@"Coordinate: %@", mapPoint.coordinate);
     
 }

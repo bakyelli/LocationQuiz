@@ -31,7 +31,7 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"Lat: %@\nLong:%@\nName:%@",self.latitude,self.longitude,self.name];
+    return [NSString stringWithFormat:@"ID: %@\nLat: %@\nLong:%@\nName:%@",self.locationID, self.latitude,self.longitude,self.name];
 }
 
 @end
