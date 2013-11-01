@@ -48,54 +48,11 @@
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     
-    // Do any additional setup after loading the view.
-    
     
     [self findLocation];
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(addButtonPressed:)];
-    
     [self.navigationItem setLeftBarButtonItem:addButton];
-
-    [[APISharedStore sharedStore] getLocationsWithCompletion:^(NSArray *location) {
-        NSLog(@"done yo");
-    }];
-    
-    
-//    Location *location = [[Location alloc] initWithLatitude:@0 longitude:@0 name:@"Bryant Park"];
-//    
-//    [[APISharedStore sharedStore] createLocation:location withCompletion:^(Location *newLocation) {
-//        NSLog(@"done creating %@", newLocation);
-//
-//    }];
-//
-
-    Location *location = [SharedStore returnSharedStore];
-    
-//    Quiz *quiz = [[Quiz alloc] ini];
-//    
-//    [[APISharedStore sharedStore] createLocation:location withCompletion:^(Location *newLocation) {
-//        NSLog(@"done creating %@", newLocation);
-//        
-//    }];
-    
-    
-//    Location *location = [[Location alloc] initWithLatitude:@(40.7538) longitude:@(-73.9836) name:@"Bryant Park"];
-//
-//    
-//    [[APISharedStore sharedStore] getLocationWithID:@1 Completion:^(Location *location) {
-//        NSLog(@"deleting location", location);
-//        [[APISharedStore sharedStore] removeLocation:location];
-//    }];
-    
-//    [[APISharedStore sharedStore] createLocation:location withCompletion:^(Location *newLocation) {
-//        NSLog(@"location created %@", newLocation);
-//    }];
-
-//    [[APISharedStore sharedStore] createLocation:location withCompletion:^(Location *newLocation) {
-//    }:@3 Completion:^(Location *location) {
-//        [[APISharedStore sharedStore] removeLocation:location];
-//    }];
     
 }
 
@@ -104,7 +61,6 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
     AddLocationViewController *alvc = [storyboard instantiateViewControllerWithIdentifier:@"addLocation"];
     DrawerTableViewController *dtvc = [storyboard instantiateViewControllerWithIdentifier:@"drawerTableView"];
-//    alvc.drawerController = self.drawerController;
     dtvc.currentLocation = self.locationManager.location;
     self.drawerController = [[MMDrawerController alloc] initWithCenterViewController:alvc leftDrawerViewController:dtvc];
     
@@ -113,7 +69,6 @@
     [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
     
-    //[self.navigationController pushViewController:self.drawerController animated:YES];
     [self presentViewController:self.drawerController animated:YES completion:nil];
 }
 
@@ -123,25 +78,21 @@
 
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]initWithEntityName:@"Location"];
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]initWithKey:@"name" ascending:YES];
-    
     [fetchRequest setSortDescriptors:@[sortDescriptor]];
-    
     self.existinglocations = [[NSMutableArray alloc]init];
-    
     self.existinglocations = [[[SharedStore returnSharedStore].managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
 
     NSLog(@"I have %i items in my data store", [self.existinglocations count]);
     
     [self addPointsOfInterestOnTheMap];
 
-    
 }
 
 -(void)listBtnPressed:(id)sender
 {
-    listTableViewController *ltvc = [[listTableViewController alloc]init];
+     listTableViewController *ltvc = [[listTableViewController alloc]init];
     ltvc.locations = [[self.mapView annotations] mutableCopy];
-    
+  //  [ltvc.locations  sortUsingSelector:@selector(caseInsensitiveCompare:)];
     
     for(int i=0; i<[ltvc.locations count]; i++)
     {
@@ -149,47 +100,80 @@
         
         if([annotation isKindOfClass:[MKUserLocation class]])
         {
-            NSLog(@"Listed my location!");
             [ltvc.locations removeObjectAtIndex:i];
         }
         
     }
     
     [self.navigationController pushViewController:ltvc animated:YES];
-
-//    AddFactViewController *afvc = [[AddFactViewController alloc]init];
-//    [self.navigationController pushViewController:afvc animated:YES];
-    
-    NSLog(@"List button pressed");
 }
 
 -(void)findLocation
 {
-
     [self.locationManager startUpdatingLocation];
-
     
 }
+- (void)addLocationToMap:(Location *)loc
+{
+    CLLocationCoordinate2D coord = CLLocationCoordinate2DMake([loc.latitude doubleValue], [loc.longitude doubleValue]);
+    
+    PointOfInterestMapPoint *mapPoint = [[PointOfInterestMapPoint alloc]initWithCoordinate:coord title:loc.name];
+    
+    mapPoint.location = loc;
+    
+    [self.mapView addAnnotation:mapPoint];
+}
+
 -(void)addPointsOfInterestOnTheMap
 {
     
+   // [[SharedStore returnSharedStore].managedObjectContext reset];
+    [self.mapView removeAnnotations:self.mapView.annotations];
+    
+    
+    __block NSArray *apiLocations = [[NSArray alloc] init];
+    
+    [[APISharedStore sharedStore] getLocationsWithCompletion:^(NSArray *locations) {
+        apiLocations = locations;
+        NSLog(@"I got %lu locations from API.", (unsigned long)[apiLocations count]);
+        
+        for(Location *loc in apiLocations)
+        {
+            
+            if(![self apiLocationExistsInCoreData:self.existinglocations apiLocation:loc])
+            {
+                NSLog(@"!!!!Yay! New Location from API: %@", loc.name);
+                [[SharedStore returnSharedStore] addLocationEntity:loc];
+                //This API location is new, so we should add it to CoreData
+            }
+            else
+            {
+                //This aPI location already exists in Core Data, so we should not be inserting it.
+            }
+            
+            [self addLocationToMap:loc];
+        }
+
+    }];
+    
+    
     if([self.existinglocations count] == 0)
     {
-       [self addDummyData];
+     //  [self addDummyData];
     }
+}
 
+-(BOOL)apiLocationExistsInCoreData:(NSArray *)coreDataLocations apiLocation:(Location *)apiLocation
+{
 
-    for(Location *loc in self.existinglocations)
+    for(Location *loc in coreDataLocations)
     {
-        CLLocationCoordinate2D coord = CLLocationCoordinate2DMake([loc.latitude doubleValue], [loc.longitude doubleValue]);
-        NSLog(@"location: %@, coordiate: %.4f, %.4f", loc.name, coord.latitude, coord.longitude);
-        
-        PointOfInterestMapPoint *mapPoint = [[PointOfInterestMapPoint alloc]initWithCoordinate:coord title:loc.name];
-        
-        mapPoint.location = loc;
-        
-        [self.mapView addAnnotation:mapPoint];
+        if([loc.locationID intValue] == [apiLocation.locationID intValue])
+        {
+            return YES;
+        }
     }
+    return NO; //not found
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -254,8 +238,6 @@
 -(void) startMonitoringLocationForPointsOfInterest
 {
     
-    NSLog(@"I have %i annotations on the map", [self.mapView.annotations count]);
-
     
     for(int i=0; i<[self.mapView.annotations count]; i++)
     {
@@ -280,7 +262,6 @@
     
     if([self insideRegion:(CLCircularRegion *)region theLocation:manager.location])
     {
-        NSLog(@"I am manually firing didEnterRegion for: %@", [region identifier]);
         [self locationManager:manager didEnterRegion:region];
     }
     
@@ -299,7 +280,6 @@
 }
 -(void) locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region
 {
-    NSLog(@"I entered region: %@", region.identifier);
     UILocalNotification *quizNotification = [[UILocalNotification alloc]init];
 
     quizNotification.fireDate = [NSDate date];
@@ -334,8 +314,6 @@
     
     
     
-    
-    NSLog(@"Title: %@",mapPoint.title);
     //NSLog(@"Coordinate: %@", mapPoint.coordinate);
     
 }
