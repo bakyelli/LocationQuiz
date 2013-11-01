@@ -17,7 +17,7 @@
     
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Location" inManagedObjectContext:[SharedStore returnSharedStore].managedObjectContext];
 
-    self = (Location *)[[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:[SharedStore returnSharedStore].managedObjectContext];
+    self = (Location *)[[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
      // self = [NSEntityDescription insertNewObjectForEntityForName:@"Location" inManagedObjectContext:nil];
     
     
@@ -37,5 +37,8 @@
 - (NSString *)description {
     return [NSString stringWithFormat:@"ID: %@\nLat: %@\nLong:%@\nName:%@",self.locationID, self.latitude,self.longitude,self.name];
 }
+
+
+
 
 @end

@@ -79,6 +79,17 @@ NSString * const BASEURL = @"http://locationquiz-ios000-gryffindor.herokuapp.com
     [operation start];
 }
 
+- (Location *)ParseLocationFromDictionary:(NSDictionary *)locationDictionary {
+    //NSLog(@"loc: %@", locationDictionary);
+    NSNumber *latitude = [NSNumber numberWithDouble:[locationDictionary[@"latitude"] doubleValue]];
+    
+    NSNumber *longitude = [NSNumber numberWithDouble:[locationDictionary[@"longitude"] doubleValue]];
+    
+    Location *location = [[Location alloc] initWithLatitude:latitude longitude:longitude name:locationDictionary[@"name"]];
+    location.locationID = [NSNumber numberWithInteger:[locationDictionary[@"id"] integerValue]];
+    return location;
+}
+
 - (void)getLocationsWithCompletion:(void (^)(NSArray *locations))block {
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@locations.json",BASEURL]];
     
@@ -89,13 +100,8 @@ NSString * const BASEURL = @"http://locationquiz-ios000-gryffindor.herokuapp.com
         NSMutableArray *locations = [[NSMutableArray alloc]init];
         //NSLog(@"json: %@, %d", locationsDictionary, [locationsDictionary count]);
         for (NSDictionary *locationDictionary in locationsDictionary) {
-            //NSLog(@"loc: %@", locationDictionary);
-            NSNumber *latitude = [NSNumber numberWithDouble:[locationDictionary[@"latitude"] doubleValue]];
-        
-            NSNumber *longitude = [NSNumber numberWithDouble:[locationDictionary[@"longitude"] doubleValue]];
-        
-            Location *location = [[Location alloc] initWithLatitude:latitude longitude:longitude name:locationDictionary[@"name"]];
-                location.locationID = [NSNumber numberWithInteger:[locationDictionary[@"id"] integerValue]];
+            Location *location;
+            location = [self ParseLocationFromDictionary:locationDictionary];
 
             [locations addObject:location];
         }
@@ -108,6 +114,69 @@ NSString * const BASEURL = @"http://locationquiz-ios000-gryffindor.herokuapp.com
     
     [operation start];
 }
+
+- (void)getQuizzezWithCompletion:(void (^)(NSArray *quizzes))block {
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@quizzes.json",BASEURL]];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSLog(@"I entered getQuizzesWithCompletion");
+
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        
+        NSLog(@"I started getQuizzesWithCompletion BLOCK");
+
+        
+        NSDictionary *quizzesDictionary = (NSDictionary *)JSON;
+        NSMutableArray *quizzes = [[NSMutableArray alloc]init];
+        for (NSDictionary *quizDictionary in quizzesDictionary) {
+
+            
+            NSDictionary *locationDictionary = quizDictionary[@"location"];
+            Location *associatedLocation = [self ParseLocationFromDictionary:locationDictionary];
+            
+            NSLog(@"I parsed location on getQuizzesWithCompletion BLOCK");
+
+            
+            NSNumber *quiz_ID = [NSNumber numberWithDouble:[quizDictionary[@"id"] doubleValue]];
+            NSString *quizName = quizDictionary[@"name"];
+            
+            Quiz *quiz = [[Quiz alloc]initWithQuizID:quiz_ID name:quizName];
+            quiz.location = associatedLocation;
+            
+            [quizzes addObject:quiz];
+        }
+        block(quizzes);
+        NSLog(@"I finished getQuizzesWithCompletion BLOCK");
+
+        
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        NSLog(@"%@",error);
+    }];
+    
+    [operation start];
+    NSLog(@"I started operation");
+
+}
+
+-(Quiz *)returnQuizForLocation:(Location *)location
+{
+    
+    NSLog(@"I entered returnQuizForLocation");
+    [self getQuizzezWithCompletion:^(NSArray *quizzes) {
+        NSLog(@"I entered returnQuizForLocation BLOCK");
+
+    }];
+    
+//    for(Quiz *quiz in quizzesReturned)
+//    {
+//        if(quiz.location.locationID == location.locationID)
+//        {
+//            return quiz;
+//        }
+//    }
+    return nil;
+}
+
 
 - (void)createLocation:(Location *)newLocation withCompletion: (void (^)(Location* newLocation))block {
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@locations.json",BASEURL]];
@@ -135,9 +204,11 @@ NSString * const BASEURL = @"http://locationquiz-ios000-gryffindor.herokuapp.com
         newLocation.locationID = [NSNumber numberWithInteger:[newItemDict[@"id"] integerValue]];
         NSLog(@"Location ID of the new location is: %@",newLocation.locationID);
         
+        
         [[SharedStore returnSharedStore] addLocationEntity:newLocation];
-
         Quiz *quiz = [[Quiz alloc] initWithLocation:newLocation];
+        
+        
         [[APISharedStore sharedStore] createQuiz:quiz withCompletion:^(Quiz *quiz) {
             NSLog(@"created quiz: %@", quiz);
         }];

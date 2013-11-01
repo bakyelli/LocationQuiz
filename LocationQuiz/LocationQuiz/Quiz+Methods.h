@@ -11,5 +11,6 @@
 @interface Quiz (Methods)
 
 - (id) initWithLocation:(Location *)location;
+- (id) initWithQuizID:(NSNumber *)quizID name:(NSString *)quizName;
 
 @end

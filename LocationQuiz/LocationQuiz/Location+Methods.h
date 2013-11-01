@@ -13,4 +13,6 @@
 - (id)initWithLatitude:(NSNumber *)latitude
              longitude:(NSNumber *)longitude
                   name:(NSString *)name;
+
+
 @end

@@ -147,8 +147,12 @@
             if(![self apiLocationExistsInCoreData:self.existinglocations apiLocation:loc])
             {
                 NSLog(@"!!!!Yay! New Location from API: %@", loc.name);
+                Quiz *quizForLocation = [[APISharedStore sharedStore] returnQuizForLocation:loc];
+            
                 [[SharedStore returnSharedStore] addLocationEntity:loc];
-                
+                [[SharedStore returnSharedStore] addQuizEntity:quizForLocation];
+
+            
                 //This API location is new, so we should add it to CoreData
             }
             else
@@ -168,6 +172,7 @@
      //  [self addDummyData];
     }
 }
+
 
 -(BOOL)apiLocationExistsInCoreData:(NSArray *)coreDataLocations apiLocation:(Location *)apiLocation
 {

@@ -26,6 +26,18 @@
     }
     return self;
 }
+- (id) initWithQuizID:(NSNumber *)quizID name:(NSString *)quizName {
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Quiz" inManagedObjectContext:[SharedStore returnSharedStore].managedObjectContext];
+    self = (Quiz *)[[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:[SharedStore returnSharedStore].managedObjectContext];
+    
+    if (self){
+        self.quizID = quizID;
+        self.name = quizName;
+    }
+    return self;
+}
+
+
 
 - (id) init {
     return [self initWithLocation:nil];
@@ -34,5 +46,6 @@
 - (NSString *)description {
     return [NSString stringWithFormat:@"Name: %@",self.name];
 }
+
 
 @end

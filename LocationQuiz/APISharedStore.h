@@ -27,6 +27,9 @@ extern NSString * const BASEURL;
 
 - (void)removeLocation:(Location *)location;
 
+- (void)getQuizzezWithCompletion:(void (^)(NSArray *quizzes))block;
+-(Quiz *)returnQuizForLocation:(Location *)location;
+
 - (void)createQuiz:(Quiz *)quiz withCompletion: (void (^)(Quiz *quiz))block;
 
 - (void)createCard:(Card *)card withCompletion: (void (^)(Card *card))block;
