@@ -90,6 +90,21 @@ NSString * const BASEURL = @"http://locationquiz-ios000-gryffindor.herokuapp.com
     return location;
 }
 
+- (NSSet *)ParseCardsFromArrayOfDictionaries:(NSArray *)cardsArray forQuiz:(Quiz *)theQuiz
+{
+    NSMutableSet *cards = [[NSMutableSet alloc]init];
+    
+    for(NSDictionary *cardDictionary in cardsArray)
+    {
+        Card *card = [[Card alloc]initWithTitle:cardDictionary[@"title"] andOrder:cardDictionary[@"order"] onQuiz:theQuiz withAttachment:cardDictionary[@"attachment"][@"url"]];
+        
+        [cards addObject:card];
+    }
+
+    return (NSSet *)cards;
+}
+
+
 - (void)getLocationsWithCompletion:(void (^)(NSArray *locations))block {
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@locations.json",BASEURL]];
     
@@ -135,7 +150,6 @@ NSString * const BASEURL = @"http://locationquiz-ios000-gryffindor.herokuapp.com
             Location *associatedLocation = [self ParseLocationFromDictionary:locationDictionary];
             
             NSLog(@"I parsed location on getQuizzesWithCompletion BLOCK");
-
             
             NSNumber *quiz_ID = [NSNumber numberWithDouble:[quizDictionary[@"id"] doubleValue]];
             NSString *quizName = quizDictionary[@"name"];
@@ -143,6 +157,9 @@ NSString * const BASEURL = @"http://locationquiz-ios000-gryffindor.herokuapp.com
             Quiz *quiz = [[Quiz alloc]initWithQuizID:quiz_ID name:quizName];
             quiz.location = associatedLocation;
             
+            NSArray *cardsArray = quizDictionary[@"cards"];
+            [quiz addCards:[self ParseCardsFromArrayOfDictionaries:cardsArray forQuiz:quiz]];
+
             [quizzes addObject:quiz];
         }
         block(quizzes);

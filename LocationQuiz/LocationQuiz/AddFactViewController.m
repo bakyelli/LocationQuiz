@@ -11,6 +11,7 @@
 #import "Quiz+Methods.h"
 #import "Card+Methods.h"
 #import "ShowFactsViewController.h"
+#import "APISharedStore.h"
 @interface AddFactViewController ()
 {
     AVAudioRecorder *recorder;
@@ -164,10 +165,15 @@
         
         card.title = self.titleTextBox.text;
         card.attachment = [self.outputFileURL absoluteString];
+        card.quiz = self.quiz;
         
         [self.quiz addCardsObject:card];
-        
         [[SharedStore returnSharedStore] saveContext];
+        
+        [[APISharedStore sharedStore]createCard:card withCompletion:^(Card *card) {
+            NSLog(@"Card added");
+        }];
+        
         
         [self returnToShowFacts];
     }

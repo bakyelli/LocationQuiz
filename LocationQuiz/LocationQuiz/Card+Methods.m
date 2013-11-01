@@ -18,6 +18,12 @@
         self.difficulty = @0;
         self.order = order;
         self.quiz = quiz;
+        
+        if(attachment == (id)[NSNull null])
+        {
+            attachment = @"";
+        }
+    
         self.attachment = attachment;
     }
     return self;
