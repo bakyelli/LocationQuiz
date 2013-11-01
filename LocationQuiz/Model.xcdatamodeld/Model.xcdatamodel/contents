@@ -21,7 +21,7 @@
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="facts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Fact" inverseName="location" inverseEntity="Fact" syncable="YES"/>
-        <relationship name="quizzes" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Quiz" inverseName="location" inverseEntity="Quiz" syncable="YES"/>
+        <relationship name="quizzes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Quiz" inverseName="location" inverseEntity="Quiz" syncable="YES"/>
     </entity>
     <entity name="Quiz" representedClassName="Quiz" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -30,9 +30,9 @@
         <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="quizzes" inverseEntity="Location" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Card" positionX="646" positionY="-34" width="128" height="133"/>
         <element name="Fact" positionX="369" positionY="-216" width="128" height="120"/>
         <element name="Location" positionX="225" positionY="-7" width="128" height="133"/>
-        <element name="Quiz" positionX="421" positionY="27" width="128" height="88"/>
-        <element name="Card" positionX="646" positionY="-34" width="128" height="133"/>
+        <element name="Quiz" positionX="421" positionY="27" width="128" height="118"/>
     </elements>
 </model>

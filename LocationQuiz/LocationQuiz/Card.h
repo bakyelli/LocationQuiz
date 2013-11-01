@@ -2,7 +2,7 @@
 //  Card.h
 //  LocationQuiz
 //
-//  Created by Chemin Lin on 10/31/13.
+//  Created by Chemin Lin on 11/1/13.
 //  Copyright (c) 2013 Jay Abdallah. All rights reserved.
 //
 
@@ -13,11 +13,11 @@
 
 @interface Card : NSManagedObject
 
+@property (nonatomic, retain) NSString * attachment;
 @property (nonatomic, retain) NSNumber * cardID;
 @property (nonatomic, retain) NSNumber * difficulty;
-@property (nonatomic, retain) NSString * title;
-@property (nonatomic, retain) NSString * attachment;
 @property (nonatomic, retain) NSNumber * order;
+@property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) Quiz *quiz;
 
 @end

@@ -155,9 +155,8 @@
             {
                 //This aPI location already exists in Core Data, so we should not be inserting it.
             }
+        
             
-            Quiz *quiz = [[Quiz alloc] initWithLocation:loc];
-            [APISharedStore sharedStore] createQuiz:quiz withCompletion:<#^(Quiz *quiz)block#>
             [self addLocationToMap:loc];
         }
 

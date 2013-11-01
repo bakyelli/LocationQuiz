@@ -8,6 +8,8 @@
 
 #import "SharedStore.h"
 #import "Location.h"
+#import "Quiz+Methods.h"
+#import "Card+Methods.h"
 
 @implementation SharedStore
 
@@ -50,6 +52,15 @@
     [self.managedObjectContext insertObject:loc];
     [self saveContext];
 }
+
+-(void) addQuizEntity:(Quiz *)quiz
+{
+    
+    [self.managedObjectContext insertObject:quiz];
+    [self saveContext];
+    
+}
+
 -(void)saveContext
 {
     [self.managedObjectContext save:nil];

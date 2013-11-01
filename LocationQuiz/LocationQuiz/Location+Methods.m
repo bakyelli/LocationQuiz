@@ -8,6 +8,7 @@
 
 #import "Location+Methods.h"
 #import "SharedStore.h"
+#import "Quiz+Methods.h"
 
 @implementation Location (Methods)
 
@@ -15,8 +16,11 @@
     //    self = [super init];
     
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Location" inManagedObjectContext:[SharedStore returnSharedStore].managedObjectContext];
-    self = (Location *)[[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+
+    self = (Location *)[[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:[SharedStore returnSharedStore].managedObjectContext];
      // self = [NSEntityDescription insertNewObjectForEntityForName:@"Location" inManagedObjectContext:nil];
+    
+    
     
     if (self){
         self.latitude = latitude;

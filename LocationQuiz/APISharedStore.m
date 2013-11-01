@@ -7,6 +7,7 @@
 //
 
 #import "APISharedStore.h"
+#import "SharedStore.h"
 #import <AFNetworking.h>
 #import "Location+Methods.h"
 #import "Quiz+Methods.h"
@@ -109,21 +110,46 @@ NSString * const BASEURL = @"http://locationquiz-ios000-gryffindor.herokuapp.com
 }
 
 - (void)createLocation:(Location *)newLocation withCompletion: (void (^)(Location* newLocation))block {
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@locations",BASEURL]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@locations.json",BASEURL]];
     
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
     
-//    NSDictionary *locationDictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"location[latitude]",latitude,@"location[longitude]", longitude,@"location[name]",name, nil];
+    NSString *name = newLocation.name;
     
-    NSDictionary *dict = @{@"location[name]":newLocation.name, @"location[longitude]":newLocation.longitude, @"location[latitude]":newLocation.latitude};
-    
+    NSDictionary *dict = @{@"location[name]":name, @"location[longitude]":newLocation.longitude, @"location[latitude]":newLocation.latitude};
     
     NSURLRequest *request = [httpClient requestWithMethod:@"POST" path:nil parameters:dict];
     
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    //    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    //
+    //    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    //        NSLog(@"%@",responseObject);
+    //        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    //        NSLog(@"Object not created!");
+    //
+    //    }];
+    
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        NSDictionary *newItemDict = (NSDictionary *)JSON;
+        
+        newLocation.locationID = [NSNumber numberWithInteger:[newItemDict[@"id"] integerValue]];
+        NSLog(@"Location ID of the new location is: %@",newLocation.locationID);
+        
+        [[SharedStore returnSharedStore] addLocationEntity:newLocation];
 
+        Quiz *quiz = [[Quiz alloc] initWithLocation:newLocation];
+        [[APISharedStore sharedStore] createQuiz:quiz withCompletion:^(Quiz *quiz) {
+            NSLog(@"created quiz: %@", quiz);
+        }];
+        
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        NSLog(@"Failed!");
+        
+    }];
+    
     [operation start];
 }
+
 
 - (void)createQuiz:(Quiz *)quiz withCompletion: (void (^)(Quiz *quiz))block {
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@quizzes",BASEURL]];
@@ -135,8 +161,11 @@ NSString * const BASEURL = @"http://locationquiz-ios000-gryffindor.herokuapp.com
     NSURLRequest *request = [httpClient requestWithMethod:@"POST" path:nil parameters:dict];
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    
+
     [operation start];
+    
+    [[SharedStore returnSharedStore] addQuizEntity:quiz];
+
 }
 
 

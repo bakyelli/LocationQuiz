@@ -24,6 +24,8 @@
 - (Fact *)newFact;
 -(void)saveContext;
 
+-(void) addQuizEntity:(Quiz *)quiz;
+
 
 
 @end

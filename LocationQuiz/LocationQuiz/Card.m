@@ -2,7 +2,7 @@
 //  Card.m
 //  LocationQuiz
 //
-//  Created by Chemin Lin on 10/31/13.
+//  Created by Chemin Lin on 11/1/13.
 //  Copyright (c) 2013 Jay Abdallah. All rights reserved.
 //
 
@@ -12,11 +12,11 @@
 
 @implementation Card
 
+@dynamic attachment;
 @dynamic cardID;
 @dynamic difficulty;
-@dynamic title;
-@dynamic attachment;
 @dynamic order;
+@dynamic title;
 @dynamic quiz;
 
 @end

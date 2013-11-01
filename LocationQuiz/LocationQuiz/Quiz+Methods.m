@@ -13,7 +13,13 @@
 @implementation Quiz (Methods)
 - (id) initWithLocation:(Location *)location {
     //    self = [super init];
-    self = [NSEntityDescription insertNewObjectForEntityForName:@"Quiz" inManagedObjectContext:[SharedStore returnSharedStore].managedObjectContext];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Quiz" inManagedObjectContext:[SharedStore returnSharedStore].managedObjectContext];
+    self = (Quiz *)[[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:[SharedStore returnSharedStore].managedObjectContext];
+    
+    // self = [NSEntityDescription insertNewObjectForEntityForName:@"Location" inManagedObjectContext:nil];
+    
+    //self = [NSEntityDescription insertNewObjectForEntityForName:@"Quiz" inManagedObjectContext:[SharedStore returnSharedStore].managedObjectContext];
     if (self){
         self.name = location.name;
         self.location = location;
