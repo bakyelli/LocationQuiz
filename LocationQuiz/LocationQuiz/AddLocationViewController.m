@@ -16,6 +16,7 @@
 #import <UIViewController+MMDrawerController.h>
 #import "APISharedStore.h"
 #import "Location+Methods.h"
+#import "Quiz+Methods.m"
 
 @interface AddLocationViewController ()
 @end
@@ -63,14 +64,9 @@
 
 - (IBAction)startRecording:(id)sender {
 
-    AddFactViewController *adfc = [[AddFactViewController alloc]init];
     
-    if (self.saveLocation) {
-        adfc.location = self.location;
-        [self presentViewController:adfc animated:YES completion:nil];
-    }
-
-}
+        [self saveQuiz];
+   }
 - (void) selectVenue:(FSVenue *)selectedVenue;
 {
     [self.latitude setText:[NSString stringWithFormat:@"%@",selectedVenue.latitude]];
@@ -100,7 +96,7 @@
     self.location.name = self.name.text;
 }
 
-- (BOOL)saveLocation {
+- (void)saveQuiz {
     self.location.name = self.name.text;
     self.location.longitude = @([self.longitude.text doubleValue]);
     self.location.latitude = @([self.latitude.text doubleValue]);
@@ -109,18 +105,22 @@
         (self.location.latitude) &&
         (![self.location.name isEqualToString:@""])) {
       
-        [[APISharedStore sharedStore] createLocation:self.location withCompletion:^(Location *newLocation) {
-            NSLog(@"Added location to API");
+        [[APISharedStore sharedStore]createLocation:self.location withCompletion:^(Location *newLocation) {
+            Quiz *newQuiz = [[Quiz alloc]initWithLocation:self.location];
+            [[APISharedStore sharedStore] createQuiz:newQuiz withCompletion:^(Quiz *quiz) {
+                NSLog(@"Added quiz.");
+    
+            }];
+
         }];
+
+        NSLog(@"Saved quiz! %@", self.location);
         
+        AddFactViewController *adfc = [[AddFactViewController alloc]init];
         
-        NSLog(@"Saved location! %@", self.location);
-        
-        return true;
-        
+        adfc.location = self.location;
+        [self presentViewController:adfc animated:YES completion:nil];
     }
-    NSLog(@"did not save!");
-    return false;
 
 }
 

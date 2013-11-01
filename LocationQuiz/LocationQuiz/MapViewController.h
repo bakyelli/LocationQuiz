@@ -16,5 +16,6 @@
 -(void)findLocation;
 -(void) startMonitoringLocationForPointsOfInterest;
 @property (strong,nonatomic) NSMutableArray *existinglocations;
+@property (strong,nonatomic) NSMutableArray *existingQuizzes;
 
 @end

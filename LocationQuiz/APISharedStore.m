@@ -158,24 +158,7 @@ NSString * const BASEURL = @"http://locationquiz-ios000-gryffindor.herokuapp.com
 
 }
 
--(Quiz *)returnQuizForLocation:(Location *)location
-{
-    
-    NSLog(@"I entered returnQuizForLocation");
-    [self getQuizzezWithCompletion:^(NSArray *quizzes) {
-        NSLog(@"I entered returnQuizForLocation BLOCK");
 
-    }];
-    
-//    for(Quiz *quiz in quizzesReturned)
-//    {
-//        if(quiz.location.locationID == location.locationID)
-//        {
-//            return quiz;
-//        }
-//    }
-    return nil;
-}
 
 
 - (void)createLocation:(Location *)newLocation withCompletion: (void (^)(Location* newLocation))block {
@@ -203,15 +186,9 @@ NSString * const BASEURL = @"http://locationquiz-ios000-gryffindor.herokuapp.com
         
         newLocation.locationID = [NSNumber numberWithInteger:[newItemDict[@"id"] integerValue]];
         NSLog(@"Location ID of the new location is: %@",newLocation.locationID);
-        
-        
+    
         [[SharedStore returnSharedStore] addLocationEntity:newLocation];
-        Quiz *quiz = [[Quiz alloc] initWithLocation:newLocation];
-        
-        
-        [[APISharedStore sharedStore] createQuiz:quiz withCompletion:^(Quiz *quiz) {
-            NSLog(@"created quiz: %@", quiz);
-        }];
+        block(newLocation);
         
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         NSLog(@"Failed!");
@@ -236,7 +213,6 @@ NSString * const BASEURL = @"http://locationquiz-ios000-gryffindor.herokuapp.com
     [operation start];
     
     [[SharedStore returnSharedStore] addQuizEntity:quiz];
-
 }
 
 

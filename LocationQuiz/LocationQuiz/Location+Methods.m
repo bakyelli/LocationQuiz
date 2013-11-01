@@ -17,7 +17,7 @@
     
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Location" inManagedObjectContext:[SharedStore returnSharedStore].managedObjectContext];
 
-    self = (Location *)[[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+    self = (Location *)[[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:[SharedStore returnSharedStore].managedObjectContext];
      // self = [NSEntityDescription insertNewObjectForEntityForName:@"Location" inManagedObjectContext:nil];
     
     

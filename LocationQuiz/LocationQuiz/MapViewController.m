@@ -80,13 +80,21 @@
 {
     [super viewWillAppear:animated];
 
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]initWithEntityName:@"Location"];
+//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]initWithEntityName:@"Location"];
+//    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]initWithKey:@"name" ascending:YES];
+//    [fetchRequest setSortDescriptors:@[sortDescriptor]];
+//    self.existinglocations = [[NSMutableArray alloc]init];
+//    self.existinglocations = [[[SharedStore returnSharedStore].managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+//    
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]initWithEntityName:@"Quiz"];
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]initWithKey:@"name" ascending:YES];
     [fetchRequest setSortDescriptors:@[sortDescriptor]];
-    self.existinglocations = [[NSMutableArray alloc]init];
-    self.existinglocations = [[[SharedStore returnSharedStore].managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
-
-    NSLog(@"I have %i items in my data store", [self.existinglocations count]);
+    self.existingQuizzes = [[NSMutableArray alloc]init];
+    self.existingQuizzes = [[[SharedStore returnSharedStore].managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+    
+    
+    NSLog(@"I have %i quizzes in my data store", [self.existingQuizzes count]);
     
     [self addPointsOfInterestOnTheMap];
 
@@ -134,38 +142,36 @@
    // [[SharedStore returnSharedStore].managedObjectContext reset];
     [self.mapView removeAnnotations:self.mapView.annotations];
     
+//    
+//    __block NSArray *apiLocations = [[NSArray alloc] init];
+//    
+//    [[APISharedStore sharedStore] getLocationsWithCompletion:^(NSArray *locations) {
+//        apiLocations = locations;
+//    
     
-    __block NSArray *apiLocations = [[NSArray alloc] init];
-    
-    [[APISharedStore sharedStore] getLocationsWithCompletion:^(NSArray *locations) {
-        apiLocations = locations;
-        NSLog(@"I got %lu locations from API.", (unsigned long)[apiLocations count]);
+        __block NSArray *apiQuizzes = [[NSArray alloc]init];
         
-        for(Location *loc in apiLocations)
-        {
+        [[APISharedStore sharedStore] getQuizzezWithCompletion:^(NSArray *quizzes) {
+            apiQuizzes = quizzes;
             
-            if(![self apiLocationExistsInCoreData:self.existinglocations apiLocation:loc])
+            NSLog(@"I got %lu quizzes from API.", (unsigned long)[apiQuizzes count]);
+            
+            for(Quiz *quiz in apiQuizzes)
             {
-                NSLog(@"!!!!Yay! New Location from API: %@", loc.name);
-                Quiz *quizForLocation = [[APISharedStore sharedStore] returnQuizForLocation:loc];
-            
-                [[SharedStore returnSharedStore] addLocationEntity:loc];
-                [[SharedStore returnSharedStore] addQuizEntity:quizForLocation];
-
-            
-                //This API location is new, so we should add it to CoreData
-            }
-            else
-            {
-                //This aPI location already exists in Core Data, so we should not be inserting it.
-            }
-        
-            
-            [self addLocationToMap:loc];
-        }
-
-    }];
+                if(![self apiQuizExistsInCoreData:self.existingQuizzes apiQuiz:quiz])
+                {
+                    NSLog(@"!!!!Yay! New Quiz from API: %@", quiz.name);
+                    [[SharedStore returnSharedStore] saveContext];
+                }
+                else
+                {
+                    //This aPI location already exists in Core Data, so we should not be inserting it.
+                }
+                
     
+                [self addLocationToMap:quiz.location];
+            }
+        }];
     
     if([self.existinglocations count] == 0)
     {
@@ -173,7 +179,18 @@
     }
 }
 
-
+-(BOOL)apiQuizExistsInCoreData:(NSArray *)coreDataQuizzes apiQuiz:(Quiz *)apiQuiz
+{
+    
+    for(Quiz *quiz in coreDataQuizzes)
+    {
+        if([quiz.quizID intValue] == [apiQuiz.quizID intValue])
+        {
+            return YES;
+        }
+    }
+    return NO; //not found
+}
 -(BOOL)apiLocationExistsInCoreData:(NSArray *)coreDataLocations apiLocation:(Location *)apiLocation
 {
 
