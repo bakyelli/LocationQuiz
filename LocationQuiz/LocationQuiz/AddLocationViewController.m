@@ -16,18 +16,18 @@
 #import <UIViewController+MMDrawerController.h>
 #import "APISharedStore.h"
 #import "Location+Methods.h"
-#import "Quiz+Methods.m"
 
 @interface AddLocationViewController ()
 @end
 
 @implementation AddLocationViewController
 
-- (Location *)location {
-    if (!_location) {
-        _location = [[Location alloc]initWithLatitude:@0 longitude:@0 name:@""];
+- (Quiz *)quiz {
+    if (!_quiz) {
+        Location *location = [[Location alloc]initWithLatitude:@0 longitude:@0 name:@""];
+        _quiz = [[Quiz alloc] initWithLocation:location];
     }
-    return _location;
+    return _quiz;
     
 }
 
@@ -85,28 +85,28 @@
 
 
 - (IBAction)longitude:(id)sender {
-    self.location.longitude = @([self.longitude.text doubleValue]);
+    self.quiz.location.longitude = @([self.longitude.text doubleValue]);
 }
 
 - (IBAction)latitude:(id)sender {
-    self.location.latitude = @([self.latitude.text doubleValue]);
+    self.quiz.location.latitude = @([self.latitude.text doubleValue]);
 }
 
 - (IBAction)name:(id)sender {
-    self.location.name = self.name.text;
+    self.quiz.location.name = self.name.text;
 }
 
 - (void)saveQuiz {
-    self.location.name = self.name.text;
-    self.location.longitude = @([self.longitude.text doubleValue]);
-    self.location.latitude = @([self.latitude.text doubleValue]);
+    self.quiz.location.name = self.name.text;
+    self.quiz.location.longitude = @([self.longitude.text doubleValue]);
+    self.quiz.location.latitude = @([self.latitude.text doubleValue]);
 
-    if ((self.location.longitude) &&
-        (self.location.latitude) &&
-        (![self.location.name isEqualToString:@""])) {
+    if ((self.quiz.location.longitude) &&
+        (self.quiz.location.latitude) &&
+        (![self.quiz.location.name isEqualToString:@""])) {
       
-        [[APISharedStore sharedStore]createLocation:self.location withCompletion:^(Location *newLocation) {
-            Quiz *newQuiz = [[Quiz alloc]initWithLocation:self.location];
+        [[APISharedStore sharedStore]createLocation:self.quiz.location withCompletion:^(Location *newLocation) {
+            Quiz *newQuiz = [[Quiz alloc]initWithLocation:self.quiz.location];
             [[APISharedStore sharedStore] createQuiz:newQuiz withCompletion:^(Quiz *quiz) {
                 NSLog(@"Added quiz.");
     
@@ -114,11 +114,11 @@
 
         }];
 
-        NSLog(@"Saved quiz! %@", self.location);
+        NSLog(@"Saved quiz! %@", self.quiz.location);
         
         AddFactViewController *adfc = [[AddFactViewController alloc]init];
         
-        adfc.location = self.location;
+        adfc.quiz = self.quiz;
         [self presentViewController:adfc animated:YES completion:nil];
     }
 

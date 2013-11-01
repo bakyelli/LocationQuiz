@@ -13,9 +13,8 @@
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
--(void)findLocation;
--(void) startMonitoringLocationForPointsOfInterest;
-@property (strong,nonatomic) NSMutableArray *existinglocations;
+- (void)findCurrentLocation;
+- (void)startMonitoringLocationForPointsOfInterest;
 @property (strong,nonatomic) NSMutableArray *existingQuizzes;
 
 @end

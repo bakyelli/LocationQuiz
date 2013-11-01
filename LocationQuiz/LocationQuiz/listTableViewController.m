@@ -30,7 +30,7 @@
 {
     [super viewDidLoad];
     
-    NSLog(@"I have %i landmarks.", [self.locations count]);
+    NSLog(@"I have %i landmarks.", [self.quizzes count]);
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -56,7 +56,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.locations count];
+    return [self.quizzes count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -67,7 +67,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    PointOfInterestMapPoint *point = (PointOfInterestMapPoint *)[self.locations objectAtIndex:indexPath.row];
+    PointOfInterestMapPoint *point = (PointOfInterestMapPoint *)[self.quizzes objectAtIndex:indexPath.row];
     
     cell.textLabel.text = point.title;
     cell.detailTextLabel.text = point.interestingFacts;
@@ -122,11 +122,11 @@
     // Navigation logic may go here, for example:
     // Create the next view controller.
     
-    PointOfInterestMapPoint *point = (PointOfInterestMapPoint *)[self.locations objectAtIndex:indexPath.row];
+    PointOfInterestMapPoint *point = (PointOfInterestMapPoint *)[self.quizzes objectAtIndex:indexPath.row];
     ShowFactsViewController *sfvc = [[ShowFactsViewController alloc] init];
 
     // Pass the selected object to the new view controller.
-    sfvc.location = point.location;
+    sfvc.quiz = point.quiz;
 
     // Push the view controller.
     [self.navigationController pushViewController:sfvc animated:YES];

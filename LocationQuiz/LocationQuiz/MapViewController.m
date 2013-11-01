@@ -18,7 +18,6 @@
 #import <MMDrawerController.h>
 #import "DrawerTableViewController.h"
 #import "APISharedStore.h"
-//#import "LocationEntity.h"
 #import "Quiz+Methods.h"
 #import "Card+Methods.h"
 
@@ -52,7 +51,7 @@
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     
     
-    [self findLocation];
+    [self findCurrentLocation];
 
     
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(addButtonPressed:)];
@@ -103,16 +102,16 @@
 -(void)listBtnPressed:(id)sender
 {
      listTableViewController *ltvc = [[listTableViewController alloc]init];
-    ltvc.locations = [[self.mapView annotations] mutableCopy];
+    ltvc.quizzes = [[self.mapView annotations] mutableCopy];
   //  [ltvc.locations  sortUsingSelector:@selector(caseInsensitiveCompare:)];
     
-    for(int i=0; i<[ltvc.locations count]; i++)
+    for(int i=0; i<[ltvc.quizzes count]; i++)
     {
-        id<MKAnnotation> annotation = ltvc.locations[i];
+        id<MKAnnotation> annotation = ltvc.quizzes[i];
         
         if([annotation isKindOfClass:[MKUserLocation class]])
         {
-            [ltvc.locations removeObjectAtIndex:i];
+            [ltvc.quizzes removeObjectAtIndex:i];
         }
         
     }
@@ -120,18 +119,18 @@
     [self.navigationController pushViewController:ltvc animated:YES];
 }
 
--(void)findLocation
+-(void)findCurrentLocation
 {
     [self.locationManager startUpdatingLocation];
     
 }
-- (void)addLocationToMap:(Location *)loc
+- (void)addQuizToMap:(Quiz *)quiz
 {
-    CLLocationCoordinate2D coord = CLLocationCoordinate2DMake([loc.latitude doubleValue], [loc.longitude doubleValue]);
+    CLLocationCoordinate2D coord = CLLocationCoordinate2DMake([quiz.location.latitude doubleValue], [quiz.location.longitude doubleValue]);
     
-    PointOfInterestMapPoint *mapPoint = [[PointOfInterestMapPoint alloc]initWithCoordinate:coord title:loc.name];
+    PointOfInterestMapPoint *mapPoint = [[PointOfInterestMapPoint alloc]initWithCoordinate:coord title:quiz.location.name];
     
-    mapPoint.location = loc;
+    mapPoint.quiz = quiz;
     
     [self.mapView addAnnotation:mapPoint];
 }
@@ -169,11 +168,11 @@
                 }
                 
     
-                [self addLocationToMap:quiz.location];
+                [self addQuizToMap:quiz];
             }
         }];
     
-    if([self.existinglocations count] == 0)
+    if([self.existingQuizzes count] == 0)
     {
      //  [self addDummyData];
     }
@@ -209,10 +208,10 @@
     if([segue.identifier  isEqual: @"AddLocation"])
     {
         
-        Location *newLocation = [[SharedStore returnSharedStore] newLocation];
+        Quiz *newQuiz = [[SharedStore returnSharedStore] newQuiz];
         
         AddLocationViewController *alvc = segue.destinationViewController;
-        alvc.location = newLocation;
+        alvc.quiz = newQuiz;
         
     }
 }
@@ -336,7 +335,7 @@
     
     ShowFactsViewController *sfvc = [[ShowFactsViewController alloc]init];
     
-    sfvc.location = mapPoint.location;
+    sfvc.quiz = mapPoint.quiz;
     
     [self.navigationController pushViewController:sfvc animated:YES];
     

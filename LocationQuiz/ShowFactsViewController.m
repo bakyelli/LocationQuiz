@@ -7,7 +7,7 @@
 //
 
 #import "ShowFactsViewController.h"
-#import "Fact.h"
+#import "Card+Methods.h"
 #import "AddFactViewController.h"
 
 @interface ShowFactsViewController ()
@@ -42,10 +42,10 @@
     [self.navigationItem setRightBarButtonItem:addButton];
     [self.navigationItem setLeftBarButtonItem:backToMapButton];
     
-    NSLog(@"out location: %@",self.location);
-    NSLog(@"We're seeing facts for %@", self.location.name);
+    NSLog(@"our location: %@",self.quiz.location);
+    NSLog(@"We're seeing facts for %@", self.quiz.name);
     
-    self.title = [NSString stringWithFormat:@"%@ - Facts", self.location.name];
+    self.title = [NSString stringWithFormat:@"%@ - Facts", self.quiz.name];
     
     AVAudioSession *session = [AVAudioSession sharedInstance];
     [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
@@ -71,16 +71,16 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.factsArray = [[self.location.facts allObjects] mutableCopy];
+    self.cardsArray = [[self.quiz.cards allObjects] mutableCopy];
 
-    NSLog(@"I have %i facts for this location.", [self.location.facts count]);
+    NSLog(@"I have %i cards for this quiz.", [self.quiz.cards count]);
     [self.tableView reloadData];
 }
 
 -(void)addButtonPressed:(id)sender
 {
     AddFactViewController *addFactVC = [[AddFactViewController alloc]init];
-    addFactVC.location = self.location;
+    addFactVC.quiz = self.quiz;
     
     [self.navigationController pushViewController:addFactVC animated:YES];
 }
@@ -103,7 +103,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.location.facts count];
+    return [self.quiz.cards count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -114,9 +114,9 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    Fact *f = self.factsArray[indexPath.row];
+    Card *card = self.cardsArray[indexPath.row];
     
-    cell.textLabel.text = f.title;
+    cell.textLabel.text = card.title;
     
     return cell;
 }
@@ -166,9 +166,9 @@
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Fact *fSelected = [self.factsArray objectAtIndex:indexPath.row];
+    Card *cardSelected = [self.cardsArray objectAtIndex:indexPath.row];
     
-    NSURL *fileURL = [NSURL URLWithString:fSelected.soundFilePath];
+    NSURL *fileURL = [NSURL URLWithString:cardSelected.attachment];
     player = [[AVAudioPlayer alloc]initWithContentsOfURL:fileURL error:nil];
     
     //[player setDelegate:self];

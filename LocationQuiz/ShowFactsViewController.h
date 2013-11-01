@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "Location.h"
+#import "Quiz+Methods.h"
 #import "SharedStore.h"
 
 @interface ShowFactsViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
-@property (strong,nonatomic) Location *location;
-@property (strong,nonatomic) NSMutableArray *factsArray;
+@property (strong,nonatomic) Quiz *quiz;
+@property (strong,nonatomic) NSMutableArray *cardsArray;
 
 @end

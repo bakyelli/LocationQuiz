@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import "Location.h"
+#import "Card+Methods.h"
 
 @interface SharedStore : NSObject
 
@@ -21,7 +22,8 @@
 - (Location *)newLocation;
 - (void) addLocationEntity:(Location *)loc;
 - (Location *) getLocationWithID:(NSNumber *)locationID;
-- (Fact *)newFact;
+- (Quiz *)newQuiz;
+- (Card *)newCard;
 -(void)saveContext;
 
 -(void) addQuizEntity:(Quiz *)quiz;

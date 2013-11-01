@@ -15,7 +15,7 @@
 - (IBAction)playBtnPressed:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *lblMessage;
 @property (weak, nonatomic) IBOutlet UIButton *playBtn;
-@property (strong, nonatomic) Location *location;
+@property (strong, nonatomic) Quiz *quiz;
 @property (weak, nonatomic) IBOutlet UITextField *titleTextBox;
 @property (strong,nonatomic) NSURL *outputFileURL;
 @property (weak, nonatomic) IBOutlet UILabel *locationName;

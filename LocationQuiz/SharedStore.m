@@ -40,10 +40,16 @@
     return locationToReturn;
 }
 
-- (Fact *)newFact {
-    Fact *factToReturn = [NSEntityDescription insertNewObjectForEntityForName:@"Fact" inManagedObjectContext:[self managedObjectContext]];
+- (Quiz *)newQuiz {
+    Quiz *quiz = [NSEntityDescription insertNewObjectForEntityForName:@"Quiz" inManagedObjectContext:[self managedObjectContext]];
     
-    return factToReturn;
+    return quiz;
+}
+
+- (Card *)newCard {
+    Card *card = [NSEntityDescription insertNewObjectForEntityForName:@"Card" inManagedObjectContext:[self managedObjectContext]];
+    
+    return card;
 }
 
 -(void) addLocationEntity:(Location *)loc

@@ -10,6 +10,7 @@
 #import "Location.h"
 #import <MMDrawerController.h>
 #import <CoreLocation/CoreLocation.h>
+#import "Quiz+Methods.h"
 #import "FSVenue.h"
 @interface AddLocationViewController : UIViewController <UITextFieldDelegate>
 
@@ -23,7 +24,7 @@
 - (IBAction)longitude:(id)sender;
 - (IBAction)latitude:(id)sender;
 - (IBAction)name:(id)sender;
-@property (strong, nonatomic) Location *location;
+@property (strong, nonatomic) Quiz *quiz;
 - (void) selectVenue:(FSVenue *)selectedVenue;
 - (IBAction)cancel:(id)sender;
 

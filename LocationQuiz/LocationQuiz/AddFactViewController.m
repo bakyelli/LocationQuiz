@@ -8,7 +8,8 @@
 
 #import "AddFactViewController.h"
 #import "SharedStore.h"
-#import "Fact.h"
+#import "Quiz+Methods.h"
+#import "Card+Methods.h"
 #import "ShowFactsViewController.h"
 @interface AddFactViewController ()
 {
@@ -34,7 +35,7 @@
     [super viewDidLoad];
  
     self.titleTextBox.delegate = self;
-    self.locationName.text = self.location.name;
+    self.locationName.text = self.quiz.name;
     
     self.didRecord = NO;
     
@@ -140,21 +141,38 @@
     [self.recBtn setTitle:@"REC" forState:UIControlStateNormal];
     [self.lblMessage setText:@"Ready to play!"];
 }
+//- (IBAction)done:(id)sender {
+//    if (![self.titleTextBox.text isEqualToString:@""] && self.didRecord) {
+//        
+//        Fact *f = [SharedStore returnSharedStore].newFact;
+//        
+//        f.title = self.titleTextBox.text;
+//        f.soundFilePath = [self.outputFileURL absoluteString];
+//        f.dateAdded = [NSDate date];
+//        
+//        [self.location addFactsObject:f];
+//        [[SharedStore returnSharedStore] saveContext];
+//        
+//        [self returnToShowFacts];
+//    }
+//}
+
 - (IBAction)done:(id)sender {
     if (![self.titleTextBox.text isEqualToString:@""] && self.didRecord) {
         
-        Fact *f = [SharedStore returnSharedStore].newFact;
+        Card *card = [SharedStore returnSharedStore].newCard;
         
-        f.title = self.titleTextBox.text;
-        f.soundFilePath = [self.outputFileURL absoluteString];
-        f.dateAdded = [NSDate date];
+        card.title = self.titleTextBox.text;
+        card.attachment = [self.outputFileURL absoluteString];
         
-        [self.location addFactsObject:f];
+        [self.quiz addCardsObject:card];
+        
         [[SharedStore returnSharedStore] saveContext];
         
         [self returnToShowFacts];
     }
 }
+
 
 - (IBAction)cancel:(id)sender {
     [self returnToShowFacts];
@@ -163,7 +181,7 @@
 - (void)returnToShowFacts {
 
     ShowFactsViewController *sfvc = [[ShowFactsViewController alloc]init];
-    sfvc.location = self.location;
+    sfvc.quiz = self.quiz;
     UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:sfvc];
     
     [self presentViewController:navController animated:YES completion:nil];

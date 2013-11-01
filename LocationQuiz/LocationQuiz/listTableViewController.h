@@ -11,6 +11,6 @@
 @interface listTableViewController : UITableViewController<UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSMutableArray *locations;
+@property (strong, nonatomic) NSMutableArray *quizzes;
 
 @end
