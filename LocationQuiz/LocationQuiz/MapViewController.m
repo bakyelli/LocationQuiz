@@ -19,6 +19,9 @@
 #import "DrawerTableViewController.h"
 #import "APISharedStore.h"
 //#import "LocationEntity.h"
+#import "Quiz+Methods.h"
+#import "Card+Methods.h"
+
 @interface MapViewController ()
 @property (nonatomic, strong) MMDrawerController *drawerController;
 @end
@@ -51,6 +54,7 @@
     
     [self findLocation];
 
+    
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(addButtonPressed:)];
     [self.navigationItem setLeftBarButtonItem:addButton];
     
@@ -144,6 +148,7 @@
             {
                 NSLog(@"!!!!Yay! New Location from API: %@", loc.name);
                 [[SharedStore returnSharedStore] addLocationEntity:loc];
+                
                 //This API location is new, so we should add it to CoreData
             }
             else
@@ -151,6 +156,8 @@
                 //This aPI location already exists in Core Data, so we should not be inserting it.
             }
             
+            Quiz *quiz = [[Quiz alloc] initWithLocation:loc];
+            [APISharedStore sharedStore] createQuiz:quiz withCompletion:<#^(Quiz *quiz)block#>
             [self addLocationToMap:loc];
         }
 

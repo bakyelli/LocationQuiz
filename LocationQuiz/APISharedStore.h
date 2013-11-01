@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Location.h"
+#import "Location+Methods.h"
+#import "Quiz+Methods.h"
+#import "Card+Methods.h"
 
 extern NSString * const BASEURL;
 
@@ -25,5 +27,8 @@ extern NSString * const BASEURL;
 
 - (void)removeLocation:(Location *)location;
 
+- (void)createQuiz:(Quiz *)quiz withCompletion: (void (^)(Quiz *quiz))block;
+
+- (void)createCard:(Card *)card withCompletion: (void (^)(Card *card))block;
 
 @end

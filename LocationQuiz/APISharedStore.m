@@ -125,7 +125,7 @@ NSString * const BASEURL = @"http://locationquiz-ios000-gryffindor.herokuapp.com
     [operation start];
 }
 
-- (void)createQuiz:(Quiz *)quiz onLocation:(Location *)location withCompletion: (void (^)(Quiz *quiz))block {
+- (void)createQuiz:(Quiz *)quiz withCompletion: (void (^)(Quiz *quiz))block {
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@quizzes",BASEURL]];
     
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
@@ -140,7 +140,7 @@ NSString * const BASEURL = @"http://locationquiz-ios000-gryffindor.herokuapp.com
 }
 
 
-- (void)createCard:(Card *)card onQuiz:(Quiz *)quiz withCompletion: (void (^)(Card *card))block {
+- (void)createCard:(Card *)card withCompletion: (void (^)(Card *card))block {
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@cards",BASEURL]];
     
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
