@@ -20,6 +20,10 @@
 + (SharedStore *)returnSharedStore;
 - (Location *)newLocation;
 - (void) addLocationEntity:(Location *)loc;
+- (Location *) getLocationWithID:(NSNumber *)locationID;
 - (Fact *)newFact;
--(void)saveContext; 
+-(void)saveContext;
+
+
+
 @end

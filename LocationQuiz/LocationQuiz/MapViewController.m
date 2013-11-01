@@ -62,13 +62,23 @@
     }];
     
     
-    Location *location = [[Location alloc] initWithLatitude:@0 longitude:@0 name:@"Bryant Park"];
+//    Location *location = [[Location alloc] initWithLatitude:@0 longitude:@0 name:@"Bryant Park"];
+//    
+//    [[APISharedStore sharedStore] createLocation:location withCompletion:^(Location *newLocation) {
+//        NSLog(@"done creating %@", newLocation);
+//
+//    }];
+//
+
+    Location *location = [SharedStore returnSharedStore];
     
-    [[APISharedStore sharedStore] createLocation:location withCompletion:^(Location *newLocation) {
-        NSLog(@"done creating %@", newLocation);
-
-    }];
-
+//    Quiz *quiz = [[Quiz alloc] ini];
+//    
+//    [[APISharedStore sharedStore] createLocation:location withCompletion:^(Location *newLocation) {
+//        NSLog(@"done creating %@", newLocation);
+//        
+//    }];
+    
     
 //    Location *location = [[Location alloc] initWithLatitude:@(40.7538) longitude:@(-73.9836) name:@"Bryant Park"];
 //

@@ -31,6 +31,12 @@
     return locationToReturn;
 }
 
+- (Location *)getLocationWithID:(NSNumber *)locationID {
+    Location *locationToReturn = [NSEntityDescription entityForName:@"Location" inManagedObjectContext:[self managedObjectContext]];
+    
+    return locationToReturn;
+}
+
 - (Fact *)newFact {
     Fact *factToReturn = [NSEntityDescription insertNewObjectForEntityForName:@"Fact" inManagedObjectContext:[self managedObjectContext]];
     

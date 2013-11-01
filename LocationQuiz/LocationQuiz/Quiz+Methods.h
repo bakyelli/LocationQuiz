@@ -1,5 +1,5 @@
 //
-//  Quiz.m
+//  Quiz+Methods.h
 //  LocationQuiz
 //
 //  Created by Chemin Lin on 10/31/13.
@@ -7,15 +7,9 @@
 //
 
 #import "Quiz.h"
-#import "Card.h"
-#import "Location.h"
 
+@interface Quiz (Methods)
 
-@implementation Quiz
-
-@dynamic name;
-@dynamic quizID;
-@dynamic cards;
-@dynamic location;
+- (id) initWithLocation:(Location *)location;
 
 @end

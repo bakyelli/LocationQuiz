@@ -9,6 +9,9 @@
 #import "APISharedStore.h"
 #import <AFNetworking.h>
 #import "Location+Methods.h"
+#import "Quiz+Methods.h"
+#import "Card+Methods.h"
+
 
 NSString * const BASEURL = @"http://locationquiz-ios000-gryffindor.herokuapp.com/";
 
@@ -109,15 +112,25 @@ NSString * const BASEURL = @"http://locationquiz-ios000-gryffindor.herokuapp.com
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@locations",BASEURL]];
     
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
-
-    NSString *latitude = [newLocation.latitude stringValue];
-    NSString *longitude = [newLocation.longitude stringValue];
-    NSString *name = newLocation.name;
     
 //    NSDictionary *locationDictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"location[latitude]",latitude,@"location[longitude]", longitude,@"location[name]",name, nil];
     
-    NSDictionary *dict = @{@"location[name]":name, @"location[longitude]":newLocation.longitude, @"location[latitude]":newLocation.latitude};
+    NSDictionary *dict = @{@"location[name]":newLocation.name, @"location[longitude]":newLocation.longitude, @"location[latitude]":newLocation.latitude};
     
+    
+    NSURLRequest *request = [httpClient requestWithMethod:@"POST" path:nil parameters:dict];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+
+    [operation start];
+}
+
+- (void)createQuiz:(Quiz *)quiz onLocation:(Location *)location withCompletion: (void (^)(Quiz *quiz))block {
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@quizzes",BASEURL]];
+    
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+    
+    NSDictionary *dict = @{@"quiz[location_id]":quiz.location.locationID, @"quiz[name]":quiz.name};
     
     NSURLRequest *request = [httpClient requestWithMethod:@"POST" path:nil parameters:dict];
     
@@ -127,6 +140,19 @@ NSString * const BASEURL = @"http://locationquiz-ios000-gryffindor.herokuapp.com
 }
 
 
-//- (void)createLocation:(Location *)newLocation withCompletion: (void (^)(Location* newLocation))block;
+- (void)createCard:(Card *)card onQuiz:(Quiz *)quiz withCompletion: (void (^)(Card *card))block {
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@cards",BASEURL]];
+    
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+    
+    NSDictionary *dict = @{@"card[quiz_id]":card.quiz.quizID, @"card[difficulty]":card.difficulty, @"card[title]":card.title, @"card[order]":card.order, @"card[attachment]":card.attachment};
+    
+    NSURLRequest *request = [httpClient requestWithMethod:@"POST" path:nil parameters:dict];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    
+    [operation start];
+}
+
 
 @end

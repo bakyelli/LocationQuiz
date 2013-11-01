@@ -2,32 +2,28 @@
 //  Quiz.h
 //  LocationQuiz
 //
-//  Created by Jay Abdallah on 10/9/13.
+//  Created by Chemin Lin on 10/31/13.
 //  Copyright (c) 2013 Jay Abdallah. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreLocation/CoreLocation.h>
-#import "Card.h"
+#import <CoreData/CoreData.h>
 
-@interface Quiz : NSObject
+@class Card, Location;
 
-@property (strong, nonatomic) NSArray *cards;
-@property (strong, nonatomic) CLPlacemark *location;        //From Apple's documentation: A CLPlacemark object stores placemark data for a given latitude and longitude. Placemark data includes information such as the country, state, city, and street address associated with the specified coordinate. It can also include points of interest and geographically related data.
-@property (strong, nonatomic) NSString *name;
-@property (strong, nonatomic) NSArray *finishedUsers;
+@interface Quiz : NSManagedObject
 
+@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSNumber * quizID;
+@property (nonatomic, retain) NSSet *cards;
+@property (nonatomic, retain) Location *location;
+@end
 
--(BOOL)isNearCoordinate:(CLLocationCoordinate2D*)coordinate;
--(id)initWithLocation:(CLLocationCoordinate2D*)location andName:(NSString*)name;
--(id)initWithLocation:(CLLocationCoordinate2D *)location;
--(void)moveCardFromIndex:(NSIndexPath*)fromIndexPath toIndex:(NSIndexPath*)toIndexPath;
--(NSNumber*)averageDifficulty;
--(Card*)randomCard;
+@interface Quiz (CoreDataGeneratedAccessors)
 
-
-
-
-
+- (void)addCardsObject:(Card *)value;
+- (void)removeCardsObject:(Card *)value;
+- (void)addCards:(NSSet *)values;
+- (void)removeCards:(NSSet *)values;
 
 @end
