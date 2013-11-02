@@ -233,12 +233,12 @@ NSString * const BASEURL = @"http://locationquiz-ios000-gryffindor.herokuapp.com
 }
 
 
-- (void)createCard:(Card *)card withCompletion: (void (^)(Card *card))block {
+- (void)createCard:(Card *)card withAudioFile:(NSData *)audioFile withCompletion: (void (^)(Card *card))block{
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@cards",BASEURL]];
     
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
     
-    NSDictionary *dict = @{@"card[quiz_id]":card.quiz.quizID, @"card[difficulty]":card.difficulty, @"card[title]":card.title, @"card[order]":card.order, @"card[attachment]":card.attachment};
+    NSDictionary *dict = @{@"card[quiz_id]":card.quiz.quizID, @"card[difficulty]":card.difficulty, @"card[title]":card.title, @"card[order]":card.order};
     
     NSURLRequest *request = [httpClient requestWithMethod:@"POST" path:nil parameters:dict];
     

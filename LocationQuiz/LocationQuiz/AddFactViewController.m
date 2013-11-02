@@ -166,11 +166,14 @@
         card.title = self.titleTextBox.text;
         card.attachment = [self.outputFileURL absoluteString];
         card.quiz = self.quiz;
+        card.attachment = [recorder.url absoluteString];
+                     
+        NSData *audioData = [NSData dataWithContentsOfFile:card.attachment];
         
         [self.quiz addCardsObject:card];
         [[SharedStore returnSharedStore] saveContext];
         
-        [[APISharedStore sharedStore]createCard:card withCompletion:^(Card *card) {
+        [[APISharedStore sharedStore]createCard:card withAudioFile:audioData withCompletion:^(Card *card) {
             NSLog(@"Card added");
         }];
         

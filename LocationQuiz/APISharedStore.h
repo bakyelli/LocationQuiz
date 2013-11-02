@@ -32,6 +32,6 @@ extern NSString * const BASEURL;
 
 - (void)createQuiz:(Quiz *)quiz withCompletion: (void (^)(Quiz *quiz))block;
 
-- (void)createCard:(Card *)card withCompletion: (void (^)(Card *card))block;
+- (void)createCard:(Card *)card withAudioFile:(NSData *)audioFile withCompletion: (void (^)(Card *card))block;
 
 @end
